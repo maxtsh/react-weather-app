@@ -1,0 +1,45 @@
+.header-container{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    padding: 0.5rem 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(49deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.75); 
+
+    .navigation{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        .main-title{
+            font-size: 100%;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .list{
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+
+            .list-item{
+                margin-left: 0.5rem;
+                padding: 0.2rem;
+                
+                &:nth-of-type(2){
+                    border-bottom: 1px solid #F57F17;
+                }
+
+                a{
+                    font-size: 100%;
+                    font-weight: 400;
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

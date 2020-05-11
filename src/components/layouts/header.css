@@ -1,0 +1,61 @@
+.header-container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  padding: 0.5rem 0;
+  background: black;
+  background: linear-gradient(49deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.75);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.75);
+}
+
+.header-container .navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-container .navigation .main-title {
+  font-size: 100%;
+  font-weight: 400;
+  color: #fff;
+}
+
+.header-container .navigation .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+}
+
+.header-container .navigation .list .list-item {
+  margin-left: 0.5rem;
+  padding: 0.2rem;
+}
+
+.header-container .navigation .list .list-item:nth-of-type(2) {
+  border-bottom: 1px solid #F57F17;
+}
+
+.header-container .navigation .list .list-item a {
+  font-size: 100%;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+/*# sourceMappingURL=header.css.map */

@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// Providers
+import { WeatherProvider } from './context/weatherContext';
+import { LanguageProvider } from './context/languageContext';
+
+// Pages
+import Home from './components/pages/Home';
+import Weather from './components/pages/Weather';
+import About from './components/pages/About';
+
+import ErrorBoundary from './ErrorBoundry/ErrorBoundary';
+
+// Global Style
+import './styles/global.css';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <Switch>
+        <WeatherProvider>
+        <LanguageProvider>
 
+          <ErrorBoundary>
+            <Route exact path="/" component={Home} />
+          </ErrorBoundary>
+
+          <Route exact path="/weather/:city" component={Weather} />
+          <Route exact path="/about" component={About} />
+
+        </LanguageProvider>
+        </WeatherProvider>
+      </Switch>
+    </Router>
+  );
+};
 export default App;

@@ -1,0 +1,126 @@
+.weather-container{
+    width: 100vw;
+    height: 100vh;
+
+    .weather-wrapper{
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-around;
+        align-items: stretch;
+
+        width: inherit;
+        height: inherit;
+
+        .weather-left{
+            flex-basis: 60%;
+            background-color: #E3F6FE;
+        }
+
+        .weather-right{
+            position: relative;
+            flex-basis: 40%;
+            background-color: #110E3C;
+            text-align: center;
+
+            .weather-draw{
+                width: 300px;
+                margin-top: 2rem;
+            }
+
+            .cloud-1{
+                position: absolute;
+                top: 200px;
+                left: 100px;
+                width: 100px;
+                
+            }
+
+            .overview{
+                display: flex;
+                flex-direction: column;
+                
+                .overview-header{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 1rem;
+
+                    .overview-header-today{
+                        text-align: center;
+
+                        .overview-header-today-title{
+                            color: #fff;
+                            font-size: 400%;
+                            font-weight: 700;
+                        }
+
+                        .overview-header-today-date{
+                            font-size: 90%;
+                            font-weight: 300;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .overview-header-icon{
+
+                    img{
+                        width: 60px;
+                    }
+                }
+
+                .overview-temp{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    .overview-temp-current{
+                        font-size: 500%;
+                        font-weight: 400;
+                        color: #fff;
+                    }
+
+                    .over-view-temp-sign{
+                        font-size: 150%;
+                        font-weight: 400;
+                        margin-top: 0.8rem;
+                        margin-left: 0.5rem;
+                        color: #fff;
+                    }
+                }
+
+                .overview-country{
+                    text-align: center;
+
+                    .overview-country-text{
+                        font-size: 100%;
+                        font-weight: 400;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .overview-more-info{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                color: #fff;
+                margin-top: 2rem;
+
+                .overview-more-info-feels-like{
+                    font-size: 100%;
+                    font-weight: 400;
+                }
+
+                .overview-more-info-sunset{
+
+                }
+
+                .overview-more-info-sunrise{
+
+                }
+            }
+        }
+    }
+}
