@@ -20,4 +20,37 @@ html, body {
   max-width: 1140px;
   margin: 0 auto;
 }
+
+.error-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  background-color: #ff3838;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+
+.error-wrapper .error-message {
+  color: #fff;
+  font-size: 120%;
+  font-weight: 400;
+}
+
+.error-wrapper .fa-exclamation-circle {
+  font-size: 150%;
+  color: #fff;
+  margin-right: 3rem;
+}
 /*# sourceMappingURL=global.css.map */

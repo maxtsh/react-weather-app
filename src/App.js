@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Providers
 import { WeatherProvider } from './context/weatherContext';
+import { FullWeatherProvider } from './context/fullWeatherContext';
 import { LanguageProvider } from './context/languageContext';
 
 // Pages
@@ -21,6 +22,7 @@ function App() {
   return (
     <Router>
       <Switch>
+        <FullWeatherProvider>
         <WeatherProvider>
         <LanguageProvider>
 
@@ -28,11 +30,15 @@ function App() {
             <Route exact path="/" component={Home} />
           </ErrorBoundary>
 
-          <Route exact path="/weather/:city" component={Weather} />
+          <ErrorBoundary>
+          <Route exact path="/weather/:city/:coord" component={Weather} />
+          </ErrorBoundary>
+
           <Route exact path="/about" component={About} />
 
         </LanguageProvider>
         </WeatherProvider>
+        </FullWeatherProvider>
       </Switch>
     </Router>
   );

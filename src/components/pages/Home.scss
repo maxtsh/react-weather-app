@@ -1,4 +1,3 @@
-$error-background: #ff3838;
 $submit-background: #F57F17;
 
 .home-container{
@@ -35,31 +34,6 @@ $submit-background: #F57F17;
                 text-transform: uppercase;
                 color: #fff;
                 margin-bottom: 2rem;
-            }
-
-            .error-wrapper{
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: center;
-                text-align: center;
-                padding: 0.5rem 1rem;
-                background-color: $error-background;
-                margin-top: 1rem;
-                border-radius: 0.5rem;
-
-                .error-message{
-                    color: #fff;
-                    font-size: 120%;
-                    font-weight: 400;
-                    // text-transform: uppercase;
-                }
-
-                .fa-exclamation-circle{
-                    font-size: 150%;
-                    color: #fff;
-                    margin-right: 3rem;
-                }
             }
 
             .form{

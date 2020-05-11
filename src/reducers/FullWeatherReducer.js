@@ -1,28 +1,29 @@
-export default function weatherReducer(state, action){
+export default function fullWeatherReducer(state, action){
     switch(action.type){
-        case "GET_WEATHER":
+        case "GET_FULL_WEATHER":
             return {
                 ...state,
                 error: null,
                 loading: false,
-                weather: action.payload
+                all: action.payload
             }
-        case "WEATHER_ERROR":
+        case "FULL_WEATHER_ERROR":
             return {
                 ...state,
                 loading: false,
-                weather: "No Weather",
+                all: "No Weather",
                 error: action.payload
             }
         
-        case "CLEAR_WEATHER":
+        case "CLEAR_FULL_WEATHER":
             return {
                 ...state,
                 error: null,
                 loading: true,
-                weather: null
+                all: null
             }   
-        default: 
+
+        default:
             return{
                 ...state
             }

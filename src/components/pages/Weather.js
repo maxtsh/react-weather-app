@@ -1,13 +1,15 @@
 import React, { useEffect, useContext } from 'react';
-import {getWeather, clearWeather} from '../../actions/index';
+import {getWeather, clearWeather, getFullWeather, clearFullWeather} from '../../actions/index';
 import { weatherContext } from '../../context/weatherContext';
+import { fullWeatherContext } from '../../context/fullWeatherContext';
+
+import ErrorHandler from '../../ErrorBoundry/ErrorHandler';
 
 // Weather Styles
 import './Weather.css';
 
-import cloud from '../../images/cloud.svg'
+// import cloud from '../../images/cloud.svg'
 import weatherDraw from '../../images/weather-draw.svg'
-
 
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const weekDays = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -15,19 +17,35 @@ const time = new Date();
 
 function Weather(props){
     const {weather, dispatch } = useContext(weatherContext);
-    const { city } = props.match.params;
+    const {all, dispatch2} = useContext(fullWeatherContext);
+    const { city, coord } = props.match.params;
 
+    const lon = coord.split("&")[0];
+    const lat = coord.split("&")[1];
+
+    console.log("RENDER");
     console.log(weather);
+    console.log(all);
 
     useEffect(() => {
         getWeather(dispatch, city);
 
-        return () => clearWeather;
+        return () => clearWeather(dispatch);
     }, [dispatch, city]);
+
+    useEffect(() => {
+        getFullWeather(dispatch2, lon, lat);
+
+        return () => clearFullWeather(dispatch2);
+    }, [dispatch2, lon, lat]);
 
     if(!weather.weather || weather.loading){
         return(
             <h1>Loading...</h1>
+        )
+    }else if(weather.error){
+        return(
+            <ErrorHandler message={weather.error.data.message} currentLang="English" />
         )
     }
 
@@ -35,6 +53,7 @@ function Weather(props){
     const feelsLike = Math.round(weather.weather.main.feels_like);
     const sunset = weather.weather.sys.sunset;
     const sunrise = weather.weather.sys.sunrise;
+
 
     return(
         <div className="weather-container">

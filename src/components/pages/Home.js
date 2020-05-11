@@ -1,10 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { useForm } from '../../hooks/useForm';
-import Header from '../layouts/Header';
 
 import { getWeather, clearWeather } from '../../actions/index';
 import { weatherContext } from '../../context/weatherContext';
 import { languageContext } from '../../context/languageContext';
+
+import Header from '../layouts/Header';
+import ErrorHandler from '../../ErrorBoundry/ErrorHandler';
 
 // Home Styles
 import './Home.css';
@@ -12,11 +14,9 @@ import './Home.css';
 const languages = {
     English: {
         searchTitle: "Search for latest weather updates",
-        errMessage: "We are sorry about this but"
     },
     Persian: {
-        searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید",
-        errMessage: "متاسفانه خطایی رخ داده است که"
+        searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید"
     }
 };
 
@@ -41,7 +41,7 @@ function Home() {
 
     if(!weather.error && weather.weather){
         console.log(userForm.city);
-        window.location.assign(`/weather/${userForm.city}`);
+        window.location.assign(`/weather/${userForm.city}/${weather.weather.coord.lon}&${weather.weather.coord.lat}`);
     }
 
     return (
@@ -61,12 +61,8 @@ function Home() {
                         <input className="search-submit" type="submit" value="Get Weather" />
                     </form>
                     {weather.error ? (
-                        <div className="error-wrapper">
-                            <i className="fas fa-exclamation-circle"></i>
-                            <h3 className="error-message">{languages[language.current].errMessage + " " +  weather.error.data.message}!</h3>
-                        </div>
-                    ) 
-                    : null}
+                        <ErrorHandler message={weather.error.data.message} currentLang={language.current} />
+                    ) : null}
                 </div>
             </div>
         </div>
