@@ -11,6 +11,10 @@ import "./Weather.css";
 
 // import cloud from '../../images/cloud.svg'
 import weatherDraw from "../../images/weather-draw.svg";
+import berlin from "../../images/cities/berlin.jpg";
+import france from "../../images/cities/france.jpg";
+import newyork from "../../images/cities/newyork.jpg";
+import london from "../../images/cities/london.jpg";
 
 const months = [
   "Jan",
@@ -93,6 +97,35 @@ function Weather(props) {
             <h1 className="main-title-text">
               Weather <span className="main-title-text-bold">Forecast</span>
             </h1>
+          </div>
+          <div className="cities-list">
+            <div className="city-item">
+              <img className="city-img" src={berlin} alt="berlin" />
+              <p>Berlin, Germany</p>
+            </div>
+            <div className="city-item">
+              <img className="city-img" src={france} alt="france" />
+              <p>Paris, France</p>
+            </div>
+            <div className="city-item">
+              <img className="city-img" src={newyork} alt="newyork" />
+              <p>New York, USA</p>
+            </div>
+            <div className="city-item">
+              <img className="city-img" src={london} alt="london" />
+              <p>London, Britain</p>
+            </div>
+            <div className="city-item">
+              <div className="city-add">
+                <i className="fas fa-plus"></i>
+                <p className="city-add-text">Add city</p>
+              </div>
+            </div>
+          </div>
+          <div className="weekly">
+            <div className="weekly-title">
+              <h2 className="weekly-title-text">Week</h2>
+            </div>
           </div>
         </div>
         <div className="weather-right">

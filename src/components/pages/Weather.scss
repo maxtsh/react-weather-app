@@ -82,6 +82,52 @@ $violet-lighter: #1d1d46;
           }
         }
       }
+
+      .cities-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0 0.5rem;
+
+        .city-item {
+          text-align: center;
+          width: 90%;
+          max-width: 200px;
+          height: 100%;
+
+          .city-img {
+            border-radius: 1rem;
+            width: 100%;
+            cursor: pointer;
+          }
+        }
+
+        .city-add {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          border: 1px solid $violet-darker;
+          border-radius: 1rem;
+          height: 90%;
+
+          .city-add-text {
+            font-size: 110%;
+            font-weight: 400;
+          }
+        }
+      }
+
+      .weekly {
+        .weekly-title {
+          .weekly-title-text {
+            font-size: 130%;
+            font-weight: 400;
+            color: $violet-darker;
+          }
+        }
+      }
     }
 
     .weather-right {
