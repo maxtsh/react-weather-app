@@ -1,72 +1,82 @@
-import React, { useEffect, useContext } from 'react';
-import { useForm } from '../../hooks/useForm';
+import React, { useEffect, useContext } from "react";
+import { useForm } from "../../hooks/useForm";
 
-import { getWeather, clearWeather } from '../../actions/index';
-import { weatherContext } from '../../context/weatherContext';
-import { languageContext } from '../../context/languageContext';
+import { getWeather, clearWeather } from "../../actions/index";
+import { weatherContext } from "../../context/weatherContext";
+import { languageContext } from "../../context/languageContext";
 
-import Header from '../layouts/Header';
-import ErrorHandler from '../../ErrorBoundry/ErrorHandler';
+import Header from "../layouts/Header";
+import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 
 // Home Styles
-import './Home.css';
+import "./Home.css";
 
 const languages = {
-    English: {
-        searchTitle: "Search for latest weather updates",
-    },
-    Persian: {
-        searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید"
-    }
+  English: {
+    searchTitle: "Search for latest weather updates",
+  },
+  Persian: {
+    searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید",
+  },
 };
 
 function Home() {
-    const { weather, dispatch } = useContext(weatherContext);
-    const { language } = useContext(languageContext);
+  const { weather, dispatch } = useContext(weatherContext);
+  const { language } = useContext(languageContext);
 
-    const [userForm, change] = useForm({ city: ""});
+  const [userForm, change] = useForm({ city: "" });
 
+  console.log("RENDER!");
 
-    console.log("RENDER!");
+  useEffect(() => {
+    return () => clearWeather(dispatch);
+  }, [dispatch]);
 
-    useEffect(() => {
+  function handleSubmit(e) {
+    e.preventDefault();
+    getWeather(dispatch, userForm.city);
+  }
 
-        return () => clearWeather(dispatch);
-    }, [dispatch]);
+  if (!weather.error && weather.weather) {
+    console.log(userForm.city);
+    window.location.assign(
+      `/weather/${userForm.city}/${weather.weather.coord.lon}&${weather.weather.coord.lat}`
+    );
+  }
 
-    function handleSubmit(e){
-        e.preventDefault();
-        getWeather(dispatch, userForm.city);
-    };
-
-    if(!weather.error && weather.weather){
-        console.log(userForm.city);
-        window.location.assign(`/weather/${userForm.city}/${weather.weather.coord.lon}&${weather.weather.coord.lat}`);
-    }
-
-    return (
-        <>
-        <Header />
-        <div className="home-container">
-            <div className="search-container">
-                <div className="form-container">            
-                    <h1 className="search-title">{languages[language.current].searchTitle }</h1>
-                    <form className="form" onSubmit={handleSubmit}>
-                        <input 
-                            className="search-field" 
-                            type="text" 
-                            name="city" 
-                            value={userForm.city}
-                            onChange={change} />
-                        <input className="search-submit" type="submit" value="Get Weather" />
-                    </form>
-                    {weather.error ? (
-                        <ErrorHandler message={weather.error.data.message} currentLang={language.current} />
-                    ) : null}
-                </div>
-            </div>
+  return (
+    <>
+      <Header />
+      <div className="home-container">
+        <div className="search-container">
+          <div className="form-container">
+            <h1 className="search-title">
+              {languages[language.current].searchTitle}
+            </h1>
+            <form className="form" onSubmit={handleSubmit}>
+              <input
+                className="search-field"
+                type="text"
+                name="city"
+                value={userForm.city}
+                onChange={change}
+              />
+              <input
+                className="search-submit"
+                type="submit"
+                value="Get Weather"
+              />
+            </form>
+            {weather.error ? (
+              <ErrorHandler
+                message={weather.error.data.message}
+                currentLang={language.current}
+              />
+            ) : null}
+          </div>
         </div>
-        </>
-    )
-};
+      </div>
+    </>
+  );
+}
 export default Home;
