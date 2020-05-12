@@ -75,7 +75,12 @@ function Weather(props) {
     <div className="weather-container">
       <div className="weather-wrapper">
         <div className="weather-left">
-          <h1>left</h1>
+          <div className="form-wrapper">
+            <form className="form">
+              <input type="text" name="cities" />
+              <input type="submit" name="Find" />
+            </form>
+          </div>
         </div>
         <div className="weather-right">
           <i className="fas fa-cloud cloud-1"></i>
