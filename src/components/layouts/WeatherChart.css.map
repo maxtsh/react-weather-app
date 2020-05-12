@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,KAAK,EAAE,IAAI;CACZ",
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,MAAM;EACd,KAAK,EAAE,GAAG;CACX",
     "sources": [
         "WeatherChart.scss"
     ],
