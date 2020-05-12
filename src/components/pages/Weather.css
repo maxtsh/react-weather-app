@@ -119,20 +119,25 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 0.5rem;
 }
 
 .weather-container .weather-wrapper .weather-left .cities-list .city-item {
   text-align: center;
-  width: 90%;
-  max-width: 200px;
+  width: 100%;
+  max-width: 180px;
   height: 100%;
 }
 
 .weather-container .weather-wrapper .weather-left .cities-list .city-item .city-img {
   border-radius: 1rem;
-  width: 100%;
+  width: 95%;
   cursor: pointer;
+}
+
+.weather-container .weather-wrapper .weather-left .cities-list .city-item .city-name {
+  font-size: 90%;
+  font-weight: 700;
+  color: #110e3c;
 }
 
 .weather-container .weather-wrapper .weather-left .cities-list .city-add {

@@ -101,19 +101,19 @@ function Weather(props) {
           <div className="cities-list">
             <div className="city-item">
               <img className="city-img" src={berlin} alt="berlin" />
-              <p>Berlin, Germany</p>
+              <p className="city-name">Berlin, Germany</p>
             </div>
             <div className="city-item">
               <img className="city-img" src={france} alt="france" />
-              <p>Paris, France</p>
+              <p className="city-name">Paris, France</p>
             </div>
             <div className="city-item">
               <img className="city-img" src={newyork} alt="newyork" />
-              <p>New York, USA</p>
+              <p className="city-name">New York, USA</p>
             </div>
             <div className="city-item">
               <img className="city-img" src={london} alt="london" />
-              <p>London, Britain</p>
+              <p className="city-name">London, Britain</p>
             </div>
             <div className="city-item">
               <div className="city-add">

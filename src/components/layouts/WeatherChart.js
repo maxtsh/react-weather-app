@@ -8,7 +8,6 @@ import "./WeatherChart.css";
 
 function WeatherChart({ data }) {
   const next24Hours = getDailyHours();
-  console.log(next24Hours);
 
   const hourlyTemp = data.map((each) => each.temp);
 
