@@ -23,6 +23,86 @@
       flex-basis: 60%;
   background-color: #e3f6fe;
   z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.weather-container .weather-wrapper .weather-left .form-wrapper {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.weather-container .weather-wrapper .weather-left .form-wrapper .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group {
+  position: relative;
+}
+
+.weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group .fa-search-location {
+  position: absolute;
+  top: 30%;
+  left: 20px;
+  font-size: 120%;
+  color: #110e3c;
+}
+
+.weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group .search-input {
+  font-size: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.weather-container .weather-wrapper .weather-left .form-wrapper .form .search-submit {
+  font-size: 100%;
+  font-weight: 700;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #f57f17;
+  cursor: pointer;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.weather-container .weather-wrapper .weather-left .main-title-wrapper .main-title-text {
+  font-size: 200%;
+  font-weight: 400;
+  color: #1d1d46;
+}
+
+.weather-container .weather-wrapper .weather-left .main-title-wrapper .main-title-text .main-title-text-bold {
+  font-weight: 700;
+  color: #110e3c;
 }
 
 .weather-container .weather-wrapper .weather-right {
@@ -199,12 +279,8 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  color: #fff;
-  margin-top: 2rem;
-}
-
-.weather-container .weather-wrapper .weather-right .overview-more-info .overview-more-info-feels-like {
   font-size: 100%;
-  font-weight: 400;
+  font-weight: 300;
+  color: #fff;
 }
 /*# sourceMappingURL=Weather.css.map */

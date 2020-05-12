@@ -77,9 +77,22 @@ function Weather(props) {
         <div className="weather-left">
           <div className="form-wrapper">
             <form className="form">
-              <input type="text" name="cities" />
-              <input type="submit" name="Find" />
+              <div className="input-group">
+                <i className="fas fa-search-location"></i>
+                <input
+                  className="search-input"
+                  type="text"
+                  name="cities"
+                  placeholder="Search for saved cities"
+                />
+              </div>
+              <input className="search-submit" type="submit" name="Find" />
             </form>
+          </div>
+          <div className="main-title-wrapper">
+            <h1 className="main-title-text">
+              Weather <span className="main-title-text-bold">Forecast</span>
+            </h1>
           </div>
         </div>
         <div className="weather-right">

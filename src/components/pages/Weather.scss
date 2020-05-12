@@ -1,3 +1,7 @@
+$submit-background: #f57f17;
+$violet-darker: #110e3c;
+$violet-lighter: #1d1d46;
+
 .weather-container {
   width: 100vw;
   height: 100vh;
@@ -6,7 +10,6 @@
   .weather-wrapper {
     display: flex;
     flex-direction: row;
-    // justify-content: space-around;
     align-items: stretch;
 
     width: inherit;
@@ -16,6 +19,69 @@
       flex-basis: 60%;
       background-color: #e3f6fe;
       z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+
+      .form-wrapper {
+        width: 100%;
+        border-radius: 0.5rem;
+
+        .form {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: stretch;
+
+          .input-group {
+            position: relative;
+
+            .fa-search-location {
+              position: absolute;
+              top: 30%;
+              left: 20px;
+              font-size: 120%;
+              color: $violet-darker;
+            }
+
+            .search-input {
+              font-size: 100%;
+              padding: 1rem 1rem 1rem 3rem;
+              border: none;
+              outline: none;
+              background-color: #fff;
+              border-top-left-radius: 0.5rem;
+              border-bottom-left-radius: 0.5rem;
+            }
+          }
+
+          .search-submit {
+            font-size: 100%;
+            font-weight: 700;
+            padding: 1rem;
+            border: none;
+            outline: none;
+            color: #fff;
+            background-color: $submit-background;
+            cursor: pointer;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+          }
+        }
+      }
+
+      .main-title-wrapper {
+        .main-title-text {
+          font-size: 200%;
+          font-weight: 400;
+          color: $violet-lighter;
+          .main-title-text-bold {
+            font-weight: 700;
+            color: $violet-darker;
+          }
+        }
+      }
     }
 
     .weather-right {
@@ -25,7 +91,7 @@
       justify-content: space-around;
       align-items: stretch;
       flex-basis: 40%;
-      background-color: #110e3c;
+      background-color: $violet-darker;
 
       .weather-draw {
         margin: 0 auto;
@@ -34,7 +100,7 @@
 
       .cloud-1 {
         position: absolute;
-        color: #1d1d46;
+        color: $violet-lighter;
         top: 45%;
         left: -30px;
         font-size: 600%;
@@ -43,7 +109,7 @@
 
       .cloud-2 {
         position: absolute;
-        color: #1d1d46;
+        color: $violet-lighter;
         top: 30%;
         right: 2px;
         font-size: 700%;
@@ -144,19 +210,18 @@
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        font-size: 100%;
+        font-weight: 300;
         color: #fff;
-        margin-top: 2rem;
 
-        .overview-more-info-feels-like {
-          font-size: 100%;
-          font-weight: 400;
-        }
+        // .overview-more-info-feels-like {
+        // }
 
-        .overview-more-info-sunset {
-        }
+        // .overview-more-info-sunset {
+        // }
 
-        .overview-more-info-sunrise {
-        }
+        // .overview-more-info-sunrise {
+        // }
       }
     }
   }
