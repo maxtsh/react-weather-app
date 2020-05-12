@@ -21,27 +21,49 @@
 .weather-container .weather-wrapper .weather-left {
   -ms-flex-preferred-size: 60%;
       flex-basis: 60%;
-  background-color: #E3F6FE;
+  background-color: #e3f6fe;
+  z-index: 10;
 }
 
 .weather-container .weather-wrapper .weather-right {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
-  background-color: #110E3C;
-  text-align: center;
+  background-color: #110e3c;
 }
 
 .weather-container .weather-wrapper .weather-right .weather-draw {
-  width: 300px;
-  margin-top: 2rem;
+  margin: 0 auto;
+  width: 250px;
 }
 
 .weather-container .weather-wrapper .weather-right .cloud-1 {
   position: absolute;
-  top: 200px;
-  left: 100px;
-  width: 100px;
+  color: #1d1d46;
+  top: 45%;
+  left: -30px;
+  font-size: 600%;
+  z-index: 1;
+}
+
+.weather-container .weather-wrapper .weather-right .cloud-2 {
+  position: absolute;
+  color: #1d1d46;
+  top: 30%;
+  right: 2px;
+  font-size: 700%;
 }
 
 .weather-container .weather-wrapper .weather-right .overview {
@@ -68,7 +90,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 1rem;
 }
 
 .weather-container .weather-wrapper .weather-right .overview .overview-header .overview-header-today {
@@ -77,7 +98,7 @@
 
 .weather-container .weather-wrapper .weather-right .overview .overview-header .overview-header-today .overview-header-today-title {
   color: #fff;
-  font-size: 400%;
+  font-size: 300%;
   font-weight: 700;
 }
 
@@ -85,6 +106,10 @@
   font-size: 90%;
   font-weight: 300;
   color: #fff;
+}
+
+.weather-container .weather-wrapper .weather-right .overview .overview-header-icon {
+  text-align: center;
 }
 
 .weather-container .weather-wrapper .weather-right .overview .overview-header-icon img {
@@ -118,12 +143,47 @@
   color: #fff;
 }
 
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+}
+
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity {
+  font-size: 90%;
+  font-weight: 300;
+}
+
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity .fa-humidity {
+  font-size: 200%;
+}
+
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-dewpoint {
+  font-size: 90%;
+  font-weight: 300;
+}
+
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-dewpoint .fa-dewpoint {
+  font-size: 200%;
+}
+
 .weather-container .weather-wrapper .weather-right .overview .overview-country {
   text-align: center;
 }
 
 .weather-container .weather-wrapper .weather-right .overview .overview-country .overview-country-text {
-  font-size: 100%;
+  font-size: 130%;
   font-weight: 400;
   color: #fff;
 }

@@ -78,7 +78,8 @@ function Weather(props) {
           <h1>left</h1>
         </div>
         <div className="weather-right">
-          {/* <img className="cloud-1" src={cloud} alt=""/> */}
+          <i className="fas fa-cloud cloud-1"></i>
+          <i className="fas fa-cloud cloud-2"></i>
           <img className="weather-draw" src={weatherDraw} alt="" />
           <div className="overview">
             <div className="overview-header">
@@ -105,6 +106,16 @@ function Weather(props) {
               <h4 className="overview-country-text">{`${cityName.join(
                 ""
               )}`}</h4>
+            </div>
+            <div className="overview-humiditydew">
+              <div className="overview-humidity">
+                <p>{`Humidity ${fullWeather.all.current.humidity}%`}</p>
+                <i className="fas fa-humidity"></i>
+              </div>
+              <div className="overview-dewpoint">
+                <p>{`Dew Point ${fullWeather.all.current.dew_point}°C`}</p>
+                <i className="fas fa-dewpoint"></i>
+              </div>
             </div>
             <div className="overview-more-info">
               <p className="overview-more-info-feels-like">{`Feels Like ${feelsLike}°C

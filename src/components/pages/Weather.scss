@@ -1,126 +1,163 @@
-.weather-container{
-    width: 100vw;
-    height: 100vh;
+.weather-container {
+  width: 100vw;
+  height: 100vh;
+  //   overflow: hidden;
 
-    .weather-wrapper{
+  .weather-wrapper {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-around;
+    align-items: stretch;
+
+    width: inherit;
+    height: inherit;
+
+    .weather-left {
+      flex-basis: 60%;
+      background-color: #e3f6fe;
+      z-index: 10;
+    }
+
+    .weather-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: stretch;
+      flex-basis: 40%;
+      background-color: #110e3c;
+
+      .weather-draw {
+        margin: 0 auto;
+        width: 250px;
+      }
+
+      .cloud-1 {
+        position: absolute;
+        color: #1d1d46;
+        top: 45%;
+        left: -30px;
+        font-size: 600%;
+        z-index: 1;
+      }
+
+      .cloud-2 {
+        position: absolute;
+        color: #1d1d46;
+        top: 30%;
+        right: 2px;
+        font-size: 700%;
+      }
+
+      .overview {
         display: flex;
-        flex-direction: row;
-        // justify-content: space-around;
-        align-items: stretch;
+        flex-direction: column;
 
-        width: inherit;
-        height: inherit;
+        .overview-header {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
 
-        .weather-left{
-            flex-basis: 60%;
-            background-color: #E3F6FE;
-        }
-
-        .weather-right{
-            position: relative;
-            flex-basis: 40%;
-            background-color: #110E3C;
+          .overview-header-today {
             text-align: center;
 
-            .weather-draw{
-                width: 300px;
-                margin-top: 2rem;
+            .overview-header-today-title {
+              color: #fff;
+              font-size: 300%;
+              font-weight: 700;
             }
 
-            .cloud-1{
-                position: absolute;
-                top: 200px;
-                left: 100px;
-                width: 100px;
-                
+            .overview-header-today-date {
+              font-size: 90%;
+              font-weight: 300;
+              color: #fff;
             }
-
-            .overview{
-                display: flex;
-                flex-direction: column;
-                
-                .overview-header{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    margin-bottom: 1rem;
-
-                    .overview-header-today{
-                        text-align: center;
-
-                        .overview-header-today-title{
-                            color: #fff;
-                            font-size: 400%;
-                            font-weight: 700;
-                        }
-
-                        .overview-header-today-date{
-                            font-size: 90%;
-                            font-weight: 300;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .overview-header-icon{
-
-                    img{
-                        width: 60px;
-                    }
-                }
-
-                .overview-temp{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-
-                    .overview-temp-current{
-                        font-size: 500%;
-                        font-weight: 400;
-                        color: #fff;
-                    }
-
-                    .over-view-temp-sign{
-                        font-size: 150%;
-                        font-weight: 400;
-                        margin-top: 0.8rem;
-                        margin-left: 0.5rem;
-                        color: #fff;
-                    }
-                }
-
-                .overview-country{
-                    text-align: center;
-
-                    .overview-country-text{
-                        font-size: 100%;
-                        font-weight: 400;
-                        color: #fff;
-                    }
-                }
-            }
-
-            .overview-more-info{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-                color: #fff;
-                margin-top: 2rem;
-
-                .overview-more-info-feels-like{
-                    font-size: 100%;
-                    font-weight: 400;
-                }
-
-                .overview-more-info-sunset{
-
-                }
-
-                .overview-more-info-sunrise{
-
-                }
-            }
+          }
         }
+
+        .overview-header-icon {
+          text-align: center;
+          img {
+            width: 60px;
+          }
+        }
+
+        .overview-temp {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+
+          .overview-temp-current {
+            font-size: 500%;
+            font-weight: 400;
+            color: #fff;
+          }
+
+          .over-view-temp-sign {
+            font-size: 150%;
+            font-weight: 400;
+            margin-top: 0.8rem;
+            margin-left: 0.5rem;
+            color: #fff;
+          }
+        }
+
+        .overview-humiditydew {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          color: #fff;
+
+          .overview-humidity {
+            font-size: 90%;
+            font-weight: 300;
+
+            .fa-humidity {
+              font-size: 200%;
+            }
+          }
+
+          .overview-dewpoint {
+            font-size: 90%;
+            font-weight: 300;
+
+            .fa-dewpoint {
+              font-size: 200%;
+            }
+          }
+        }
+
+        .overview-country {
+          text-align: center;
+
+          .overview-country-text {
+            font-size: 130%;
+            font-weight: 400;
+            color: #fff;
+          }
+        }
+      }
+
+      .overview-more-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        color: #fff;
+        margin-top: 2rem;
+
+        .overview-more-info-feels-like {
+          font-size: 100%;
+          font-weight: 400;
+        }
+
+        .overview-more-info-sunset {
+        }
+
+        .overview-more-info-sunrise {
+        }
+      }
     }
+  }
 }
