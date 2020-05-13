@@ -59,6 +59,11 @@ function Weather(props) {
     return () => clearFullWeather(dispatch);
   }, [dispatch, lon, lat]);
 
+  function handleGoBack(e) {
+    e.preventDefault();
+    props.history.push("/");
+  }
+
   if (!fullWeather.all || fullWeather.loading) {
     return <h1>Loading...</h1>;
   } else if (fullWeather.error) {
@@ -87,6 +92,11 @@ function Weather(props) {
       <div className="weather-wrapper">
         <div className="weather-left">
           <div className="weather-left-container">
+            <div className="go-back">
+              <button className="go-back-btn" onClick={handleGoBack}>
+                Go back
+              </button>
+            </div>
             <div className="form-wrapper">
               <form className="form">
                 <div className="input-group">
