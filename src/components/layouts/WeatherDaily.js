@@ -14,12 +14,20 @@ const weekDays = [
 ];
 
 function WeatherDaily({ data }) {
+  const maxTemps = data
+    .slice(1, 8)
+    .map((eachMax) => Math.round(eachMax.temp.max));
+  const minTemps = data
+    .slice(1, 8)
+    .map((eachMin) => Math.round(eachMin.temp.min));
+  const weekDaysShort = weekDays.map((weekDay) => weekDay.slice(0, 3));
+
   const allData = {
-    labels: [1, 2, 3, 4, 5, 6, 7],
+    labels: weekDaysShort,
     datasets: [
       {
         label: "Max Temp °C",
-        data: [21, 22, 23, 24, 20, 19, 18],
+        data: maxTemps,
         backgroundColor: "#302E63",
         borderColor: "#302E90",
         borderWidth: 1,
@@ -27,9 +35,9 @@ function WeatherDaily({ data }) {
       },
       {
         label: "Min Temp °C",
-        data: [7, 6, 8, 4, 6, 10, 11],
-        backgroundColor: "#D7511F",
-        borderColor: "#302E90",
+        data: minTemps,
+        backgroundColor: "#f57f17",
+        borderColor: "#f57f50",
         borderWidth: 1,
         barThickness: "flex",
       },
