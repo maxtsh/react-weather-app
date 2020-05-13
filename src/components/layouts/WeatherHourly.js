@@ -2,12 +2,12 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 // Get The Next 24 Hours From Current Time
-import getDailyHours from "../../utils/getDailyHours";
+import getHours from "../../utils/getHours";
 
 import "./WeatherHourly.css";
 
 function WeatherHourly({ data }) {
-  const next24Hours = getDailyHours();
+  const next24Hours = getHours();
 
   const hourlyTemp = data.map((each) => each.temp);
 

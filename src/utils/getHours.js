@@ -28,7 +28,7 @@ const nextHours = [
 
 // Todo => Time Zone Issue
 
-export default function getDailyHours() {
+export default function getHours() {
   const next24Hours = nextHours.map((hour) => {
     // If Current Hour + the next X hour is less than 24 means we can return it without change and we just add PM or AM if it is less or greater than 12
     if (hour + time.getHours() <= 24) {

@@ -1,26 +1,21 @@
 import React from "react";
 import { HorizontalBar } from "react-chartjs-2";
 
+// Get The Next 7 Days From Today
+import getDaily from "../../utils/getDaily";
+
 import "./WeatherDaily.css";
 
-const weekDays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 function WeatherDaily({ data }) {
+  // Slicing out to remove today data and only have the next 7 days
   const maxTemps = data
     .slice(1, 8)
     .map((eachMax) => Math.round(eachMax.temp.max));
   const minTemps = data
     .slice(1, 8)
     .map((eachMin) => Math.round(eachMin.temp.min));
-  const weekDaysShort = weekDays.map((weekDay) => weekDay.slice(0, 3));
+  const next7Days = getDaily();
+  const weekDaysShort = next7Days.map((day) => day.slice(0, 3));
 
   const allData = {
     labels: weekDaysShort,
@@ -37,7 +32,7 @@ function WeatherDaily({ data }) {
         label: "Min Temp °C",
         data: minTemps,
         backgroundColor: "#f57f17",
-        borderColor: "#f57f50",
+        borderColor: "#f57f60",
         borderWidth: 1,
         barThickness: "flex",
       },
@@ -47,18 +42,10 @@ function WeatherDaily({ data }) {
   return (
     <div className="weather-daily">
       <table className="table">
-        {/* <thead className="table-head">
-          <tr>
-            <th>Day</th>
-            <th>Humidity</th>
-            <th>Status</th>
-            <th>Temp</th>
-          </tr>
-        </thead> */}
         <tbody className="table-body">
           {data.slice(1, 8).map((eachDay, index) => (
             <tr key={index}>
-              <td>{weekDays[index]}</td>
+              <td>{next7Days[index]}</td>
               <td>
                 <i className="fas fa-tint"></i>
                 {` ${eachDay.humidity}%`}
