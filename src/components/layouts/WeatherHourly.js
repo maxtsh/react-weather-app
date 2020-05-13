@@ -26,7 +26,7 @@ function WeatherHourly({ data }) {
 
   return (
     <div className="temp-chart">
-      <Bar data={allData} />
+      <Bar data={allData} options={{ maintainAspectRatio: true }} />
     </div>
   );
 }

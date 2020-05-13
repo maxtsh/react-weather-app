@@ -1,3 +1,5 @@
+$water-color: #4293ec;
+
 .weather-daily {
   display: flex;
   flex-direction: row;
@@ -6,14 +8,22 @@
     flex-basis: 70%;
     text-align: left;
 
-    .table-head {
-    }
+    // .table-head {
+    //   tr {
+    //     th {
+    //       font-size: 100%;
+    //       font-weight: 400;
+    //     }
+    //   }
+    // }
 
     .table-body {
       tr {
         td {
+          font-size: 100%;
+          font-weight: 300;
           .fa-tint {
-            color: #4293ec;
+            color: $water-color;
           }
         }
       }

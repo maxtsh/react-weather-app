@@ -80,53 +80,61 @@ function Weather(props) {
     <div className="weather-container">
       <div className="weather-wrapper">
         <div className="weather-left">
-          <div className="form-wrapper">
-            <form className="form">
-              <div className="input-group">
-                <i className="fas fa-search-location"></i>
-                <input
-                  className="search-input"
-                  type="text"
-                  name="cities"
-                  placeholder="Search for saved cities"
-                />
+          <div className="weather-left-container">
+            <div className="form-wrapper">
+              <form className="form">
+                <div className="input-group">
+                  <i className="fas fa-search-location"></i>
+                  <input
+                    className="search-input"
+                    type="text"
+                    name="cities"
+                    placeholder="Search for saved cities"
+                  />
+                  <input
+                    className="search-submit"
+                    type="submit"
+                    value="Add city"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="main-title-wrapper">
+              <h1 className="main-title-text">
+                Weather <span className="main-title-text-bold">Forecast</span>
+              </h1>
+            </div>
+            <div className="cities-list">
+              <div className="city-item">
+                <img className="city-img" src={berlin} alt="berlin" />
+                <p className="city-name">Berlin, Germany</p>
               </div>
-              <input className="search-submit" type="submit" name="Find" />
-            </form>
-          </div>
-          <div className="main-title-wrapper">
-            <h1 className="main-title-text">
-              Weather <span className="main-title-text-bold">Forecast</span>
-            </h1>
-          </div>
-          <div className="cities-list">
-            <div className="city-item">
-              <img className="city-img" src={berlin} alt="berlin" />
-              <p className="city-name">Berlin, Germany</p>
-            </div>
-            <div className="city-item">
-              <img className="city-img" src={france} alt="france" />
-              <p className="city-name">Paris, France</p>
-            </div>
-            <div className="city-item">
-              <img className="city-img" src={newyork} alt="newyork" />
-              <p className="city-name">New York, USA</p>
-            </div>
-            <div className="city-item">
-              <img className="city-img" src={london} alt="london" />
-              <p className="city-name">London, Britain</p>
-            </div>
-            <div className="city-item">
-              <div className="city-add">
-                <i className="fas fa-plus"></i>
-                <p className="city-add-text">Add city</p>
+              <div className="city-item">
+                <img className="city-img" src={france} alt="france" />
+                <p className="city-name">Paris, France</p>
+              </div>
+              <div className="city-item">
+                <img className="city-img" src={newyork} alt="newyork" />
+                <p className="city-name">New York, USA</p>
+              </div>
+              <div className="city-item">
+                <img className="city-img" src={london} alt="london" />
+                <p className="city-name">London, Britain</p>
+              </div>
+              <div className="city-item">
+                <div className="city-add">
+                  <i className="fas fa-plus"></i>
+                  <p className="city-add-text">Add city</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="daily">
-            <div className="daily-title">
-              <h2 className="daily-title-text">Week</h2>
-              <WeatherDaily data={fullWeather.all.daily} />
+            <div className="daily">
+              <div className="daily-title">
+                <h2 className="daily-title-text">
+                  Week<div className="dot"></div>
+                </h2>
+                <WeatherDaily data={fullWeather.all.daily} />
+              </div>
             </div>
           </div>
         </div>

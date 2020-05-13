@@ -2,48 +2,50 @@
 $error-background: #ff3838;
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    &::after, &::before{
-        box-sizing: inherit;
-        -webkit-font-smoothing: antialiased;
-    }
+  &::after,
+  &::before {
+    box-sizing: inherit;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
-html, body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 100%;
 }
 
-.container{
-    max-width: 1140px;
-    margin: 0 auto;
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-.error-wrapper{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    padding: 0.5rem 1rem;
-    background-color: $error-background;
-    margin-top: 1rem;
-    border-radius: 0.5rem;
+.error-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  background-color: $error-background;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
 
-    .error-message{
-        color: #fff;
-        font-size: 120%;
-        font-weight: 400;
-        // text-transform: uppercase;
-    }
+  .error-message {
+    color: #fff;
+    font-size: 120%;
+    font-weight: 400;
+    // text-transform: uppercase;
+  }
 
-    .fa-exclamation-circle{
-        font-size: 150%;
-        color: #fff;
-        margin-right: 3rem;
-    }
+  .fa-exclamation-circle {
+    font-size: 150%;
+    color: #fff;
+    margin-right: 3rem;
+  }
 }

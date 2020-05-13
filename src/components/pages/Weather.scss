@@ -1,6 +1,7 @@
 $submit-background: #f57f17;
 $violet-darker: #110e3c;
 $violet-lighter: #1d1d46;
+$water-color: #4293ec;
 
 .weather-container {
   width: 100vw;
@@ -19,10 +20,20 @@ $violet-lighter: #1d1d46;
       flex-basis: 60%;
       background-color: #e3f6fe;
       z-index: 10;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: stretch;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: center;
+      // align-items: stretch;
+
+      .weather-left-container {
+        width: 95%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: stretch;
+      }
 
       .form-wrapper {
         width: 100%;
@@ -36,6 +47,11 @@ $violet-lighter: #1d1d46;
 
           .input-group {
             position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            width: 100%;
 
             .fa-search-location {
               position: absolute;
@@ -46,6 +62,7 @@ $violet-lighter: #1d1d46;
             }
 
             .search-input {
+              flex-basis: 80%;
               font-size: 100%;
               padding: 1rem 1rem 1rem 3rem;
               border: none;
@@ -54,19 +71,20 @@ $violet-lighter: #1d1d46;
               border-top-left-radius: 0.5rem;
               border-bottom-left-radius: 0.5rem;
             }
-          }
 
-          .search-submit {
-            font-size: 100%;
-            font-weight: 700;
-            padding: 1rem;
-            border: none;
-            outline: none;
-            color: #fff;
-            background-color: $submit-background;
-            cursor: pointer;
-            border-top-right-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
+            .search-submit {
+              flex-basis: 20%;
+              font-size: 100%;
+              font-weight: 700;
+              padding: 1rem;
+              border: none;
+              outline: none;
+              color: #fff;
+              background-color: $submit-background;
+              cursor: pointer;
+              border-top-right-radius: 0.5rem;
+              border-bottom-right-radius: 0.5rem;
+            }
           }
         }
       }
@@ -86,7 +104,7 @@ $violet-lighter: #1d1d46;
       .cities-list {
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
 
         .city-item {
@@ -134,6 +152,16 @@ $violet-lighter: #1d1d46;
             font-size: 130%;
             font-weight: 400;
             color: $violet-darker;
+            margin-bottom: 1rem;
+
+            .dot {
+              margin-top: 3px;
+              margin-left: 15px;
+              width: 8px;
+              height: 8px;
+              background-color: $violet-lighter;
+              border-radius: 50%;
+            }
           }
         }
       }
@@ -230,22 +258,21 @@ $violet-lighter: #1d1d46;
           justify-content: space-evenly;
           align-items: center;
           color: #fff;
+          margin: 0.5rem 0rem;
 
-          .overview-humidity {
-            font-size: 90%;
-            font-weight: 300;
-
-            .fa-humidity {
-              font-size: 200%;
-            }
-          }
-
+          .overview-humidity,
           .overview-dewpoint {
             font-size: 90%;
             font-weight: 300;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
 
-            .fa-dewpoint {
-              font-size: 200%;
+            .fa-tint,
+            .fa-hand-holding-water {
+              font-size: 100%;
+              color: $water-color;
+              margin-left: 0.4rem;
             }
           }
         }

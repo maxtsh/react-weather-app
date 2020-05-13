@@ -23,6 +23,12 @@
       flex-basis: 60%;
   background-color: #e3f6fe;
   z-index: 10;
+}
+
+.weather-container .weather-wrapper .weather-left .weather-left-container {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,6 +67,20 @@
 
 .weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
 }
 
 .weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group .fa-search-location {
@@ -72,6 +92,8 @@
 }
 
 .weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group .search-input {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
   font-size: 100%;
   padding: 1rem 1rem 1rem 3rem;
   border: none;
@@ -81,7 +103,9 @@
   border-bottom-left-radius: 0.5rem;
 }
 
-.weather-container .weather-wrapper .weather-left .form-wrapper .form .search-submit {
+.weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group .search-submit {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
   font-size: 100%;
   font-weight: 700;
   padding: 1rem;
@@ -113,9 +137,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -167,6 +191,16 @@
   font-size: 130%;
   font-weight: 400;
   color: #110e3c;
+  margin-bottom: 1rem;
+}
+
+.weather-container .weather-wrapper .weather-left .daily .daily-title .daily-title-text .dot {
+  margin-top: 3px;
+  margin-left: 15px;
+  width: 8px;
+  height: 8px;
+  background-color: #1d1d46;
+  border-radius: 50%;
 }
 
 .weather-container .weather-wrapper .weather-right {
@@ -302,24 +336,32 @@
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
+  margin: 0.5rem 0rem;
 }
 
-.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity {
-  font-size: 90%;
-  font-weight: 300;
-}
-
-.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity .fa-humidity {
-  font-size: 200%;
-}
-
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity,
 .weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-dewpoint {
   font-size: 90%;
   font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-dewpoint .fa-dewpoint {
-  font-size: 200%;
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity .fa-tint,
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-humidity .fa-hand-holding-water,
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-dewpoint .fa-tint,
+.weather-container .weather-wrapper .weather-right .overview .overview-humiditydew .overview-dewpoint .fa-hand-holding-water {
+  font-size: 100%;
+  color: #4293ec;
+  margin-left: 0.4rem;
 }
 
 .weather-container .weather-wrapper .weather-right .overview .overview-country {

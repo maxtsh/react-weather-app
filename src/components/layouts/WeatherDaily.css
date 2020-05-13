@@ -14,6 +14,11 @@
   text-align: left;
 }
 
+.weather-daily .table .table-body tr td {
+  font-size: 100%;
+  font-weight: 300;
+}
+
 .weather-daily .table .table-body tr td .fa-tint {
   color: #4293ec;
 }
