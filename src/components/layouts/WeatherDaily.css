@@ -11,6 +11,11 @@
 .weather-daily .table {
   -ms-flex-preferred-size: 70%;
       flex-basis: 70%;
+  text-align: left;
+}
+
+.weather-daily .table .table-body tr td .fa-tint {
+  color: #4293ec;
 }
 
 .weather-daily .chart-wrapper {

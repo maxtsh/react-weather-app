@@ -4,6 +4,20 @@
 
   .table {
     flex-basis: 70%;
+    text-align: left;
+
+    .table-head {
+    }
+
+    .table-body {
+      tr {
+        td {
+          .fa-tint {
+            color: #4293ec;
+          }
+        }
+      }
+    }
   }
 
   .chart-wrapper {

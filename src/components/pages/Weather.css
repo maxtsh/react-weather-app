@@ -30,9 +30,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
@@ -163,7 +163,7 @@
   font-weight: 400;
 }
 
-.weather-container .weather-wrapper .weather-left .weekly .weekly-title .weekly-title-text {
+.weather-container .weather-wrapper .weather-left .daily .daily-title .daily-title-text {
   font-size: 130%;
   font-weight: 400;
   color: #110e3c;

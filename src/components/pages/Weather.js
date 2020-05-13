@@ -163,11 +163,11 @@ function Weather(props) {
             <div className="overview-humiditydew">
               <div className="overview-humidity">
                 <p>{`Humidity ${fullWeather.all.current.humidity}%`}</p>
-                <i className="fas fa-humidity"></i>
+                <i className="fas fa-tint"></i>
               </div>
               <div className="overview-dewpoint">
                 <p>{`Dew Point ${fullWeather.all.current.dew_point}°C`}</p>
-                <i className="fas fa-dewpoint"></i>
+                <i className="fas fa-hand-holding-water"></i>
               </div>
             </div>
             <div className="overview-more-info">
