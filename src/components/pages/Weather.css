@@ -65,9 +65,9 @@
 
 .weather-container .weather-wrapper .weather-left .form-wrapper .form .input-group .fa-search-location {
   position: absolute;
-  top: 30%;
-  left: 20px;
-  font-size: 120%;
+  top: 25%;
+  left: 10px;
+  font-size: 180%;
   color: #110e3c;
 }
 

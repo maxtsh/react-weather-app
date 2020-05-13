@@ -1,0 +1,12 @@
+.weather-daily {
+  display: flex;
+  flex-direction: row;
+
+  .table {
+    flex-basis: 70%;
+  }
+
+  .chart-wrapper {
+    flex-basis: 30%;
+  }
+}

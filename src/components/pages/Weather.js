@@ -3,7 +3,8 @@ import React, { useEffect, useContext } from "react";
 import { getFullWeather, clearFullWeather } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 
-import WeatherChart from "../layouts/WeatherChart";
+import WeatherDaily from "../layouts/WeatherDaily";
+import WeatherHourly from "../layouts/WeatherHourly";
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 
 // Weather Styles
@@ -122,9 +123,10 @@ function Weather(props) {
               </div>
             </div>
           </div>
-          <div className="weekly">
-            <div className="weekly-title">
-              <h2 className="weekly-title-text">Week</h2>
+          <div className="daily">
+            <div className="daily-title">
+              <h2 className="daily-title-text">Week</h2>
+              <WeatherDaily data={fullWeather.all.daily} />
             </div>
           </div>
         </div>
@@ -175,7 +177,7 @@ function Weather(props) {
               <p className="overview-more-info-sunrise">Sunrise {sunrise}</p>
             </div>
           </div>
-          <WeatherChart data={fullWeather.all.hourly.slice(0, 24)} />
+          <WeatherHourly data={fullWeather.all.hourly.slice(0, 24)} />
         </div>
       </div>
     </div>

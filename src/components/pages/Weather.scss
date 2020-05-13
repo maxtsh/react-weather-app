@@ -39,9 +39,9 @@ $violet-lighter: #1d1d46;
 
             .fa-search-location {
               position: absolute;
-              top: 30%;
-              left: 20px;
-              font-size: 120%;
+              top: 25%;
+              left: 10px;
+              font-size: 180%;
               color: $violet-darker;
             }
 
@@ -128,9 +128,9 @@ $violet-lighter: #1d1d46;
         }
       }
 
-      .weekly {
-        .weekly-title {
-          .weekly-title-text {
+      .daily {
+        .daily-title {
+          .daily-title-text {
             font-size: 130%;
             font-weight: 400;
             color: $violet-darker;

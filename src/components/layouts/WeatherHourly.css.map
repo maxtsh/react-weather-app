@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,MAAM;EACd,KAAK,EAAE,GAAG;CACX",
     "sources": [
-        "WeatherChart.scss"
+        "WeatherHourly.scss"
     ],
     "names": [],
-    "file": "WeatherChart.css"
+    "file": "WeatherHourly.css"
 }

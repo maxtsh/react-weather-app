@@ -1,0 +1,20 @@
+.weather-daily {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.weather-daily .table {
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+}
+
+.weather-daily .chart-wrapper {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+}
+/*# sourceMappingURL=WeatherDaily.css.map */

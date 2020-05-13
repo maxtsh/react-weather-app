@@ -4,9 +4,9 @@ import { Bar } from "react-chartjs-2";
 // Get The Next 24 Hours From Current Time
 import getDailyHours from "../../utils/getDailyHours";
 
-import "./WeatherChart.css";
+import "./WeatherHourly.css";
 
-function WeatherChart({ data }) {
+function WeatherHourly({ data }) {
   const next24Hours = getDailyHours();
 
   const hourlyTemp = data.map((each) => each.temp);
@@ -31,4 +31,4 @@ function WeatherChart({ data }) {
   );
 }
 
-export default WeatherChart;
+export default WeatherHourly;
