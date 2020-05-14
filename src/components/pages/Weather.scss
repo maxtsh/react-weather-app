@@ -429,6 +429,36 @@ $water-color: #4293ec;
               font-weight: 400;
             }
           }
+          .cities-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .city-item {
+              text-align: center;
+
+              .city-img {
+                border-radius: 1rem;
+                width: 80%;
+              }
+
+              .city-name {
+                font-size: 80%;
+                font-weight: 700;
+              }
+            }
+
+            .city-add {
+              border-radius: 1rem;
+              height: 100%;
+
+              .city-add-text {
+                font-size: 100%;
+                font-weight: 400;
+              }
+            }
+          }
         }
       }
       .weather-right {
@@ -478,10 +508,14 @@ $water-color: #4293ec;
     .weather-wrapper {
       .weather-left {
         .weather-left-container {
+          .go-back {
+            padding: 1rem 0rem;
+          }
           .main-title-wrapper {
             .main-title-text {
               font-size: 170%;
               font-weight: 400;
+              padding: 1rem 0rem;
             }
           }
         }
@@ -499,6 +533,63 @@ $water-color: #4293ec;
         }
         .weather-draw {
           width: 400px;
+        }
+        .overview {
+          .overview-header {
+            .overview-header-today {
+              .overview-header-today-title {
+                font-size: 300%;
+                font-weight: 700;
+              }
+            }
+          }
+          .overview-temp {
+            .overview-temp-current {
+              font-size: 500%;
+              font-weight: 400;
+            }
+          }
+
+          .overview-more-info {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-evenly;
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: "480px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .go-back {
+            padding: 1rem 0rem;
+          }
+          .main-title-wrapper {
+            .main-title-text {
+              font-size: 170%;
+              font-weight: 400;
+              padding: 1rem 0rem;
+            }
+          }
+        }
+      }
+      .weather-right {
+        .cloud-1 {
+          top: 40%;
+          left: 10px;
+          font-size: 400%;
+        }
+        .cloud-2 {
+          top: 30%;
+          right: 20px;
+          font-size: 500%;
+        }
+        .weather-draw {
+          width: 200px;
         }
         .overview {
           .overview-header {
