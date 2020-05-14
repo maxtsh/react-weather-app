@@ -25,3 +25,10 @@ $water-color: #4293ec;
     flex-basis: 30%;
   }
 }
+
+//**** MEDIA QUERIES
+@media all and (max-width: "768px") {
+  .weather-daily {
+    flex-direction: column;
+  }
+}

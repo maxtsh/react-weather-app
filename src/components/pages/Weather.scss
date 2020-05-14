@@ -200,18 +200,20 @@ $water-color: #4293ec;
         width: 250px;
       }
 
-      .cloud-1 {
-        position: absolute;
-        color: $violet-lighter;
-        top: 45%;
-        left: -30px;
-        font-size: 600%;
-        z-index: 1;
-      }
-
+      .cloud-1,
       .cloud-2 {
         position: absolute;
         color: $violet-lighter;
+        z-index: 1;
+      }
+
+      .cloud-1 {
+        top: 45%;
+        left: -30px;
+        font-size: 600%;
+      }
+
+      .cloud-2 {
         top: 30%;
         right: 2px;
         font-size: 700%;
@@ -323,6 +325,203 @@ $water-color: #4293ec;
 
         // .overview-more-info-sunrise {
         // }
+      }
+    }
+  }
+}
+
+//**** MEDIA QUERIES
+@media all and (max-width: "1200px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .form-wrapper {
+            .form {
+              .input-group {
+                .fa-search-location {
+                  position: absolute;
+                  top: 25%;
+                  left: 10px;
+                  font-size: 180%;
+                }
+
+                .search-input {
+                  font-size: 100%;
+                  padding: 0.5rem 0.5rem 0.5rem 3rem;
+                }
+
+                .search-submit {
+                  font-size: 100%;
+                  font-weight: 400;
+                  padding: 0.7rem;
+                }
+              }
+            }
+          }
+
+          .main-title-wrapper {
+            .main-title-text {
+              font-size: 170%;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+      .weather-right {
+        .cloud-1 {
+          top: 50%;
+          right: 2px;
+          font-size: 400%;
+        }
+        .cloud-2 {
+          top: 30%;
+          right: 2px;
+          font-size: 500%;
+        }
+        .weather-draw {
+          width: 200px;
+        }
+        .overview {
+          .overview-header {
+            .overview-header-today {
+              .overview-header-today-title {
+                font-size: 200%;
+                font-weight: 700;
+              }
+            }
+          }
+          .overview-temp {
+            .overview-temp-current {
+              font-size: 400%;
+              font-weight: 400;
+            }
+          }
+
+          .overview-more-info {
+            flex-direction: column;
+            margin: 0 auto;
+
+            p {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: "1024px") {
+  .weather-container {
+    height: 100%;
+    width: 100%;
+
+    .weather-wrapper {
+      flex-direction: column;
+
+      .weather-left {
+        flex-basis: 100%;
+
+        .weather-left-container {
+          .main-title-wrapper {
+            .main-title-text {
+              font-size: 170%;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+      .weather-right {
+        flex-basis: 100%;
+
+        .cloud-1 {
+          top: 40%;
+          left: 50px;
+          font-size: 500%;
+        }
+        .cloud-2 {
+          top: 30%;
+          right: 50px;
+          font-size: 800%;
+        }
+        .weather-draw {
+          width: 400px;
+        }
+        .overview {
+          .overview-header {
+            .overview-header-today {
+              .overview-header-today-title {
+                font-size: 300%;
+                font-weight: 700;
+              }
+            }
+          }
+          .overview-temp {
+            .overview-temp-current {
+              font-size: 500%;
+              font-weight: 400;
+            }
+          }
+
+          .overview-more-info {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-evenly;
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: "768px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .main-title-wrapper {
+            .main-title-text {
+              font-size: 170%;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+      .weather-right {
+        .cloud-1 {
+          top: 40%;
+          left: 10px;
+          font-size: 400%;
+        }
+        .cloud-2 {
+          top: 30%;
+          right: 20px;
+          font-size: 500%;
+        }
+        .weather-draw {
+          width: 400px;
+        }
+        .overview {
+          .overview-header {
+            .overview-header-today {
+              .overview-header-today-title {
+                font-size: 300%;
+                font-weight: 700;
+              }
+            }
+          }
+          .overview-temp {
+            .overview-temp-current {
+              font-size: 500%;
+              font-weight: 400;
+            }
+          }
+
+          .overview-more-info {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-evenly;
+          }
+        }
       }
     }
   }
