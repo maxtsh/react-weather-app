@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { Helmet } from "react-helmet";
 
 import { getFullWeather, clearFullWeather } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
@@ -51,7 +50,6 @@ function Weather(props) {
   const lat = coord.split("&")[1];
 
   console.log("RENDER");
-  console.log(fullWeather);
 
   useEffect(() => {
     getFullWeather(dispatch, lon, lat);
@@ -84,11 +82,6 @@ function Weather(props) {
 
   return (
     <div className="weather-container">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Weather For {cityName.join("")}</title>
-        <link rel="canonical" href="#" />
-      </Helmet>
       <div className="weather-wrapper">
         <div className="weather-left">
           <div className="weather-left-container">

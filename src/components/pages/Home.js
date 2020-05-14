@@ -28,7 +28,7 @@ const languages = {
     },
   },
   Persian: {
-    searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید",
+    searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کن",
     submit: "دریافت آب و هوا",
     style: {
       dir: "rtl",

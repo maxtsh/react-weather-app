@@ -68,4 +68,50 @@
   background-color: #f57f17;
   cursor: pointer;
 }
+
+@media all and (max-width: 1024px) {
+  .home-container .search-container .form-container .search-title {
+    font-size: 170%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .home-container .search-container .form-container {
+    width: 90%;
+    padding: 1rem;
+  }
+  .home-container .search-container .form-container .search-title {
+    font-size: 130%;
+    margin-bottom: 0.5rem;
+  }
+  .home-container .search-container .form-container .form .search-field {
+    font-size: 100%;
+    padding: 0.5rem;
+  }
+  .home-container .search-container .form-container .form .search-submit {
+    padding: 0.5rem;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .home-container .search-container .form-container {
+    width: 90%;
+    padding: 0.5rem;
+  }
+  .home-container .search-container .form-container .search-title {
+    font-size: 110%;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+  .home-container .search-container .form-container .form .search-field {
+    font-size: 90%;
+    padding: 0.5rem;
+  }
+  .home-container .search-container .form-container .form .search-submit {
+    font-size: 90%;
+    font-weight: 400;
+    padding: 0.5rem;
+  }
+}
 /*# sourceMappingURL=Home.css.map */

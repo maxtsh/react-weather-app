@@ -1,4 +1,5 @@
-$violet-darker: #110e3c;
+$link-underline: #f57f17;
+$blue: #03a9f4;
 
 .header-container {
   width: 100%;
@@ -36,7 +37,7 @@ $violet-darker: #110e3c;
         padding: 0.2rem;
 
         &:nth-of-type(2) {
-          border-bottom: 1px solid #f57f17;
+          border-bottom: 1px solid $link-underline;
         }
 
         a {
@@ -108,7 +109,7 @@ $violet-darker: #110e3c;
           text-align: center;
           line-height: 1;
           padding: 9px 4px;
-          background-color: #03a9f4;
+          background-color: $blue;
           border-radius: 50%;
           transition: 0.3s ease all,
             left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
@@ -131,7 +132,7 @@ $violet-darker: #110e3c;
         }
 
         #button-3 .checkbox:checked ~ .layer {
-          background-color: #03a9f4;
+          background-color: $blue;
         }
       }
     }

@@ -71,3 +71,75 @@ $submit-background: #f57f17;
     }
   }
 }
+
+//*** MEDIA QUERIES
+
+// 1024px
+@media all and (max-width: "1024px") {
+  .home-container {
+    .search-container {
+      .form-container {
+        .search-title {
+          font-size: 170%;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+// 768px
+@media all and (max-width: "768px") {
+  .home-container {
+    .search-container {
+      .form-container {
+        width: 90%;
+        padding: 1rem;
+        .search-title {
+          font-size: 130%;
+          margin-bottom: 0.5rem;
+        }
+
+        .form {
+          .search-field {
+            font-size: 100%;
+            padding: 0.5rem;
+          }
+
+          .search-submit {
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+// 480px
+@media all and (max-width: "480px") {
+  .home-container {
+    .search-container {
+      .form-container {
+        width: 90%;
+        padding: 0.5rem;
+
+        .search-title {
+          font-size: 110%;
+          font-weight: 400;
+          margin-bottom: 0.2rem;
+        }
+
+        .form {
+          .search-field {
+            font-size: 90%;
+            padding: 0.5rem;
+          }
+
+          .search-submit {
+            font-size: 90%;
+            font-weight: 400;
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
