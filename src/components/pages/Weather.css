@@ -618,12 +618,15 @@
     width: 200px;
   }
   .weather-container .weather-wrapper .weather-right .overview .overview-header .overview-header-today .overview-header-today-title {
-    font-size: 300%;
+    font-size: 200%;
     font-weight: 700;
   }
   .weather-container .weather-wrapper .weather-right .overview .overview-temp .overview-temp-current {
-    font-size: 500%;
+    font-size: 300%;
     font-weight: 400;
+  }
+  .weather-container .weather-wrapper .weather-right .overview .overview-dewpoint p {
+    font-size: 90%;
   }
   .weather-container .weather-wrapper .weather-right .overview .overview-more-info {
     width: 100%;
@@ -634,6 +637,9 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
+  }
+  .weather-container .weather-wrapper .weather-right .overview .overview-more-info p {
+    font-size: 90%;
   }
 }
 /*# sourceMappingURL=Weather.css.map */

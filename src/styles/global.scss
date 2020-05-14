@@ -50,6 +50,28 @@ body {
   }
 }
 
+.main-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .loader-img {
+    width: 500px;
+  }
+}
+
+.fall-back {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .loader-img {
+    width: 200px;
+  }
+}
+
 //*** MEDIA QUERIES
 @media all and (max-width: "768px") {
   .error-wrapper {

@@ -595,15 +595,20 @@ $water-color: #4293ec;
           .overview-header {
             .overview-header-today {
               .overview-header-today-title {
-                font-size: 300%;
+                font-size: 200%;
                 font-weight: 700;
               }
             }
           }
           .overview-temp {
             .overview-temp-current {
-              font-size: 500%;
+              font-size: 300%;
               font-weight: 400;
+            }
+          }
+          .overview-dewpoint {
+            p {
+              font-size: 90%;
             }
           }
 
@@ -611,6 +616,9 @@ $water-color: #4293ec;
             width: 100%;
             flex-direction: row;
             justify-content: space-evenly;
+            p {
+              font-size: 90%;
+            }
           }
         }
       }

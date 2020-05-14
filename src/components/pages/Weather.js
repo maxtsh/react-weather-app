@@ -3,19 +3,20 @@ import React, { useEffect, useContext } from "react";
 import { getFullWeather, clearFullWeather } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 
-import WeatherDaily from "../layouts/WeatherDaily";
-import WeatherHourly from "../layouts/WeatherHourly";
+import Loader from "../layouts/Loader";
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 
 // Weather Styles
 import "./Weather.css";
 
-// import cloud from '../../images/cloud.svg'
 import weatherDraw from "../../images/weather-draw.svg";
 import berlin from "../../images/cities/berlin.jpg";
 import france from "../../images/cities/france.jpg";
 import newyork from "../../images/cities/newyork.jpg";
 import london from "../../images/cities/london.jpg";
+
+const WeatherDaily = React.lazy(() => import("../layouts/WeatherDaily.js"));
+const WeatherHourly = React.lazy(() => import("../layouts/WeatherHourly.js"));
 
 const months = [
   "Jan",
@@ -63,7 +64,7 @@ function Weather(props) {
   }
 
   if (!fullWeather.all || fullWeather.loading) {
-    return <h1>Loading...</h1>;
+    return <Loader classes="main" />;
   } else if (fullWeather.error) {
     return (
       <ErrorHandler
@@ -142,7 +143,9 @@ function Weather(props) {
                 <h2 className="daily-title-text">
                   Week<div className="dot"></div>
                 </h2>
-                <WeatherDaily data={fullWeather.all.daily} />
+                <React.Suspense fallback={<Loader classes="fall" />}>
+                  <WeatherDaily data={fullWeather.all.daily} />
+                </React.Suspense>
               </div>
             </div>
           </div>
@@ -194,7 +197,9 @@ function Weather(props) {
               <p className="overview-more-info-sunrise">Sunrise {sunrise}</p>
             </div>
           </div>
-          <WeatherHourly data={fullWeather.all.hourly.slice(0, 24)} />
+          <React.Suspense fallback={<Loader classes="fall-back" />}>
+            <WeatherHourly data={fullWeather.all.hourly.slice(0, 24)} />
+          </React.Suspense>
         </div>
       </div>
     </div>
