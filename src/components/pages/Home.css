@@ -100,18 +100,18 @@
     padding: 0.5rem;
   }
   .home-container .search-container .form-container .search-title {
-    font-size: 110%;
+    font-size: 100%;
     font-weight: 400;
     margin-bottom: 0.2rem;
   }
   .home-container .search-container .form-container .form .search-field {
     font-size: 90%;
-    padding: 0.5rem;
+    padding: 0.3rem;
   }
   .home-container .search-container .form-container .form .search-submit {
     font-size: 90%;
     font-weight: 400;
-    padding: 0.5rem;
+    padding: 0.3rem;
   }
 }
 /*# sourceMappingURL=Home.css.map */

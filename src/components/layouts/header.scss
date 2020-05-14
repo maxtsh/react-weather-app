@@ -1,5 +1,95 @@
 $link-underline: #f57f17;
 $blue: #03a9f4;
+$violet-darker: #110e3c;
+
+@mixin languageToggle {
+  .knobs,
+  .layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .button {
+    position: relative;
+    top: 50%;
+    width: 80px;
+    height: 36px;
+    margin: -20px auto 0 auto;
+    overflow: hidden;
+  }
+
+  .button.r,
+  .button.r .layer {
+    border-radius: 100px;
+  }
+
+  .button.b2 {
+    border-radius: 2px;
+  }
+
+  .checkbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .knobs {
+    z-index: 2;
+  }
+
+  .layer {
+    width: 100%;
+    background-color: #ebf7fc;
+    transition: 0.3s ease all;
+    z-index: 1;
+  }
+
+  #button-3 .knobs:before {
+    content: "EN";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 9px 4px;
+    background-color: $blue;
+    border-radius: 50%;
+    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+  }
+
+  #button-3 .checkbox:active + .knobs:before {
+    width: 46px;
+    border-radius: 100px;
+  }
+
+  #button-3 .checkbox:checked:active + .knobs:before {
+    margin-left: -26px;
+  }
+
+  #button-3 .checkbox:checked + .knobs:before {
+    content: "فا";
+    color: #000;
+    left: 48px;
+    background-color: #fff;
+  }
+
+  #button-3 .checkbox:checked ~ .layer {
+    background-color: $blue;
+  }
+}
 
 .header-container {
   width: 100%;
@@ -21,6 +111,26 @@ $blue: #03a9f4;
     justify-content: space-between;
     align-items: center;
 
+    .hamburger {
+      display: none;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      width: 50%;
+      height: 100%;
+      margin-left: auto;
+
+      .nav-item {
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-size: 100%;
+        }
+      }
+    }
+
     .main-title {
       font-size: 100%;
       font-weight: 400;
@@ -40,100 +150,104 @@ $blue: #03a9f4;
           border-bottom: 1px solid $link-underline;
         }
 
+        @include languageToggle;
+
         a {
           font-size: 100%;
           font-weight: 400;
           color: #fff;
           text-decoration: none;
         }
+      }
+    }
+  }
+}
 
-        .knobs,
-        .layer {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-        }
+// MEDIA QUERIES
+@media all and (max-width: "768px") {
+  .header-container {
+    .navigation {
+      .main-title {
+        z-index: 20;
+        margin-left: 1rem;
+      }
 
-        .button {
-          position: relative;
-          top: 50%;
-          width: 80px;
-          height: 36px;
-          margin: -20px auto 0 auto;
-          overflow: hidden;
-        }
+      .hamburger {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 10;
 
-        .button.r,
-        .button.r .layer {
-          border-radius: 100px;
-        }
-
-        .button.b2 {
-          border-radius: 2px;
-        }
-
-        .checkbox {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          padding: 0;
-          margin: 0;
-          opacity: 0;
-          cursor: pointer;
-          z-index: 3;
-        }
-
-        .knobs {
-          z-index: 2;
-        }
-
-        .layer {
-          width: 100%;
-          background-color: #ebf7fc;
-          transition: 0.3s ease all;
-          z-index: 1;
-        }
-
-        #button-3 .knobs:before {
-          content: "EN";
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          width: 20px;
-          height: 10px;
+        i {
+          font-size: 180%;
           color: #fff;
-          font-size: 10px;
-          font-weight: bold;
-          text-align: center;
-          line-height: 1;
-          padding: 9px 4px;
-          background-color: $blue;
-          border-radius: 50%;
-          transition: 0.3s ease all,
-            left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+        }
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        background-color: $violet-darker;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        clip-path: circle(100px at 90% -15%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+
+        &.open {
+          clip-path: circle(1500px at 90% -15%);
+          pointer-events: all;
         }
 
-        #button-3 .checkbox:active + .knobs:before {
-          width: 46px;
-          border-radius: 100px;
+        .nav-item {
+          @include languageToggle;
+
+          .logo {
+            width: 200px;
+          }
+
+          a {
+            font-size: 180%;
+            font-weight: 900;
+
+            &:hover {
+              background-color: transparent;
+            }
+          }
         }
 
-        #button-3 .checkbox:checked:active + .knobs:before {
-          margin-left: -26px;
+        & li {
+          opacity: 0;
+
+          &.fade {
+            opacity: 1;
+          }
         }
 
-        #button-3 .checkbox:checked + .knobs:before {
-          content: "فا";
-          color: #000;
-          left: 48px;
-          background-color: #fff;
+        & li:nth-child(1) {
+          transition: all 0.5s ease 0.2s;
         }
 
-        #button-3 .checkbox:checked ~ .layer {
-          background-color: $blue;
+        & li:nth-child(2) {
+          transition: all 0.5s ease 0.2s;
         }
+
+        & li:nth-child(3) {
+          transition: all 0.5s ease 0.4s;
+        }
+      }
+
+      .list {
+        display: none;
       }
     }
   }
