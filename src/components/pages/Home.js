@@ -15,12 +15,32 @@ const languages = {
   English: {
     searchTitle: "Search for latest weather updates",
     submit: "Get Weather",
-    direction: "ltr",
+    style: {
+      dir: "ltr",
+      borderRadiusSubmit: {
+        borderTopRightRadius: "0.5rem",
+        borderBottomRightRadius: "0.5rem",
+      },
+      borderRadiusField: {
+        borderTopLeftRadius: "0.5rem",
+        borderBottomLeftRadius: "0.5rem",
+      },
+    },
   },
   Persian: {
     searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید",
     submit: "دریافت آب و هوا",
-    direction: "rtl",
+    style: {
+      dir: "rtl",
+      borderRadiusSubmit: {
+        borderTopLeftRadius: "0.5rem",
+        borderBottomLeftRadius: "0.5rem",
+      },
+      borderRadiusField: {
+        borderTopRightRadius: "0.5rem",
+        borderBottomRightRadius: "0.5rem",
+      },
+    },
   },
 };
 
@@ -52,7 +72,7 @@ function Home() {
     <>
       <Header />
       <div
-        style={{ direction: languages[language.current].direction }}
+        style={{ direction: languages[language.current].style.dir }}
         className="home-container"
       >
         <div className="search-container">
@@ -67,11 +87,13 @@ function Home() {
                 name="city"
                 value={userForm.city}
                 onChange={change}
+                style={languages[language.current].style.borderRadiusField}
               />
               <input
                 className="search-submit"
                 type="submit"
                 value={languages[language.current].submit}
+                style={languages[language.current].style.borderRadiusSubmit}
               />
             </form>
             {weather.error ? (

@@ -51,8 +51,8 @@ $submit-background: #f57f17;
           border: none;
           outline: none;
           background-color: #fff;
-          border-top-left-radius: 0.5rem;
-          border-bottom-left-radius: 0.5rem;
+          //   border-top-left-radius: 0.5rem;
+          //   border-bottom-left-radius: 0.5rem;
         }
 
         .search-submit {
@@ -64,8 +64,8 @@ $submit-background: #f57f17;
           color: #fff;
           background-color: $submit-background;
           cursor: pointer;
-          border-top-right-radius: 0.5rem;
-          border-bottom-right-radius: 0.5rem;
+          //   border-top-right-radius: 0.5rem;
+          //   border-bottom-right-radius: 0.5rem;
         }
       }
     }
