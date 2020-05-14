@@ -14,9 +14,13 @@ import "./Home.css";
 const languages = {
   English: {
     searchTitle: "Search for latest weather updates",
+    submit: "Get Weather",
+    direction: "ltr",
   },
   Persian: {
     searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کنید",
+    submit: "دریافت آب و هوا",
+    direction: "rtl",
   },
 };
 
@@ -47,7 +51,10 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="home-container">
+      <div
+        style={{ direction: languages[language.current].direction }}
+        className="home-container"
+      >
         <div className="search-container">
           <div className="form-container">
             <h1 className="search-title">
@@ -64,7 +71,7 @@ function Home() {
               <input
                 className="search-submit"
                 type="submit"
-                value="Get Weather"
+                value={languages[language.current].submit}
               />
             </form>
             {weather.error ? (

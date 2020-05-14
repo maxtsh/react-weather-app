@@ -13,9 +13,6 @@ import About from "./components/pages/About";
 
 import ErrorBoundary from "./ErrorBoundry/ErrorBoundary";
 
-// Global Style
-import "./styles/global.css";
-
 function App() {
   return (
     <Router>

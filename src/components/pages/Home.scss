@@ -1,70 +1,73 @@
-$submit-background: #F57F17;
+$submit-background: #f57f17;
 
-.home-container{
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../../images/backgrounds/seasons.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../images/backgrounds/seasons.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
 
+  .search-container {
+    position: relative;
+    width: inherit;
+    height: inherit;
 
-    .search-container{
-        position: relative;
-        width: inherit;
-        height: inherit;
+    .form-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 1140px;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        49deg,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.9) 100%
+      );
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.75);
 
-        .form-container{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 1140px;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            background: rgb(0,0,0);
-            background: linear-gradient(49deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.9) 100%);
-            box-shadow: 0 1px 3px 0 rgba(0,0,0,.75); 
+      .search-title {
+        font-size: 250%;
+        font-weight: 900;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 2rem;
+      }
 
-            .search-title{
-                font-size: 250%;
-                font-weight: 900;
-                text-align: center;
-                text-transform: uppercase;
-                color: #fff;
-                margin-bottom: 2rem;
-            }
+      .form {
+        display: flex;
+        flex-direction: row;
 
-            .form{
-                display: flex;
-                flex-direction: row;
-
-                .search-field{
-                    font-size: 110%;
-                    font-weight: 400;
-                    width: 100%;
-                    padding: 1rem;
-                    border: none;
-                    outline: none;
-                    background-color: #fff;
-                    border-top-left-radius: 0.5rem;
-                    border-bottom-left-radius: 0.5rem;
-                }
-
-                .search-submit{
-                    font-size: 100%;
-                    font-weight: 700;
-                    padding: 1rem;
-                    border: none;
-                    outline: none;
-                    color: #fff;
-                    background-color: $submit-background;
-                    cursor: pointer;
-                    border-top-right-radius: 0.5rem;
-                    border-bottom-right-radius: 0.5rem;
-                }
-            }
+        .search-field {
+          font-size: 110%;
+          font-weight: 400;
+          width: 100%;
+          padding: 1rem;
+          border: none;
+          outline: none;
+          background-color: #fff;
+          border-top-left-radius: 0.5rem;
+          border-bottom-left-radius: 0.5rem;
         }
+
+        .search-submit {
+          font-size: 100%;
+          font-weight: 700;
+          padding: 1rem;
+          border: none;
+          outline: none;
+          color: #fff;
+          background-color: $submit-background;
+          cursor: pointer;
+          border-top-right-radius: 0.5rem;
+          border-bottom-right-radius: 0.5rem;
+        }
+      }
     }
+  }
 }

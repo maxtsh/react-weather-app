@@ -9,6 +9,7 @@ import "./header.css";
 const languages = {
   English: {
     title: "Weather App",
+    direction: "ltr",
     menus: {
       home: "Home",
       about: "About",
@@ -17,8 +18,9 @@ const languages = {
   },
   Persian: {
     title: "اَپ آب و هوا",
+    direction: "rtl",
     menus: {
-      home: "صفحه اصلی",
+      home: "خانه",
       about: "درباره ما",
       api: "ای پی آی",
     },
@@ -33,7 +35,7 @@ function Header() {
   function handleChange(e) {
     dispatch({
       type: "CHANGE_LANGUAGE",
-      payload: e.target.value,
+      payload: e.target.checked ? "Persian" : "English",
     });
   }
 
@@ -43,14 +45,15 @@ function Header() {
         <h1 className="main-title">{languages[language.current].title}</h1>
         <ul className="list">
           <li className="list-item">
-            <select
-              className="language-select"
-              name="language"
-              onChange={handleChange}
-            >
-              <option value="English">English</option>
-              <option value="Persian">فارسی</option>
-            </select>
+            <div className="button r" id="button-3">
+              <input
+                type="checkbox"
+                className="checkbox"
+                onChange={handleChange}
+              />
+              <div className="knobs"></div>
+              <div className="layer"></div>
+            </div>
           </li>
           <li className="list-item">
             <Link to="/">{languages[language.current].menus.home}</Link>
