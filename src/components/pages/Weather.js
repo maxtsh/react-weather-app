@@ -1,12 +1,24 @@
-import React, { useEffect, useContext, Suspense, lazy } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  Suspense,
+  lazy,
+} from "react";
 
 // Context API
-import { getFullWeather, clearFullWeather } from "../../actions/index";
+import {
+  getFullWeather,
+  clearFullWeather,
+  saveCityToLs,
+} from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 
 // Components
 import Loader from "../layouts/Loader";
-import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
+import ErrorBoundary from "../../ErrorBoundry/ErrorBoundary"; // For Thrown Errors
+import ErrorHandler from "../../ErrorBoundry/ErrorHandler"; // For Async Catch
 
 // Weather Styles
 import "./Weather.css";
@@ -30,8 +42,8 @@ const time = new Date();
 
 function Weather(props) {
   const { fullWeather, dispatch } = useContext(fullWeatherContext);
+  const [errUI, setErrUI] = useState({ hasError: false, message: "" });
   const { city, coord } = props.match.params;
-
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];
 
@@ -43,14 +55,35 @@ function Weather(props) {
     return () => clearFullWeather(dispatch);
   }, [dispatch, lon, lat]);
 
+  useEffect(() => {
+    // Error timeout which will turn off errUI after 3seconds
+    const errTimeout = setTimeout(() => {
+      setErrUI({ ...errUI, hasError: false });
+    }, 4000);
+    return () => clearTimeout(errTimeout);
+  }, [errUI]);
+
   function handleGoBack(e) {
     e.preventDefault();
     props.history.push("/");
   }
 
+  const handleCitySubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      try {
+        saveCityToLs({ city, lon, lat });
+      } catch (err) {
+        setErrUI({ hasError: true, message: err.message });
+      }
+    },
+    [city, lon, lat]
+  );
+
   if (!fullWeather.all || fullWeather.loading) {
     return <Loader classes="main" />;
   } else if (fullWeather.error) {
+    console.log(fullWeather.error.data);
     return (
       <ErrorHandler
         message={fullWeather.error.data.message}
@@ -67,127 +100,138 @@ function Weather(props) {
   cityName.splice(0, 1, city.split("")[0].toUpperCase());
 
   return (
-    <div className="weather-container">
-      <div className="weather-wrapper">
-        <div className="weather-left">
-          <div className="weather-left-container">
-            <div className="go-back">
-              <button className="go-back-btn" onClick={handleGoBack}>
-                Go back
-              </button>
-            </div>
-            <div className="form-wrapper">
-              <form className="form">
-                <div className="input-group">
-                  <i className="fas fa-search-location"></i>
-                  <input
-                    className="search-input"
-                    type="text"
-                    name="cities"
-                    placeholder="Search for saved cities"
-                  />
-                  <input
-                    className="search-submit"
-                    type="submit"
-                    value="Add city"
-                  />
+    <ErrorBoundary currentLang="English">
+      <div className="weather-container">
+        <div className="weather-wrapper">
+          <div className="weather-left">
+            <div className="weather-left-container">
+              {errUI.hasError ? (
+                <ErrorHandler currentLang="English" message={errUI.message} />
+              ) : null}
+              <div className="go-back">
+                <button className="go-back-btn" onClick={handleGoBack}>
+                  Go back
+                </button>
+              </div>
+              <div className="form-wrapper">
+                <form className="form">
+                  <div className="input-group">
+                    <i className="fas fa-search-location"></i>
+                    <input
+                      className="search-input"
+                      type="text"
+                      name="cities"
+                      placeholder="Search for saved cities"
+                    />
+                    <input
+                      className="search-submit"
+                      type="submit"
+                      value="Find city"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="main-title-wrapper">
+                <h1 className="main-title-text">
+                  Weather <span className="main-title-text-bold">Forecast</span>
+                </h1>
+              </div>
+              <div className="cities-list">
+                <div className="city-item">
+                  <img className="city-img" src={berlin} alt="berlin" />
+                  <p className="city-name">Berlin, Germany</p>
                 </div>
-              </form>
-            </div>
-            <div className="main-title-wrapper">
-              <h1 className="main-title-text">
-                Weather <span className="main-title-text-bold">Forecast</span>
-              </h1>
-            </div>
-            <div className="cities-list">
-              <div className="city-item">
-                <img className="city-img" src={berlin} alt="berlin" />
-                <p className="city-name">Berlin, Germany</p>
-              </div>
-              <div className="city-item">
-                <img className="city-img" src={france} alt="france" />
-                <p className="city-name">Paris, France</p>
-              </div>
-              <div className="city-item">
-                <img className="city-img" src={newyork} alt="newyork" />
-                <p className="city-name">New York, USA</p>
-              </div>
-              <div className="city-item">
-                <img className="city-img" src={london} alt="london" />
-                <p className="city-name">London, Britain</p>
-              </div>
-              <div className="city-item">
-                <div className="city-add">
-                  <i className="fas fa-plus"></i>
-                  <p className="city-add-text">Add city</p>
+                <div className="city-item">
+                  <img className="city-img" src={france} alt="france" />
+                  <p className="city-name">Paris, France</p>
+                </div>
+                <div className="city-item">
+                  <img className="city-img" src={newyork} alt="newyork" />
+                  <p className="city-name">New York, USA</p>
+                </div>
+                <div className="city-item">
+                  <img className="city-img" src={london} alt="london" />
+                  <p className="city-name">London, Britain</p>
+                </div>
+                <div className="city-item">
+                  <div className="city-add">
+                    <i className="fas fa-plus"></i>
+                    <form onSubmit={handleCitySubmit}>
+                      <input
+                        className="city-add-text"
+                        type="submit"
+                        value="Save City"
+                      />
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="daily">
-              <div className="daily-title">
-                <h2 className="daily-title-text">
-                  Week<div className="dot"></div>
-                </h2>
-                <Suspense fallback={<Loader classes="fall" />}>
-                  <WeatherDaily data={fullWeather.all.daily} />
-                </Suspense>
+              <div className="daily">
+                <div className="daily-title">
+                  <h2 className="daily-title-text">
+                    Week<div className="dot"></div>
+                  </h2>
+                  <Suspense fallback={<Loader classes="fall" />}>
+                    <WeatherDaily data={fullWeather.all.daily} />
+                  </Suspense>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="weather-right">
-          <i className="fas fa-cloud cloud-1"></i>
-          <i className="fas fa-cloud cloud-2"></i>
-          <img className="weather-draw" src={weatherDraw} alt="" />
-          <div className="overview">
-            <div className="overview-header">
-              <div className="overview-header-today">
-                <h2 className="overview-header-today-title">Today</h2>
-                <p className="overview-header-today-date">
-                  {`${weekDays[time.getDay()]}, ${time.getDate()} ${
-                    months[time.getMonth()]
-                  } ${time.getFullYear()}`}
-                </p>
+          <div className="weather-right">
+            <i className="fas fa-cloud cloud-1"></i>
+            <i className="fas fa-cloud cloud-2"></i>
+            <img className="weather-draw" src={weatherDraw} alt="" />
+            <div className="overview">
+              <div className="overview-header">
+                <div className="overview-header-today">
+                  <h2 className="overview-header-today-title">Today</h2>
+                  <p className="overview-header-today-date">
+                    {`${weekDays[time.getDay()]}, ${time.getDate()} ${
+                      months[time.getMonth()]
+                    } ${time.getFullYear()}`}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="overview-header-icon">
-              <img
-                src={`https://openweathermap.org/img/w/${fullWeather.all.current.weather[0].icon}.png`}
-                alt=""
-              />
-            </div>
-            <div className="overview-temp">
-              <h1 className="overview-temp-current">{currentTemp}</h1>
-              <span className="over-view-temp-sign">°C</span>
-            </div>
-            <div className="overview-country">
-              <h4 className="overview-country-text">{`${cityName.join(
-                ""
-              )}`}</h4>
-            </div>
-            <div className="overview-humiditydew">
-              <div className="overview-humidity">
-                <p>{`Humidity ${fullWeather.all.current.humidity}%`}</p>
-                <i className="fas fa-tint"></i>
+              <div className="overview-header-icon">
+                <img
+                  src={`https://openweathermap.org/img/w/${fullWeather.all.current.weather[0].icon}.png`}
+                  alt=""
+                />
               </div>
-              <div className="overview-dewpoint">
-                <p>{`Dew Point ${fullWeather.all.current.dew_point}°C`}</p>
-                <i className="fas fa-hand-holding-water"></i>
+              <div className="overview-temp">
+                <h1 className="overview-temp-current">{currentTemp}</h1>
+                <span className="over-view-temp-sign">°C</span>
               </div>
-            </div>
-            <div className="overview-more-info">
-              <p className="overview-more-info-feels-like">{`Feels Like ${feelsLike}°C
+              <div className="overview-country">
+                <h4 className="overview-country-text">{`${cityName.join(
+                  ""
+                )}`}</h4>
+              </div>
+              <div className="overview-humiditydew">
+                <div className="overview-humidity">
+                  <p>{`Humidity ${fullWeather.all.current.humidity}%`}</p>
+                  <i className="fas fa-tint"></i>
+                </div>
+                <div className="overview-dewpoint">
+                  <p>{`Dew Point ${fullWeather.all.current.dew_point}°C`}</p>
+                  <i className="fas fa-hand-holding-water"></i>
+                </div>
+              </div>
+              <div className="overview-more-info">
+                <p className="overview-more-info-feels-like">{`Feels Like ${feelsLike}°C
                             `}</p>
-              <p className="overview-more-info-sunset">Sunset {sunset}</p>
-              <p className="overview-more-info-sunrise">Sunrise {sunrise}</p>
+                <p className="overview-more-info-sunset">Sunset {sunset}</p>
+                <p className="overview-more-info-sunrise">Sunrise {sunrise}</p>
+              </div>
             </div>
+            <Suspense fallback={<Loader classes="fall-back" />}>
+              <WeatherHourly data={fullWeather.all.hourly} />
+            </Suspense>
           </div>
-          <Suspense fallback={<Loader classes="fall-back" />}>
-            <WeatherHourly data={fullWeather.all.hourly} />
-          </Suspense>
         </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 }
 export default Weather;

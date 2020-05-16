@@ -205,6 +205,10 @@
 .weather-container .weather-wrapper .weather-left .cities-list .city-add .city-add-text {
   font-size: 110%;
   font-weight: 400;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .weather-container .weather-wrapper .weather-left .daily .daily-title .daily-title-text {

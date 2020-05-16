@@ -162,6 +162,10 @@ $water-color: #4293ec;
           .city-add-text {
             font-size: 110%;
             font-weight: 400;
+            border: none;
+            outline: none;
+            background: transparent;
+            cursor: pointer;
           }
         }
       }

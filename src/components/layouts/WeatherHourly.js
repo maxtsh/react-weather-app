@@ -8,8 +8,6 @@ import "./WeatherHourly.css";
 import getHours from "../../utils/getHours";
 
 function WeatherHourly({ data }) {
-  console.log("Hourly Render");
-
   const next24Hours = getHours();
 
   const hourlyTemp = data.slice(0, 24).map((each) => each.temp);
@@ -26,7 +24,6 @@ function WeatherHourly({ data }) {
       },
     ],
   };
-
   return (
     <div className="temp-chart">
       <Bar data={allData} options={{ maintainAspectRatio: true }} />

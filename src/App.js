@@ -22,13 +22,9 @@ function App() {
             <ErrorBoundary>
               <Route exact path="/" component={Home} />
             </ErrorBoundary>
-
-            <ErrorBoundary>
-              <FullWeatherProvider>
-                <Route exact path="/weather/:city/:coord" component={Weather} />
-              </FullWeatherProvider>
-            </ErrorBoundary>
-
+            <FullWeatherProvider>
+              <Route exact path="/weather/:city/:coord" component={Weather} />
+            </FullWeatherProvider>
             <Route exact path="/about" component={About} />
           </LanguageProvider>
         </WeatherProvider>
