@@ -128,9 +128,10 @@ $water-color: #4293ec;
 
         .city-item {
           text-align: center;
-          width: 100%;
+          // width: 100%;
           max-width: 180px;
           height: 100%;
+          flex: 1;
 
           //   .city-item-link {
           //     text-decoration: none;

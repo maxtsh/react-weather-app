@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, Suspense, lazy } from "react";
 
 import { getFullWeather, clearFullWeather } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
@@ -15,8 +15,8 @@ import france from "../../images/cities/france.jpg";
 import newyork from "../../images/cities/newyork.jpg";
 import london from "../../images/cities/london.jpg";
 
-const WeatherDaily = React.lazy(() => import("../layouts/WeatherDaily.js"));
-const WeatherHourly = React.lazy(() => import("../layouts/WeatherHourly.js"));
+const WeatherDaily = lazy(() => import("../layouts/WeatherDaily.js"));
+const WeatherHourly = lazy(() => import("../layouts/WeatherHourly.js"));
 
 const months = [
   "Jan",
@@ -143,9 +143,9 @@ function Weather(props) {
                 <h2 className="daily-title-text">
                   Week<div className="dot"></div>
                 </h2>
-                <React.Suspense fallback={<Loader classes="fall" />}>
+                <Suspense fallback={<Loader classes="fall" />}>
                   <WeatherDaily data={fullWeather.all.daily} />
-                </React.Suspense>
+                </Suspense>
               </div>
             </div>
           </div>
@@ -197,9 +197,9 @@ function Weather(props) {
               <p className="overview-more-info-sunrise">Sunrise {sunrise}</p>
             </div>
           </div>
-          <React.Suspense fallback={<Loader classes="fall-back" />}>
+          <Suspense fallback={<Loader classes="fall-back" />}>
             <WeatherHourly data={fullWeather.all.hourly.slice(0, 24)} />
-          </React.Suspense>
+          </Suspense>
         </div>
       </div>
     </div>

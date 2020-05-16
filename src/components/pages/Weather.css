@@ -165,9 +165,11 @@
 
 .weather-container .weather-wrapper .weather-left .cities-list .city-item {
   text-align: center;
-  width: 100%;
   max-width: 180px;
   height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .weather-container .weather-wrapper .weather-left .cities-list .city-item .city-img {

@@ -1,14 +1,24 @@
-import React, { useEffect, useContext } from "react";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useContext,
+} from "react";
+
+// Custom Hooks
 import { useForm } from "../../hooks/useForm";
 
+// Context API
 import { getWeather, clearWeather } from "../../actions/index";
 import { weatherContext } from "../../context/weatherContext";
 import { languageContext } from "../../context/languageContext";
 
+// Components
 import Header from "../layouts/Header";
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 
-// Home Styles
+// Styles
 import "./Home.css";
 
 const languages = {
@@ -47,8 +57,8 @@ const languages = {
 function Home() {
   const { weather, dispatch } = useContext(weatherContext);
   const { language } = useContext(languageContext);
-
   const [userForm, change] = useForm({ city: "" });
+  const [errUI, setErrUI] = useState(false);
 
   console.log("RENDER!");
 
@@ -56,13 +66,27 @@ function Home() {
     return () => clearWeather(dispatch);
   }, [dispatch]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    getWeather(dispatch, userForm.city);
-  }
+  useEffect(() => {
+    if (weather.error) {
+      setErrUI(true);
+    }
+
+    const errTimeout = setTimeout(() => {
+      setErrUI(false);
+    }, 3000);
+    return () => clearTimeout(errTimeout);
+  }, [weather.error]);
+
+  const handleChange = useCallback((e) => change(e), [change]);
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      getWeather(dispatch, userForm.city);
+    },
+    [dispatch, userForm.city]
+  );
 
   if (!weather.error && weather.weather) {
-    console.log(userForm.city);
     window.location.assign(
       `/weather/${userForm.city}/${weather.weather.coord.lon}&${weather.weather.coord.lat}`
     );
@@ -86,7 +110,7 @@ function Home() {
                 type="text"
                 name="city"
                 value={userForm.city}
-                onChange={change}
+                onChange={handleChange}
                 style={languages[language.current].style.borderRadiusField}
               />
               <input
@@ -96,7 +120,7 @@ function Home() {
                 style={languages[language.current].style.borderRadiusSubmit}
               />
             </form>
-            {weather.error ? (
+            {errUI ? (
               <ErrorHandler
                 message={weather.error.data.message}
                 currentLang={language.current}

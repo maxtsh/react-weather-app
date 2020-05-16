@@ -33,7 +33,7 @@ function Header() {
   const { language, dispatch } = useContext(languageContext);
   const [open, setOpen] = useState(false);
 
-  console.log("HEADER");
+  // console.log("HEADER");
 
   function handleChange(e) {
     dispatch({
