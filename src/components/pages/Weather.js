@@ -1,46 +1,31 @@
 import React, { useEffect, useContext, Suspense, lazy } from "react";
 
+// Context API
 import { getFullWeather, clearFullWeather } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 
+// Components
 import Loader from "../layouts/Loader";
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 
 // Weather Styles
 import "./Weather.css";
 
+// Utilities
+import { weekDays } from "../../utils/getDaily";
+import { months } from "../../utils/getMonths";
+
+// Images
 import weatherDraw from "../../images/weather-draw.svg";
 import berlin from "../../images/cities/berlin.jpg";
 import france from "../../images/cities/france.jpg";
 import newyork from "../../images/cities/newyork.jpg";
 import london from "../../images/cities/london.jpg";
 
+// Components With Lay-Load
 const WeatherDaily = lazy(() => import("../layouts/WeatherDaily.js"));
 const WeatherHourly = lazy(() => import("../layouts/WeatherHourly.js"));
 
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-const weekDays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
 const time = new Date();
 
 function Weather(props) {
@@ -198,7 +183,7 @@ function Weather(props) {
             </div>
           </div>
           <Suspense fallback={<Loader classes="fall-back" />}>
-            <WeatherHourly data={fullWeather.all.hourly.slice(0, 24)} />
+            <WeatherHourly data={fullWeather.all.hourly} />
           </Suspense>
         </div>
       </div>

@@ -1,15 +1,18 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
+// Styles
+import "./WeatherHourly.css";
+
 // Get The Next 24 Hours From Current Time
 import getHours from "../../utils/getHours";
 
-import "./WeatherHourly.css";
-
 function WeatherHourly({ data }) {
+  console.log("Hourly Render");
+
   const next24Hours = getHours();
 
-  const hourlyTemp = data.map((each) => each.temp);
+  const hourlyTemp = data.slice(0, 24).map((each) => each.temp);
 
   const allData = {
     labels: next24Hours,
@@ -31,4 +34,4 @@ function WeatherHourly({ data }) {
   );
 }
 
-export default WeatherHourly;
+export default React.memo(WeatherHourly);

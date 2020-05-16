@@ -17,8 +17,6 @@ function Header() {
   const { language, dispatch } = useContext(languageContext);
   const [open, setOpen] = useState(false);
 
-  console.log("HEADER");
-
   // Change Callback Optimization
   const handleChange = useCallback(
     (e) => {

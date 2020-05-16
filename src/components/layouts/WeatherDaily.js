@@ -7,6 +7,8 @@ import getDaily from "../../utils/getDaily";
 import "./WeatherDaily.css";
 
 function WeatherDaily({ data }) {
+  console.log("Daily Render");
+
   // Slicing out to remove today data and only have the next 7 days
   const maxTemps = data
     .slice(1, 8)
@@ -71,4 +73,4 @@ function WeatherDaily({ data }) {
   );
 }
 
-export default WeatherDaily;
+export default React.memo(WeatherDaily);

@@ -1,6 +1,6 @@
 const time = new Date();
 
-const weekDays = [
+export const weekDays = [
   "Sunday",
   "Monday",
   "Tuesday",

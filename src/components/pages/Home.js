@@ -24,8 +24,6 @@ function Home() {
   const [userForm, change] = useForm({ city: "" });
   const [errUI, setErrUI] = useState(false);
 
-  console.log("RENDER!");
-
   // This useEffect will cleanUp API data after each component mounting
   useEffect(() => {
     return () => clearWeather(dispatch);
