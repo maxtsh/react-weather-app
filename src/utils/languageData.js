@@ -1,3 +1,24 @@
+export const headerLanguages = {
+  English: {
+    title: "Weather App",
+    direction: "ltr",
+    menus: {
+      home: "Home",
+      about: "About",
+      api: "API",
+    },
+  },
+  Persian: {
+    title: "اَپ آب و هوا",
+    direction: "rtl",
+    menus: {
+      home: "خانه",
+      about: "درباره ما",
+      api: "ای پی آی",
+    },
+  },
+};
+
 export const homeLanguages = {
   English: {
     searchTitle: "Search for latest weather updates",
