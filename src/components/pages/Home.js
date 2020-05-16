@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useCallback,
-  useMemo,
-  useEffect,
-  useContext,
-} from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 
 // Custom Hooks
 import { useForm } from "../../hooks/useForm";
@@ -21,38 +15,8 @@ import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 // Styles
 import "./Home.css";
 
-const languages = {
-  English: {
-    searchTitle: "Search for latest weather updates",
-    submit: "Get Weather",
-    style: {
-      dir: "ltr",
-      borderRadiusSubmit: {
-        borderTopRightRadius: "0.5rem",
-        borderBottomRightRadius: "0.5rem",
-      },
-      borderRadiusField: {
-        borderTopLeftRadius: "0.5rem",
-        borderBottomLeftRadius: "0.5rem",
-      },
-    },
-  },
-  Persian: {
-    searchTitle: "آخرین تغییرات آب و هوایی رو جست و جو کن",
-    submit: "دریافت آب و هوا",
-    style: {
-      dir: "rtl",
-      borderRadiusSubmit: {
-        borderTopLeftRadius: "0.5rem",
-        borderBottomLeftRadius: "0.5rem",
-      },
-      borderRadiusField: {
-        borderTopRightRadius: "0.5rem",
-        borderBottomRightRadius: "0.5rem",
-      },
-    },
-  },
-};
+// Languages Data
+import { homeLanguages } from "../../utils/languageData";
 
 function Home() {
   const { weather, dispatch } = useContext(weatherContext);
@@ -62,22 +26,27 @@ function Home() {
 
   console.log("RENDER!");
 
+  // This useEffect will cleanUp API data after each component mounting
   useEffect(() => {
     return () => clearWeather(dispatch);
   }, [dispatch]);
 
+  // If there is any error from API then this useEffect will
+  // trigger ErrorUI to be shown for a limited time
   useEffect(() => {
     if (weather.error) {
       setErrUI(true);
     }
-
+    // Error timeout which will turn off errUI after 3seconds
     const errTimeout = setTimeout(() => {
       setErrUI(false);
     }, 3000);
     return () => clearTimeout(errTimeout);
   }, [weather.error]);
 
+  // Handle Change Callback Optimization
   const handleChange = useCallback((e) => change(e), [change]);
+  // Handle Submit Callback Optimization
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -86,6 +55,7 @@ function Home() {
     [dispatch, userForm.city]
   );
 
+  // If there is no error and the weather for submited city exists then redirect to Weather.js
   if (!weather.error && weather.weather) {
     window.location.assign(
       `/weather/${userForm.city}/${weather.weather.coord.lon}&${weather.weather.coord.lat}`
@@ -96,13 +66,13 @@ function Home() {
     <>
       <Header />
       <div
-        style={{ direction: languages[language.current].style.dir }}
+        style={{ direction: homeLanguages[language.current].style.dir }}
         className="home-container"
       >
         <div className="search-container">
           <div className="form-container">
             <h1 className="search-title">
-              {languages[language.current].searchTitle}
+              {homeLanguages[language.current].searchTitle}
             </h1>
             <form className="form" onSubmit={handleSubmit}>
               <input
@@ -111,13 +81,13 @@ function Home() {
                 name="city"
                 value={userForm.city}
                 onChange={handleChange}
-                style={languages[language.current].style.borderRadiusField}
+                style={homeLanguages[language.current].style.borderRadiusField}
               />
               <input
                 className="search-submit"
                 type="submit"
-                value={languages[language.current].submit}
-                style={languages[language.current].style.borderRadiusSubmit}
+                value={homeLanguages[language.current].submit}
+                style={homeLanguages[language.current].style.borderRadiusSubmit}
               />
             </form>
             {errUI ? (
