@@ -12,6 +12,7 @@ import {
   getFullWeather,
   clearFullWeather,
   saveCityToLs,
+  loadCityFromLs,
 } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 
@@ -56,10 +57,12 @@ function Weather(props) {
   }, [dispatch, lon, lat]);
 
   useEffect(() => {
-    // Error timeout which will turn off errUI after 3seconds
-    const errTimeout = setTimeout(() => {
-      setErrUI({ ...errUI, hasError: false });
-    }, 5000);
+    let errTimeout = null;
+    if (errUI.hasError) {
+      errTimeout = setTimeout(() => {
+        setErrUI({ ...errUI, hasError: false });
+      }, 5000);
+    }
     return () => clearTimeout(errTimeout);
   }, [errUI]);
 
@@ -80,6 +83,17 @@ function Weather(props) {
     [city, lon, lat]
   );
 
+  const handleSelectChange = useCallback((e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  }, []);
+  const handleFindSubmit = useCallback((e) => {
+    e.preventDefault();
+    // window.location.assign(
+    //   `/weather/${userForm.city}/${userForm.lon}&${userForm.lat}`
+    // );
+  }, []);
+
   if (!fullWeather.all || fullWeather.loading) {
     return <Loader classes="main" />;
   } else if (fullWeather.error) {
@@ -98,6 +112,7 @@ function Weather(props) {
   const sunrise = fullWeather.all.current.sunrise;
   const cityName = city.split("");
   cityName.splice(0, 1, city.split("")[0].toUpperCase());
+  const savedCities = loadCityFromLs();
 
   return (
     <ErrorBoundary currentLang="English">
@@ -114,15 +129,26 @@ function Weather(props) {
                 </button>
               </div>
               <div className="form-wrapper">
-                <form className="form">
+                <form className="form" onSubmit={handleFindSubmit}>
                   <div className="input-group">
                     <i className="fas fa-search-location"></i>
-                    <input
+                    <select
                       className="search-input"
-                      type="text"
                       name="cities"
-                      placeholder="Search for saved cities"
-                    />
+                      onChange={handleSelectChange}
+                    >
+                      {savedCities ? (
+                        savedCities.map((item) => (
+                          <option key={item.id} value={item}>
+                            {item.city}
+                          </option>
+                        ))
+                      ) : (
+                        <option value="no-item">
+                          There is no saved cities yet
+                        </option>
+                      )}
+                    </select>
                     <input
                       className="search-submit"
                       type="submit"

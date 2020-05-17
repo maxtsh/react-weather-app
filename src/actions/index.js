@@ -58,12 +58,22 @@ export function saveCityToLs(cityData) {
       (item) => item.city === cityData.city
     )
   ) {
-    // console.log("This city is already saved!");
-    const error = new Error("This city is already saved!");
+    const error = new Error("current city is already saved!");
     throw error;
   } else {
     cities = JSON.parse(localStorage.getItem("cities"));
   }
   cities.push({ ...cityData, id: uuidv4() });
   localStorage.setItem("cities", JSON.stringify(cities));
+}
+
+export function loadCityFromLs() {
+  if (
+    !localStorage.getItem("cities") ||
+    localStorage.getItem("cities") === ""
+  ) {
+    return null;
+  } else {
+    return JSON.parse(localStorage.getItem("cities"));
+  }
 }

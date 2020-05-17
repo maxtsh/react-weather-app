@@ -15,7 +15,7 @@ export default function ErrorHandler({ message, currentLang }) {
     <div className="error-wrapper">
       <i className="fas fa-exclamation-circle"></i>
       <h3 className="error-message">
-        {languages[currentLang].errMessage + " " + message}!
+        {languages[currentLang].errMessage + " " + message}
       </h3>
     </div>
   );
