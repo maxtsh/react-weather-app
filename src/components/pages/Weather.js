@@ -59,7 +59,7 @@ function Weather(props) {
     // Error timeout which will turn off errUI after 3seconds
     const errTimeout = setTimeout(() => {
       setErrUI({ ...errUI, hasError: false });
-    }, 4000);
+    }, 5000);
     return () => clearTimeout(errTimeout);
   }, [errUI]);
 
@@ -101,13 +101,13 @@ function Weather(props) {
 
   return (
     <ErrorBoundary currentLang="English">
+      {errUI.hasError ? (
+        <ErrorHandler currentLang="English" message={errUI.message} />
+      ) : null}
       <div className="weather-container">
         <div className="weather-wrapper">
           <div className="weather-left">
             <div className="weather-left-container">
-              {errUI.hasError ? (
-                <ErrorHandler currentLang="English" message={errUI.message} />
-              ) : null}
               <div className="go-back">
                 <button className="go-back-btn" onClick={handleGoBack}>
                   Go back

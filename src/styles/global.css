@@ -23,7 +23,35 @@ body {
   margin: 0 auto;
 }
 
+@-webkit-keyframes transformation {
+  0% {
+    top: 70%;
+    left: 50%;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+@keyframes transformation {
+  0% {
+    top: 70%;
+    left: 50%;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
 .error-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 200;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,6 +70,10 @@ body {
   background-color: #ff3838;
   margin-top: 1rem;
   border-radius: 0.5rem;
+  -webkit-animation-name: transformation;
+          animation-name: transformation;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
 }
 
 .error-wrapper .error-message {
