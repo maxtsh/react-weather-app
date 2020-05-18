@@ -19,6 +19,7 @@ import { fullWeatherContext } from "../../context/fullWeatherContext";
 import { weatherContext } from "../../context/weatherContext";
 
 // Components
+import CitiesList from "../layouts/CitiesList";
 import BackBtn from "../layouts/BackBtn";
 import SelectSavedCities from "../forms/SelectSavedCities";
 import Loader from "../layouts/Loader";
@@ -34,10 +35,6 @@ import { months } from "../../utils/getMonths";
 
 // Images
 import weatherDraw from "../../images/weather-draw.svg";
-import berlin from "../../images/cities/berlin.jpg";
-import france from "../../images/cities/france.jpg";
-import newyork from "../../images/cities/newyork.jpg";
-import london from "../../images/cities/london.jpg";
 
 // Components With Lazy-Load
 const WeatherDaily = lazy(() => import("../layouts/WeatherDaily.js"));
@@ -46,38 +43,42 @@ const WeatherHourly = lazy(() => import("../layouts/WeatherHourly.js"));
 const time = new Date();
 
 function Weather(props) {
-  const { fullWeather, dispatch2 } = useContext(fullWeatherContext);
-  const { weather, dispatch } = useContext(weatherContext);
   const [popup, setPopup] = useState({ show: false, message: "", type: "" });
+  const { weather, dispatch } = useContext(weatherContext);
+  const { fullWeather, dispatch2 } = useContext(fullWeatherContext);
   const { city, coord } = props.match.params;
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];
 
   console.log("RENDER");
-  console.log(weather);
 
+  // Fetching full weather data
   useEffect(() => {
     getFullWeather(dispatch2, lon, lat);
 
     return () => clearFullWeather(dispatch2);
   }, [dispatch2, lon, lat]);
 
+  // Fetching current weather data
   useEffect(() => {
     getWeather(dispatch, city);
 
     return () => clearWeather(dispatch);
   }, [dispatch, city]);
 
+  // Side effect timeout for PopUp on UI
   useEffect(() => {
-    let errTimeout = null;
+    let popupTimeout = null;
+
     if (popup.show) {
-      errTimeout = setTimeout(() => {
+      popupTimeout = setTimeout(() => {
         setPopup({ ...popup, show: false });
       }, 5000);
     }
-    return () => clearTimeout(errTimeout);
+    return () => clearTimeout(popupTimeout);
   }, [popup]);
 
+  // Adding current city to the localstorage event handler
   const handleCitySubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -93,9 +94,16 @@ function Weather(props) {
     [city, lon, lat]
   );
 
-  if (!fullWeather.all || fullWeather.loading || !weather.weather) {
+  // If data is not fetched then show the loading screen
+  if (
+    !fullWeather.all ||
+    fullWeather.loading ||
+    !weather.weather ||
+    weather.loading
+  ) {
     return <Loader classes="main" />;
   } else if (fullWeather.error) {
+    // if any error happens from fullWeather-fetch then show it on popup
     return (
       <ErrorHandler
         message={fullWeather.error.data.message}
@@ -104,6 +112,7 @@ function Weather(props) {
       />
     );
   } else if (weather.error) {
+    // if any error happens from weather-fetch then show it on popup
     return (
       <ErrorHandler
         message={weather.error.data.message}
@@ -112,6 +121,8 @@ function Weather(props) {
       />
     );
   } else if (
+    // if the user changes city-name in the url then check the lon and lat to weather-fetch
+    // if there is mis-match then show it on popup
     weather.weather.coord.lon !== Number(lon) ||
     weather.weather.coord.lat !== Number(lat)
   ) {
@@ -127,6 +138,7 @@ function Weather(props) {
     );
   }
 
+  // Simple calculations
   const currentTemp = Math.round(fullWeather.all.current.temp);
   const feelsLike = Math.round(fullWeather.all.current.feels_like);
   const sunset = fullWeather.all.current.sunset;
@@ -152,36 +164,7 @@ function Weather(props) {
                   Weather <span className="main-title-text-bold">Forecast</span>
                 </h1>
               </div>
-              <div className="cities-list">
-                <div className="city-item">
-                  <img className="city-img" src={berlin} alt="berlin" />
-                  <p className="city-name">Berlin, Germany</p>
-                </div>
-                <div className="city-item">
-                  <img className="city-img" src={france} alt="france" />
-                  <p className="city-name">Paris, France</p>
-                </div>
-                <div className="city-item">
-                  <img className="city-img" src={newyork} alt="newyork" />
-                  <p className="city-name">New York, USA</p>
-                </div>
-                <div className="city-item">
-                  <img className="city-img" src={london} alt="london" />
-                  <p className="city-name">London, Britain</p>
-                </div>
-                <div className="city-item">
-                  <div className="city-add">
-                    <i className="fas fa-plus"></i>
-                    <form onSubmit={handleCitySubmit}>
-                      <input
-                        className="city-add-text"
-                        type="submit"
-                        value="Save City"
-                      />
-                    </form>
-                  </div>
-                </div>
-              </div>
+              <CitiesList submit={handleCitySubmit} />
               <div className="daily">
                 <div className="daily-title">
                   <h2 className="daily-title-text">
