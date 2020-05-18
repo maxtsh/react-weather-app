@@ -35,7 +35,7 @@ import france from "../../images/cities/france.jpg";
 import newyork from "../../images/cities/newyork.jpg";
 import london from "../../images/cities/london.jpg";
 
-// Components With Lay-Load
+// Components With Lazy-Load
 const WeatherDaily = lazy(() => import("../layouts/WeatherDaily.js"));
 const WeatherHourly = lazy(() => import("../layouts/WeatherHourly.js"));
 
@@ -44,6 +44,7 @@ const time = new Date();
 function Weather(props) {
   const { fullWeather, dispatch } = useContext(fullWeatherContext);
   const [errUI, setErrUI] = useState({ hasError: false, message: "" });
+  const [selectedCity, setSelectedCity] = useState({});
   const { city, coord } = props.match.params;
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];
@@ -85,14 +86,21 @@ function Weather(props) {
 
   const handleSelectChange = useCallback((e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    const cityId = e.target.value;
+    const selectedCityData = loadCityFromLs().find(
+      (item) => item.id === cityId
+    );
+    setSelectedCity(selectedCityData);
   }, []);
-  const handleFindSubmit = useCallback((e) => {
-    e.preventDefault();
-    // window.location.assign(
-    //   `/weather/${userForm.city}/${userForm.lon}&${userForm.lat}`
-    // );
-  }, []);
+  const handleFindSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      window.location.assign(
+        `/weather/${selectedCity.city}/${selectedCity.lon}&${selectedCity.lat}`
+      );
+    },
+    [selectedCity]
+  );
 
   if (!fullWeather.all || fullWeather.loading) {
     return <Loader classes="main" />;
@@ -110,8 +118,6 @@ function Weather(props) {
   const feelsLike = Math.round(fullWeather.all.current.feels_like);
   const sunset = fullWeather.all.current.sunset;
   const sunrise = fullWeather.all.current.sunrise;
-  const cityName = city.split("");
-  cityName.splice(0, 1, city.split("")[0].toUpperCase());
   const savedCities = loadCityFromLs();
 
   return (
@@ -139,7 +145,7 @@ function Weather(props) {
                     >
                       {savedCities ? (
                         savedCities.map((item) => (
-                          <option key={item.id} value={item}>
+                          <option key={item.id} value={item.id}>
                             {item.city}
                           </option>
                         ))
@@ -152,7 +158,7 @@ function Weather(props) {
                     <input
                       className="search-submit"
                       type="submit"
-                      value="Find city"
+                      value="Get weather"
                     />
                   </div>
                 </form>
@@ -230,9 +236,9 @@ function Weather(props) {
                 <span className="over-view-temp-sign">°C</span>
               </div>
               <div className="overview-country">
-                <h4 className="overview-country-text">{`${cityName.join(
-                  ""
-                )}`}</h4>
+                <h4 className="overview-country-text">
+                  {fullWeather.all.timezone}
+                </h4>
               </div>
               <div className="overview-humiditydew">
                 <div className="overview-humidity">
