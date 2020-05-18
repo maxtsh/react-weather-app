@@ -1,5 +1,6 @@
 // Global Configs =========================================
 $error-background: #ff3838;
+$success-background: #20bf6b;
 
 * {
   margin: 0;
@@ -37,34 +38,46 @@ body {
   }
 }
 
-.error-wrapper {
+.popup-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 200;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   text-align: center;
-  padding: 0.5rem 1rem;
-  background-color: $error-background;
-  margin-top: 1rem;
-  border-radius: 0.5rem;
   animation-name: transformation;
   animation-duration: 0.5s;
 
-  .error-message {
-    color: #fff;
+  .error-message,
+  .success-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     font-size: 120%;
     font-weight: 400;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
   }
-
-  .fa-exclamation-circle {
-    font-size: 150%;
+  .error-message {
     color: #fff;
-    margin-right: 3rem;
+    background-color: $error-background;
+
+    .fa-exclamation-circle {
+      font-size: 150%;
+      color: #fff;
+      margin-right: 3rem;
+    }
+  }
+  .success-message {
+    color: #fff;
+    background-color: $success-background;
+
+    .fa-check-circle {
+      font-size: 150%;
+      color: #fff;
+      margin-right: 3rem;
+    }
   }
 }
 

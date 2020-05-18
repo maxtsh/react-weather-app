@@ -65,9 +65,11 @@ export function saveCityToLs(cityData) {
   }
   cities.push({ ...cityData, id: uuidv4() });
   localStorage.setItem("cities", JSON.stringify(cities));
+
+  return "Successfully Done.";
 }
 
-export function loadCityFromLs() {
+export function loadCitiesFromLs() {
   if (
     !localStorage.getItem("cities") ||
     localStorage.getItem("cities") === ""

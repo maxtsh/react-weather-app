@@ -1,4 +1,3 @@
-$submit-background: #f57f17;
 $violet-darker: #110e3c;
 $violet-lighter: #1d1d46;
 $water-color: #4293ec;
@@ -50,60 +49,6 @@ $water-color: #4293ec;
 
           &:hover {
             background-color: $violet-darker;
-          }
-        }
-      }
-
-      .form-wrapper {
-        width: 100%;
-        border-radius: 0.5rem;
-
-        .form {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: stretch;
-
-          .input-group {
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: stretch;
-            width: 100%;
-
-            .fa-search-location {
-              position: absolute;
-              top: 25%;
-              left: 10px;
-              font-size: 180%;
-              color: $violet-darker;
-            }
-
-            .search-input {
-              flex-basis: 80%;
-              font-size: 100%;
-              padding: 1rem 1rem 1rem 3rem;
-              border: none;
-              outline: none;
-              background-color: #fff;
-              border-top-left-radius: 0.5rem;
-              border-bottom-left-radius: 0.5rem;
-            }
-
-            .search-submit {
-              flex-basis: 20%;
-              font-size: 100%;
-              font-weight: 700;
-              padding: 1rem;
-              border: none;
-              outline: none;
-              color: #fff;
-              background-color: $submit-background;
-              cursor: pointer;
-              border-top-right-radius: 0.5rem;
-              border-bottom-right-radius: 0.5rem;
-            }
           }
         }
       }
@@ -341,30 +286,6 @@ $water-color: #4293ec;
     .weather-wrapper {
       .weather-left {
         .weather-left-container {
-          .form-wrapper {
-            .form {
-              .input-group {
-                .fa-search-location {
-                  position: absolute;
-                  top: 25%;
-                  left: 10px;
-                  font-size: 180%;
-                }
-
-                .search-input {
-                  font-size: 100%;
-                  padding: 0.5rem 0.5rem 0.5rem 3rem;
-                }
-
-                .search-submit {
-                  font-size: 100%;
-                  font-weight: 400;
-                  padding: 0.7rem;
-                }
-              }
-            }
-          }
-
           .main-title-wrapper {
             .main-title-text {
               font-size: 170%;

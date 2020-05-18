@@ -10,13 +10,26 @@ const languages = {
 };
 
 // **** This Component handles the errors happening withing Async Calls
-export default function ErrorHandler({ message, currentLang }) {
-  return (
-    <div className="error-wrapper">
-      <i className="fas fa-exclamation-circle"></i>
-      <h3 className="error-message">
-        {languages[currentLang].errMessage + " " + message}
-      </h3>
-    </div>
-  );
+export default function ErrorHandler({ currentLang, message, type }) {
+  if (type === "success") {
+    return (
+      <div className="popup-wrapper">
+        <h3 className="success-message">
+          <i className="fas fa-check-circle"></i>
+          {message}
+        </h3>
+      </div>
+    );
+  } else if (type === "error") {
+    return (
+      <div className="popup-wrapper">
+        <h3 className="error-message">
+          <i className="fas fa-exclamation-circle"></i>
+          {languages[currentLang].errMessage + " " + message}
+        </h3>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }

@@ -67,6 +67,13 @@ function Home() {
         style={{ direction: homeLanguages[language.current].style.dir }}
         className="home-container"
       >
+        {errUI ? (
+          <ErrorHandler
+            message={weather.error.data.message}
+            currentLang={language.current}
+            type="error"
+          />
+        ) : null}
         <div className="search-container">
           <div className="form-container">
             <h1 className="search-title">
@@ -88,12 +95,6 @@ function Home() {
                 style={homeLanguages[language.current].style.borderRadiusSubmit}
               />
             </form>
-            {errUI ? (
-              <ErrorHandler
-                message={weather.error.data.message}
-                currentLang={language.current}
-              />
-            ) : null}
           </div>
         </div>
       </div>

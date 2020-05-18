@@ -1,0 +1,97 @@
+.form-wrapper {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.form-wrapper .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.form-wrapper .form .input-group {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+}
+
+.form-wrapper .form .input-group .fa-search-location {
+  position: absolute;
+  top: 25%;
+  left: 10px;
+  font-size: 180%;
+  color: #110e3c;
+}
+
+.form-wrapper .form .input-group .search-input {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+  font-size: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.form-wrapper .form .input-group .search-submit {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  font-size: 100%;
+  font-weight: 700;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #f57f17;
+  cursor: pointer;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.form-wrapper .form .input-group .search-submit:disabled {
+  cursor: not-allowed;
+  background-color: #f9ac68;
+}
+
+@media all and (max-width: 1200px) {
+  .form-wrapper .form .input-group .fa-search-location {
+    position: absolute;
+    top: 25%;
+    left: 10px;
+    font-size: 180%;
+  }
+  .form-wrapper .form .input-group .search-input {
+    font-size: 100%;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+  }
+  .form-wrapper .form .input-group .search-submit {
+    font-size: 100%;
+    font-weight: 400;
+    padding: 0.7rem;
+  }
+}
+/*# sourceMappingURL=SelectSavedCities.css.map */

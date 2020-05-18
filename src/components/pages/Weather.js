@@ -12,11 +12,11 @@ import {
   getFullWeather,
   clearFullWeather,
   saveCityToLs,
-  loadCityFromLs,
 } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 
 // Components
+import SelectSavedCities from "../forms/SelectSavedCities";
 import Loader from "../layouts/Loader";
 import ErrorBoundary from "../../ErrorBoundry/ErrorBoundary"; // For Thrown Errors
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler"; // For Async Catch
@@ -43,8 +43,7 @@ const time = new Date();
 
 function Weather(props) {
   const { fullWeather, dispatch } = useContext(fullWeatherContext);
-  const [errUI, setErrUI] = useState({ hasError: false, message: "" });
-  const [selectedCity, setSelectedCity] = useState({});
+  const [popup, setPopup] = useState({ show: false, message: "", type: "" });
   const { city, coord } = props.match.params;
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];
@@ -59,13 +58,13 @@ function Weather(props) {
 
   useEffect(() => {
     let errTimeout = null;
-    if (errUI.hasError) {
+    if (popup.show) {
       errTimeout = setTimeout(() => {
-        setErrUI({ ...errUI, hasError: false });
+        setPopup({ ...popup, show: false });
       }, 5000);
     }
     return () => clearTimeout(errTimeout);
-  }, [errUI]);
+  }, [popup]);
 
   function handleGoBack(e) {
     e.preventDefault();
@@ -76,30 +75,15 @@ function Weather(props) {
     (e) => {
       e.preventDefault();
       try {
-        saveCityToLs({ city, lon, lat });
+        const result = saveCityToLs({ city, lon, lat });
+        if (result) {
+          setPopup({ show: true, message: result, type: "success" });
+        }
       } catch (err) {
-        setErrUI({ hasError: true, message: err.message });
+        setPopup({ show: true, message: err.message, type: "error" });
       }
     },
     [city, lon, lat]
-  );
-
-  const handleSelectChange = useCallback((e) => {
-    e.preventDefault();
-    const cityId = e.target.value;
-    const selectedCityData = loadCityFromLs().find(
-      (item) => item.id === cityId
-    );
-    setSelectedCity(selectedCityData);
-  }, []);
-  const handleFindSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      window.location.assign(
-        `/weather/${selectedCity.city}/${selectedCity.lon}&${selectedCity.lat}`
-      );
-    },
-    [selectedCity]
   );
 
   if (!fullWeather.all || fullWeather.loading) {
@@ -118,12 +102,15 @@ function Weather(props) {
   const feelsLike = Math.round(fullWeather.all.current.feels_like);
   const sunset = fullWeather.all.current.sunset;
   const sunrise = fullWeather.all.current.sunrise;
-  const savedCities = loadCityFromLs();
 
   return (
     <ErrorBoundary currentLang="English">
-      {errUI.hasError ? (
-        <ErrorHandler currentLang="English" message={errUI.message} />
+      {popup.show ? (
+        <ErrorHandler
+          currentLang="English"
+          message={popup.message}
+          type={popup.type}
+        />
       ) : null}
       <div className="weather-container">
         <div className="weather-wrapper">
@@ -134,35 +121,7 @@ function Weather(props) {
                   Go back
                 </button>
               </div>
-              <div className="form-wrapper">
-                <form className="form" onSubmit={handleFindSubmit}>
-                  <div className="input-group">
-                    <i className="fas fa-search-location"></i>
-                    <select
-                      className="search-input"
-                      name="cities"
-                      onChange={handleSelectChange}
-                    >
-                      {savedCities ? (
-                        savedCities.map((item) => (
-                          <option key={item.id} value={item.id}>
-                            {item.city}
-                          </option>
-                        ))
-                      ) : (
-                        <option value="no-item">
-                          There is no saved cities yet
-                        </option>
-                      )}
-                    </select>
-                    <input
-                      className="search-submit"
-                      type="submit"
-                      value="Get weather"
-                    />
-                  </div>
-                </form>
-              </div>
+              <SelectSavedCities />
               <div className="main-title-wrapper">
                 <h1 className="main-title-text">
                   Weather <span className="main-title-text-bold">Forecast</span>

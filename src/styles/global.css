@@ -45,13 +45,22 @@ body {
   }
 }
 
-.error-wrapper {
+.popup-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 200;
+  text-align: center;
+  -webkit-animation-name: transformation;
+          animation-name: transformation;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
+.popup-wrapper .error-message,
+.popup-wrapper .success-message {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,24 +74,29 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  background-color: #ff3838;
-  margin-top: 1rem;
-  border-radius: 0.5rem;
-  -webkit-animation-name: transformation;
-          animation-name: transformation;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-}
-
-.error-wrapper .error-message {
-  color: #fff;
   font-size: 120%;
   font-weight: 400;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
 
-.error-wrapper .fa-exclamation-circle {
+.popup-wrapper .error-message {
+  color: #fff;
+  background-color: #ff3838;
+}
+
+.popup-wrapper .error-message .fa-exclamation-circle {
+  font-size: 150%;
+  color: #fff;
+  margin-right: 3rem;
+}
+
+.popup-wrapper .success-message {
+  color: #fff;
+  background-color: #20bf6b;
+}
+
+.popup-wrapper .success-message .fa-check-circle {
   font-size: 150%;
   color: #fff;
   margin-right: 3rem;
