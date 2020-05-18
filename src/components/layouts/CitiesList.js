@@ -6,6 +6,8 @@ import france from "../../images/cities/france.jpg";
 import newyork from "../../images/cities/newyork.jpg";
 import london from "../../images/cities/london.jpg";
 
+import "./CitiesList.css";
+
 function CitiesList({ submit }) {
   return (
     <div className="cities-list">

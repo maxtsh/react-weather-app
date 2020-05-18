@@ -78,17 +78,17 @@
 }
 
 @media all and (max-width: 1200px) {
-  .form-wrapper .form .input-group .fa-search-location {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .fa-search-location {
     position: absolute;
     top: 25%;
     left: 10px;
     font-size: 180%;
   }
-  .form-wrapper .form .input-group .search-input {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .search-input {
     font-size: 100%;
     padding: 0.5rem 0.5rem 0.5rem 3rem;
   }
-  .form-wrapper .form .input-group .search-submit {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .search-submit {
     font-size: 100%;
     font-weight: 400;
     padding: 0.7rem;

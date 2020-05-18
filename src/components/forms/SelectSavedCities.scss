@@ -62,25 +62,33 @@ $violet-darker: #110e3c;
 }
 // MEDIA QUERIS
 @media all and (max-width: "1200px") {
-  .form-wrapper {
-    .form {
-      .input-group {
-        .fa-search-location {
-          position: absolute;
-          top: 25%;
-          left: 10px;
-          font-size: 180%;
-        }
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .form-wrapper {
+            .form {
+              .input-group {
+                .fa-search-location {
+                  position: absolute;
+                  top: 25%;
+                  left: 10px;
+                  font-size: 180%;
+                }
 
-        .search-input {
-          font-size: 100%;
-          padding: 0.5rem 0.5rem 0.5rem 3rem;
-        }
+                .search-input {
+                  font-size: 100%;
+                  padding: 0.5rem 0.5rem 0.5rem 3rem;
+                }
 
-        .search-submit {
-          font-size: 100%;
-          font-weight: 400;
-          padding: 0.7rem;
+                .search-submit {
+                  font-size: 100%;
+                  font-weight: 400;
+                  padding: 0.7rem;
+                }
+              }
+            }
+          }
         }
       }
     }
