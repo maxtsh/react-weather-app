@@ -10,12 +10,12 @@ const initialWeather = {
 export const fullWeatherContext = createContext();
 
 export function FullWeatherProvider(props) {
-  const [fullWeather, dispatch] = useReducer(
+  const [fullWeather, dispatch2] = useReducer(
     fullWeatherReducer,
     initialWeather
   );
 
-  const value = useMemo(() => ({ fullWeather, dispatch }), [fullWeather]);
+  const value = useMemo(() => ({ fullWeather, dispatch2 }), [fullWeather]);
 
   return (
     <fullWeatherContext.Provider value={value}>

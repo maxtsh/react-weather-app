@@ -55,7 +55,7 @@ export function saveCityToLs(cityData) {
     cities = [];
   } else if (
     JSON.parse(localStorage.getItem("cities")).find(
-      (item) => item.city === cityData.city
+      (item) => item.lon === cityData.lon
     )
   ) {
     const error = new Error("current city is already saved!");

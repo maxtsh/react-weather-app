@@ -57,6 +57,7 @@ body {
           animation-name: transformation;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
+  width: 80%;
 }
 
 .popup-wrapper .error-message,
@@ -78,6 +79,7 @@ body {
   font-weight: 400;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  width: 100%;
 }
 
 .popup-wrapper .error-message {

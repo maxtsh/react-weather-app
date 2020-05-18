@@ -317,13 +317,32 @@
 }
 
 .weather-container .weather-wrapper .weather-right .overview .overview-country {
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.weather-container .weather-wrapper .weather-right .overview .overview-country .overview-country-text {
-  font-size: 130%;
+.weather-container .weather-wrapper .weather-right .overview .overview-country .overview-country-cityname {
+  font-size: 150%;
   font-weight: 400;
   color: #fff;
+}
+
+.weather-container .weather-wrapper .weather-right .overview .overview-country .overview-country-timezone {
+  font-size: 90%;
+  font-weight: 300;
+  color: #fff;
+  margin-left: 0.3rem;
 }
 
 .weather-container .weather-wrapper .weather-right .overview-more-info {

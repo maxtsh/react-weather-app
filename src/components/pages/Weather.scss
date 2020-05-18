@@ -34,25 +34,6 @@ $water-color: #4293ec;
         align-items: stretch;
       }
 
-      .go-back {
-        .go-back-btn {
-          font-size: 90%;
-          font-weight: 300;
-          border: none;
-          outline: none;
-          padding: 0.5rem 1rem;
-          color: #fff;
-          background-color: $violet-lighter;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          transition: all 0.3s ease;
-
-          &:hover {
-            background-color: $violet-darker;
-          }
-        }
-      }
-
       .main-title-wrapper {
         .main-title-text {
           font-size: 200%;
@@ -249,12 +230,21 @@ $water-color: #4293ec;
         }
 
         .overview-country {
-          text-align: center;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
 
-          .overview-country-text {
-            font-size: 130%;
+          .overview-country-cityname {
+            font-size: 150%;
             font-weight: 400;
             color: #fff;
+          }
+          .overview-country-timezone {
+            font-size: 90%;
+            font-weight: 300;
+            color: #fff;
+            margin-left: 0.3rem;
           }
         }
       }

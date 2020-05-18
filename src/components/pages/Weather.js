@@ -9,13 +9,17 @@ import React, {
 
 // Context API
 import {
+  getWeather,
+  clearWeather,
   getFullWeather,
   clearFullWeather,
   saveCityToLs,
 } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
+import { weatherContext } from "../../context/weatherContext";
 
 // Components
+import BackBtn from "../layouts/BackBtn";
 import SelectSavedCities from "../forms/SelectSavedCities";
 import Loader from "../layouts/Loader";
 import ErrorBoundary from "../../ErrorBoundry/ErrorBoundary"; // For Thrown Errors
@@ -42,19 +46,27 @@ const WeatherHourly = lazy(() => import("../layouts/WeatherHourly.js"));
 const time = new Date();
 
 function Weather(props) {
-  const { fullWeather, dispatch } = useContext(fullWeatherContext);
+  const { fullWeather, dispatch2 } = useContext(fullWeatherContext);
+  const { weather, dispatch } = useContext(weatherContext);
   const [popup, setPopup] = useState({ show: false, message: "", type: "" });
   const { city, coord } = props.match.params;
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];
 
   console.log("RENDER");
+  console.log(weather);
 
   useEffect(() => {
-    getFullWeather(dispatch, lon, lat);
+    getFullWeather(dispatch2, lon, lat);
 
-    return () => clearFullWeather(dispatch);
-  }, [dispatch, lon, lat]);
+    return () => clearFullWeather(dispatch2);
+  }, [dispatch2, lon, lat]);
+
+  useEffect(() => {
+    getWeather(dispatch, city);
+
+    return () => clearWeather(dispatch);
+  }, [dispatch, city]);
 
   useEffect(() => {
     let errTimeout = null;
@@ -65,11 +77,6 @@ function Weather(props) {
     }
     return () => clearTimeout(errTimeout);
   }, [popup]);
-
-  function handleGoBack(e) {
-    e.preventDefault();
-    props.history.push("/");
-  }
 
   const handleCitySubmit = useCallback(
     (e) => {
@@ -86,15 +93,37 @@ function Weather(props) {
     [city, lon, lat]
   );
 
-  if (!fullWeather.all || fullWeather.loading) {
+  if (!fullWeather.all || fullWeather.loading || !weather.weather) {
     return <Loader classes="main" />;
   } else if (fullWeather.error) {
-    console.log(fullWeather.error.data);
     return (
       <ErrorHandler
         message={fullWeather.error.data.message}
         currentLang="English"
+        type="error"
       />
+    );
+  } else if (weather.error) {
+    return (
+      <ErrorHandler
+        message={weather.error.data.message}
+        currentLang="English"
+        type="error"
+      />
+    );
+  } else if (
+    weather.weather.coord.lon !== Number(lon) ||
+    weather.weather.coord.lat !== Number(lat)
+  ) {
+    return (
+      <>
+        <BackBtn />
+        <ErrorHandler
+          message="Coordinations doesn't match the city name!"
+          currentLang="English"
+          type="error"
+        />
+      </>
     );
   }
 
@@ -116,11 +145,7 @@ function Weather(props) {
         <div className="weather-wrapper">
           <div className="weather-left">
             <div className="weather-left-container">
-              <div className="go-back">
-                <button className="go-back-btn" onClick={handleGoBack}>
-                  Go back
-                </button>
-              </div>
+              <BackBtn />
               <SelectSavedCities />
               <div className="main-title-wrapper">
                 <h1 className="main-title-text">
@@ -195,9 +220,12 @@ function Weather(props) {
                 <span className="over-view-temp-sign">°C</span>
               </div>
               <div className="overview-country">
-                <h4 className="overview-country-text">
-                  {fullWeather.all.timezone}
+                <h4 className="overview-country-cityname">
+                  {weather.weather.name}
                 </h4>
+                <small className="overview-country-timezone">
+                  {fullWeather.all.timezone}
+                </small>
               </div>
               <div className="overview-humiditydew">
                 <div className="overview-humidity">
