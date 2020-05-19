@@ -1,6 +1,6 @@
 import React from "react";
 
-import { loadCitiesFromLs } from "../../actions/index";
+import { loadCitiesFromLs, deleteCityFromLs } from "../../actions/index";
 
 // Images
 import berlin from "../../images/cities/berlin.jpg";
@@ -10,11 +10,11 @@ import london from "../../images/cities/london.jpg";
 
 import "./CitiesList.css";
 
-function CitiesList({ current, submit }) {
-  const { city, lon, lat } = current;
+function CitiesList({ currentCityLon, saveCity, deleteCity }) {
   const cities = loadCitiesFromLs();
 
-  const isSaved = cities.find((item) => item.lon === lon) ? true : false;
+  const isSaved =
+    cities && cities.find((item) => item.lon === currentCityLon) ? true : false;
 
   const style = {
     border: isSaved ? "1px solid #ff3838" : "1px solid #110e3c",
@@ -40,14 +40,36 @@ function CitiesList({ current, submit }) {
       </div>
       <div style={style} className="city-item">
         <div className="city-add">
-          <i className="fas fa-plus"></i>
-          <form onSubmit={submit}>
-            <input
-              className="city-add-text"
-              type="submit"
-              value={isSaved ? "Delete city" : "Save city"}
-            />
-          </form>
+          {!isSaved ? (
+            <>
+              <i className="fas fa-trash"></i>
+              <form onSubmit={saveCity}>
+                <input
+                  className="city-add-text"
+                  type="submit"
+                  value="Save city"
+                />
+              </form>
+            </>
+          ) : (
+            <>
+              <i className="fas fa-plus"></i>
+              <form
+                onSubmit={(e) =>
+                  deleteCity(
+                    e,
+                    cities.find((item) => item.lon === currentCityLon).id
+                  )
+                }
+              >
+                <input
+                  className="city-add-text"
+                  type="submit"
+                  value="Delete city"
+                />
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>

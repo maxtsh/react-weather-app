@@ -61,7 +61,35 @@ $violet-darker: #110e3c;
         .weather-left-container {
           .cities-list {
             .city-item {
+              height: 140px;
               text-align: center;
+
+              .city-img {
+                width: 80%;
+              }
+
+              .city-name {
+                font-size: 80%;
+              }
+            }
+
+            .city-add {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: "768px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .cities-list {
+            .city-item {
+              height: 100px;
 
               .city-img {
                 width: 80%;

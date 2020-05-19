@@ -65,10 +65,22 @@ export function saveCityToLs(cityData) {
   }
   const cityName = cityData.city.split("");
   cityName.splice(0, 1, cityData.city.split("")[0].toUpperCase());
-  cities.push({ ...cityData, city: cityName, id: uuidv4() });
+  cities.push({ ...cityData, city: cityName.join(""), id: uuidv4() });
   localStorage.setItem("cities", JSON.stringify(cities));
 
-  return "Successfully Done.";
+  return "Successfully saved";
+}
+
+export function deleteCityFromLs(cityId) {
+  const allCities = loadCitiesFromLs();
+  const savedCity = JSON.parse(localStorage.getItem("cities")).find(
+    (item) => item.id === cityId
+  );
+
+  const filtered = allCities.filter((city) => city.id !== savedCity.id);
+  localStorage.setItem("cities", JSON.stringify(filtered));
+
+  return "Successfully deleted";
 }
 
 export function loadCitiesFromLs() {

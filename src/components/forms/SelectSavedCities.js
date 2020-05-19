@@ -37,19 +37,18 @@ function SelectSavedCities() {
             name="cities"
             onChange={handleSelectChange}
             defaultValue="DEFAULT"
+            disabled={savedCities ? false : true}
           >
             <option value="DEFAULT" disabled>
-              Select a city
+              {savedCities ? "Select a city" : "There is no saved cities yet"}
             </option>
-            {savedCities ? (
-              savedCities.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.city}
-                </option>
-              ))
-            ) : (
-              <option value={null}>There is no saved cities yet</option>
-            )}
+            {savedCities
+              ? savedCities.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.city}
+                  </option>
+                ))
+              : null}
           </select>
           <input
             className="search-submit"

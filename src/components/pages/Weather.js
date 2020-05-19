@@ -14,6 +14,7 @@ import {
   getFullWeather,
   clearFullWeather,
   saveCityToLs,
+  deleteCityFromLs,
 } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 import { weatherContext } from "../../context/weatherContext";
@@ -84,15 +85,24 @@ function Weather(props) {
       e.preventDefault();
       try {
         const result = saveCityToLs({ city, lon, lat });
-        if (result) {
-          setPopup({ show: true, message: result, type: "success" });
-        }
+        setPopup({ show: true, message: result, type: "success" });
       } catch (err) {
         setPopup({ show: true, message: err.message, type: "error" });
       }
     },
     [city, lon, lat]
   );
+
+  // Deleting current city from the localstorage event handler
+  const handleCityDelete = useCallback((e, id) => {
+    e.preventDefault();
+    try {
+      const result = deleteCityFromLs(id);
+      setPopup({ show: true, message: result, type: "success" });
+    } catch (err) {
+      setPopup({ show: true, message: err.message, type: "error" });
+    }
+  }, []);
 
   // If data is not fetched then show the loading screen
   if (
@@ -168,8 +178,9 @@ function Weather(props) {
                 </h1>
               </div>
               <CitiesList
-                current={{ city, lon, lat }}
-                submit={handleCitySubmit}
+                currentCityLon={lon}
+                saveCity={handleCitySubmit}
+                deleteCity={handleCityDelete}
               />
               <div className="daily">
                 <div className="daily-title">
