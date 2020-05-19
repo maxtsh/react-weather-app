@@ -1,5 +1,7 @@
 import React from "react";
 
+import { loadCitiesFromLs } from "../../actions/index";
+
 // Images
 import berlin from "../../images/cities/berlin.jpg";
 import france from "../../images/cities/france.jpg";
@@ -8,7 +10,16 @@ import london from "../../images/cities/london.jpg";
 
 import "./CitiesList.css";
 
-function CitiesList({ submit }) {
+function CitiesList({ current, submit }) {
+  const { city, lon, lat } = current;
+  const cities = loadCitiesFromLs();
+
+  const isSaved = cities.find((item) => item.lon === lon) ? true : false;
+
+  const style = {
+    border: isSaved ? "1px solid #ff3838" : "1px solid #110e3c",
+  };
+
   return (
     <div className="cities-list">
       <div className="city-item">
@@ -27,11 +38,15 @@ function CitiesList({ submit }) {
         <img className="city-img" src={london} alt="london" />
         <p className="city-name">London, Britain</p>
       </div>
-      <div className="city-item">
+      <div style={style} className="city-item">
         <div className="city-add">
           <i className="fas fa-plus"></i>
           <form onSubmit={submit}>
-            <input className="city-add-text" type="submit" value="Save City" />
+            <input
+              className="city-add-text"
+              type="submit"
+              value={isSaved ? "Delete city" : "Save city"}
+            />
           </form>
         </div>
       </div>

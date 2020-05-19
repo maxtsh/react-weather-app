@@ -114,11 +114,14 @@ function Weather(props) {
   } else if (weather.error) {
     // if any error happens from weather-fetch then show it on popup
     return (
-      <ErrorHandler
-        message={weather.error.data.message}
-        currentLang="English"
-        type="error"
-      />
+      <>
+        <BackBtn />
+        <ErrorHandler
+          message={weather.error.data.message}
+          currentLang="English"
+          type="error"
+        />
+      </>
     );
   } else if (
     // if the user changes city-name in the url then check the lon and lat to weather-fetch
@@ -164,7 +167,10 @@ function Weather(props) {
                   Weather <span className="main-title-text-bold">Forecast</span>
                 </h1>
               </div>
-              <CitiesList submit={handleCitySubmit} />
+              <CitiesList
+                current={{ city, lon, lat }}
+                submit={handleCitySubmit}
+              />
               <div className="daily">
                 <div className="daily-title">
                   <h2 className="daily-title-text">

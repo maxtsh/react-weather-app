@@ -63,7 +63,9 @@ export function saveCityToLs(cityData) {
   } else {
     cities = JSON.parse(localStorage.getItem("cities"));
   }
-  cities.push({ ...cityData, id: uuidv4() });
+  const cityName = cityData.city.split("");
+  cityName.splice(0, 1, cityData.city.split("")[0].toUpperCase());
+  cities.push({ ...cityData, city: cityName, id: uuidv4() });
   localStorage.setItem("cities", JSON.stringify(cities));
 
   return "Successfully Done.";
