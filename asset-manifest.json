@@ -1,0 +1,38 @@
+{
+  "files": {
+    "static/js/0.48c03eec.chunk.js": "/react-weather-app/static/js/0.48c03eec.chunk.js",
+    "static/js/0.48c03eec.chunk.js.map": "/react-weather-app/static/js/0.48c03eec.chunk.js.map",
+    "main.css": "/react-weather-app/static/css/main.e0b9187e.chunk.css",
+    "main.js": "/react-weather-app/static/js/main.5746059c.chunk.js",
+    "main.js.map": "/react-weather-app/static/js/main.5746059c.chunk.js.map",
+    "runtime-main.js": "/react-weather-app/static/js/runtime-main.0c17221e.js",
+    "runtime-main.js.map": "/react-weather-app/static/js/runtime-main.0c17221e.js.map",
+    "static/js/3.712a0889.chunk.js": "/react-weather-app/static/js/3.712a0889.chunk.js",
+    "static/js/3.712a0889.chunk.js.map": "/react-weather-app/static/js/3.712a0889.chunk.js.map",
+    "static/js/4.a150edbe.chunk.js": "/react-weather-app/static/js/4.a150edbe.chunk.js",
+    "static/js/4.a150edbe.chunk.js.map": "/react-weather-app/static/js/4.a150edbe.chunk.js.map",
+    "static/js/5.ccc0caad.chunk.js": "/react-weather-app/static/js/5.ccc0caad.chunk.js",
+    "static/js/5.ccc0caad.chunk.js.map": "/react-weather-app/static/js/5.ccc0caad.chunk.js.map",
+    "index.html": "/react-weather-app/index.html",
+    "precache-manifest.0a419211408295eac7d748e9b32ec8cf.js": "/react-weather-app/precache-manifest.0a419211408295eac7d748e9b32ec8cf.js",
+    "service-worker.js": "/react-weather-app/service-worker.js",
+    "static/css/main.e0b9187e.chunk.css.map": "/react-weather-app/static/css/main.e0b9187e.chunk.css.map",
+    "static/js/0.48c03eec.chunk.js.LICENSE.txt": "/react-weather-app/static/js/0.48c03eec.chunk.js.LICENSE.txt",
+    "static/js/3.712a0889.chunk.js.LICENSE.txt": "/react-weather-app/static/js/3.712a0889.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/react-weather-app/static/media/IRANSansWeb_UltraLight.f8a4f691.ttf",
+    "static/media/berlin.jpg": "/react-weather-app/static/media/berlin.4ea28db8.jpg",
+    "static/media/france.jpg": "/react-weather-app/static/media/france.4a6c0f70.jpg",
+    "static/media/loader.gif": "/react-weather-app/static/media/loader.2b02159f.gif",
+    "static/media/logo.png": "/react-weather-app/static/media/logo.90ab8cc0.png",
+    "static/media/london.jpg": "/react-weather-app/static/media/london.c7343e04.jpg",
+    "static/media/newyork.jpg": "/react-weather-app/static/media/newyork.fa7cf03d.jpg",
+    "static/media/Home.css": "/react-weather-app/static/media/seasons.79688925.jpg",
+    "static/media/weather-draw.svg": "/react-weather-app/static/media/weather-draw.a1d011a0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c17221e.js",
+    "static/js/3.712a0889.chunk.js",
+    "static/css/main.e0b9187e.chunk.css",
+    "static/js/main.5746059c.chunk.js"
+  ]
+}
