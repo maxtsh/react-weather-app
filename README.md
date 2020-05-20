@@ -1,4 +1,6 @@
 Welcome to React Weather App by Max Tsh
+Live on netlify: [Netlify](https://maxtsh-weather.netlify.app/)
+Live on github: [Github](https://maxtsh.github.io/react-weather-app/)
 
 ![](src/images/preview.png)
 
