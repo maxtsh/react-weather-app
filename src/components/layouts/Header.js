@@ -55,11 +55,6 @@ function Header() {
             <Link to="/">{headerLanguages[language.current].menus.home}</Link>
           </li>
           <li className={open ? "nav-item fade" : "nav-item"}>
-            <Link to="/about">
-              {headerLanguages[language.current].menus.about}
-            </Link>
-          </li>
-          <li className={open ? "nav-item fade" : "nav-item"}>
             <Link to="/api">{headerLanguages[language.current].menus.api}</Link>
           </li>
         </ul>
@@ -83,12 +78,13 @@ function Header() {
             <Link to="/">{headerLanguages[language.current].menus.home}</Link>
           </li>
           <li className="list-item">
-            <Link to="/about">
-              {headerLanguages[language.current].menus.about}
-            </Link>
-          </li>
-          <li className="list-item">
-            <Link to="#">{headerLanguages[language.current].menus.api}</Link>
+            <a
+              href="https://openweathermap.org/api"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {headerLanguages[language.current].menus.api}
+            </a>
           </li>
         </ul>
       </nav>

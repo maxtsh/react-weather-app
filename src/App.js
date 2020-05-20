@@ -9,27 +9,23 @@ import { LanguageProvider } from "./context/languageContext";
 // Pages
 import Home from "./components/pages/Home";
 import Weather from "./components/pages/Weather";
-import About from "./components/pages/About";
-
-import ErrorBoundary from "./ErrorBoundry/ErrorBoundary";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <WeatherProvider>
-          <LanguageProvider>
-            <ErrorBoundary>
+    <WeatherProvider>
+      <LanguageProvider>
+        <FullWeatherProvider>
+          <Router>
+            <Switch>
               <Route exact path="/" component={Home} />
-            </ErrorBoundary>
-            <FullWeatherProvider>
               <Route exact path="/weather/:city/:coord" component={Weather} />
-            </FullWeatherProvider>
-            <Route exact path="/about" component={About} />
-          </LanguageProvider>
-        </WeatherProvider>
-      </Switch>
-    </Router>
+              <Route component={NotFound} />
+            </Switch>
+          </Router>
+        </FullWeatherProvider>
+      </LanguageProvider>
+    </WeatherProvider>
   );
 }
 export default App;

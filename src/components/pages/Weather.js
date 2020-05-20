@@ -152,8 +152,8 @@ function Weather(props) {
   // Simple calculations
   const currentTemp = Math.round(fullWeather.all.current.temp);
   const feelsLike = Math.round(fullWeather.all.current.feels_like);
-  const sunset = fullWeather.all.current.sunset;
-  const sunrise = fullWeather.all.current.sunrise;
+  // const sunset = fullWeather.all.current.sunset;
+  // const sunrise = fullWeather.all.current.sunrise;
 
   return (
     <ErrorBoundary currentLang="English">
@@ -239,8 +239,8 @@ function Weather(props) {
               <div className="overview-more-info">
                 <p className="overview-more-info-feels-like">{`Feels Like ${feelsLike}°C
                             `}</p>
-                <p className="overview-more-info-sunset">Sunset {sunset}</p>
-                <p className="overview-more-info-sunrise">Sunrise {sunrise}</p>
+                {/* <p className="overview-more-info-sunset">Sunset {sunset}</p>
+                <p className="overview-more-info-sunrise">Sunrise {sunrise}</p> */}
               </div>
             </div>
             <Suspense fallback={<Loader classes="fall-back" />}>

@@ -10,4 +10,4 @@ function BackBtn() {
   );
 }
 
-export default React.memo(BackBtn);
+export default BackBtn;

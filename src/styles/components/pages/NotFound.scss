@@ -1,0 +1,24 @@
+.not-found-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #110e3c;
+
+  .not-found-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .not-found-title {
+      color: #fff;
+      font-size: 600%;
+      font-weight: 900;
+    }
+
+    .not-found-text {
+      color: #fff;
+      font-size: 200%;
+      font-weight: 400;
+    }
+  }
+}

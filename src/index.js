@@ -9,6 +9,7 @@ import "./styles/css/style.css";
 // Page styles
 import "./styles/components/pages/Home.css";
 import "./styles/components/pages/Weather.css";
+import "./styles/components/pages/NotFound.css";
 // Layout Styles
 import "./styles/components/layouts/header.css";
 import "./styles/components/layouts/WeatherDaily.css";

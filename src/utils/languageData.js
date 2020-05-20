@@ -4,7 +4,6 @@ export const headerLanguages = {
     direction: "ltr",
     menus: {
       home: "Home",
-      about: "About",
       api: "API",
     },
   },
@@ -13,7 +12,6 @@ export const headerLanguages = {
     direction: "rtl",
     menus: {
       home: "خانه",
-      about: "درباره ما",
       api: "ای پی آی",
     },
   },
