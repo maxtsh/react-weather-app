@@ -20,11 +20,7 @@ function LiveClock() {
     return () => clearInterval(clockInterval);
   }, [getLiveClock]);
 
-  return (
-    <p className="local-time">
-      Your local time: <span className="local-time-clock">{clock}</span>
-    </p>
-  );
+  return <p className="local-time">{clock}</p>;
 }
 
 export default LiveClock;

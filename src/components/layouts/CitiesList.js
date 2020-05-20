@@ -1,14 +1,12 @@
 import React from "react";
 
-import { loadCitiesFromLs, deleteCityFromLs } from "../../actions/index";
+import { loadCitiesFromLs } from "../../actions/index";
 
 // Images
 import berlin from "../../images/cities/berlin.jpg";
 import france from "../../images/cities/france.jpg";
 import newyork from "../../images/cities/newyork.jpg";
 import london from "../../images/cities/london.jpg";
-
-import "./CitiesList.css";
 
 function CitiesList({ currentCityLon, saveCity, deleteCity }) {
   const cities = loadCitiesFromLs();

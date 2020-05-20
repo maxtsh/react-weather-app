@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import { loadCitiesFromLs } from "../../actions/index";
-import "./SelectSavedCities.css";
 
 function SelectSavedCities() {
   const [selectedCity, setSelectedCity] = useState({});

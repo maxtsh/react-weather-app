@@ -12,9 +12,6 @@ import { languageContext } from "../../context/languageContext";
 import Header from "../layouts/Header";
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 
-// Styles
-import "./Home.css";
-
 // Languages Data
 import { homeLanguages } from "../../utils/languageData";
 

@@ -7,9 +7,6 @@ import { languageContext } from "../../context/languageContext";
 // Logo
 import Logo from "../../images/logo.png";
 
-// Styles
-import "./header.css";
-
 // Language Data
 import { headerLanguages } from "../../utils/languageData";
 

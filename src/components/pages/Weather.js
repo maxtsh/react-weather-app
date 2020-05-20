@@ -28,9 +28,6 @@ import Loader from "../layouts/Loader";
 import ErrorBoundary from "../../ErrorBoundry/ErrorBoundary"; // For Thrown Errors
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler"; // For Async Catch
 
-// Weather Styles
-import "./Weather.css";
-
 // Utilities
 import { weekDays } from "../../utils/getDaily";
 import { months } from "../../utils/getMonths";

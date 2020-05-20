@@ -4,8 +4,6 @@ import { HorizontalBar } from "react-chartjs-2";
 // Get The Next 7 Days From Today
 import getDaily from "../../utils/getDaily";
 
-import "./WeatherDaily.css";
-
 function WeatherDaily({ data }) {
   // Slicing out to remove today data and only have the next 7 days
   const maxTemps = data

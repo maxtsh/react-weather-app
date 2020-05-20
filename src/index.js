@@ -6,6 +6,17 @@ import * as serviceWorker from "./serviceWorker";
 // Global Style
 import "./styles/global.css";
 import "./styles/css/style.css";
+// Page styles
+import "./styles/components/pages/Home.css";
+import "./styles/components/pages/Weather.css";
+// Layout Styles
+import "./styles/components/layouts/header.css";
+import "./styles/components/layouts/WeatherDaily.css";
+import "./styles/components/layouts/WeatherHourly.css";
+import "./styles/components/layouts/CitiesList.css";
+import "./styles/components/layouts/BackBtn.css";
+// Form styles
+import "./styles/components/forms/SelectSavedCities.css";
 
 ReactDOM.render(
   <React.StrictMode>

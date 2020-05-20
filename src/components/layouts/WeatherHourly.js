@@ -1,9 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-// Styles
-import "./WeatherHourly.css";
-
 // Get The Next 24 Hours From Current Time
 import getHours from "../../utils/getHours";
 
