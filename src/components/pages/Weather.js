@@ -20,6 +20,7 @@ import { fullWeatherContext } from "../../context/fullWeatherContext";
 import { weatherContext } from "../../context/weatherContext";
 
 // Components
+import LiveClock from "../layouts/LiveClock";
 import CitiesList from "../layouts/CitiesList";
 import BackBtn from "../layouts/BackBtn";
 import SelectSavedCities from "../forms/SelectSavedCities";
@@ -197,6 +198,7 @@ function Weather(props) {
           <div className="weather-right">
             <i className="fas fa-cloud cloud-1"></i>
             <i className="fas fa-cloud cloud-2"></i>
+            <LiveClock />
             <img className="weather-draw" src={weatherDraw} alt="" />
             <div className="overview">
               <div className="overview-header">

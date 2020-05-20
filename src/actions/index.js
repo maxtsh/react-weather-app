@@ -73,14 +73,22 @@ export function saveCityToLs(cityData) {
 
 export function deleteCityFromLs(cityId) {
   const allCities = loadCitiesFromLs();
-  const savedCity = JSON.parse(localStorage.getItem("cities")).find(
-    (item) => item.id === cityId
-  );
+  if (
+    JSON.parse(localStorage.getItem("cities")).find(
+      (item) => item.id === cityId
+    )
+  ) {
+    const savedCity = JSON.parse(localStorage.getItem("cities")).find(
+      (item) => item.id === cityId
+    );
+    const filtered = allCities.filter((city) => city.id !== savedCity.id);
+    localStorage.setItem("cities", JSON.stringify(filtered));
 
-  const filtered = allCities.filter((city) => city.id !== savedCity.id);
-  localStorage.setItem("cities", JSON.stringify(filtered));
-
-  return "Successfully deleted";
+    return "Successfully deleted";
+  } else {
+    const error = new Error("current city is already deleted!");
+    throw error;
+  }
 }
 
 export function loadCitiesFromLs() {

@@ -76,6 +76,20 @@ $water-color: #4293ec;
       flex-basis: 40%;
       background-color: $violet-darker;
 
+      .local-time {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        font-size: 90%;
+        font-weight: 300;
+
+        .local-time-clock {
+          font-size: 100%;
+          font-weight: 700;
+        }
+      }
+
       .weather-draw {
         margin: 0 auto;
         width: 250px;

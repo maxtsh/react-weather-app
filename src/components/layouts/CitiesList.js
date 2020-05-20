@@ -42,32 +42,25 @@ function CitiesList({ currentCityLon, saveCity, deleteCity }) {
         <div className="city-add">
           {!isSaved ? (
             <>
-              <i className="fas fa-trash"></i>
-              <form onSubmit={saveCity}>
-                <input
-                  className="city-add-text"
-                  type="submit"
-                  value="Save city"
-                />
-              </form>
+              <i className="fas fa-plus"></i>
+              <button className="city-add-text" onClick={saveCity}>
+                Save city
+              </button>
             </>
           ) : (
             <>
-              <i className="fas fa-plus"></i>
-              <form
-                onSubmit={(e) =>
+              <i className="fas fa-trash"></i>
+              <button
+                className="city-add-text"
+                onClick={(e) =>
                   deleteCity(
                     e,
                     cities.find((item) => item.lon === currentCityLon).id
                   )
                 }
               >
-                <input
-                  className="city-add-text"
-                  type="submit"
-                  value="Delete city"
-                />
-              </form>
+                Delete city
+              </button>
             </>
           )}
         </div>

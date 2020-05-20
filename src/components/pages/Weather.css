@@ -90,6 +90,20 @@
   background-color: #110e3c;
 }
 
+.weather-container .weather-wrapper .weather-right .local-time {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 90%;
+  font-weight: 300;
+}
+
+.weather-container .weather-wrapper .weather-right .local-time .local-time-clock {
+  font-size: 100%;
+  font-weight: 700;
+}
+
 .weather-container .weather-wrapper .weather-right .weather-draw {
   margin: 0 auto;
   width: 250px;
