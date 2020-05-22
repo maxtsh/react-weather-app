@@ -175,6 +175,7 @@ function Weather(props) {
                   Weather <span className="main-title-text-bold">Forecast</span>
                 </h1>
               </div>
+              <p>Select World's leading cities:</p>
               <CitiesList
                 currentCityLon={lon}
                 saveCity={handleCitySubmit}

@@ -49,6 +49,7 @@ export function clearFullWeather(dispatch) {
   });
 }
 
+// Saving current city to localStorage
 export function saveCityToLs(cityData) {
   let cities;
   if (!localStorage.getItem("cities")) {
@@ -71,6 +72,7 @@ export function saveCityToLs(cityData) {
   return "Successfully saved";
 }
 
+// Deleting current city from localStorage
 export function deleteCityFromLs(cityId) {
   const allCities = loadCitiesFromLs();
   if (
@@ -91,6 +93,17 @@ export function deleteCityFromLs(cityId) {
   }
 }
 
+// Clearing all cities from localStorage
+export function clearAllCities() {
+  if (localStorage.getItem("cities")) {
+    localStorage.removeItem("cities");
+  } else {
+    const err = new Error("There is nothing to delete!");
+    throw err;
+  }
+}
+
+// Loading all the cities from localStorage
 export function loadCitiesFromLs() {
   if (
     !localStorage.getItem("cities") ||

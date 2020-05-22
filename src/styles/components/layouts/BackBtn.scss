@@ -2,8 +2,7 @@ $violet-darker: #110e3c;
 $violet-lighter: #1d1d46;
 
 .go-back {
-  margin-top: 1rem;
-  margin-left: 0.5rem;
+  margin: 1rem 0rem 0.8rem 0.5rem;
 
   .go-back-btn {
     text-decoration: none;
@@ -20,6 +19,41 @@ $violet-lighter: #1d1d46;
 
     &:hover {
       background-color: $violet-darker;
+    }
+  }
+}
+
+// MEDIA QUERIES
+@media all and (max-width: "768px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .go-back {
+            .go-back-btn {
+              font-size: 90%;
+              font-weight: 400;
+              padding: 0.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: "480px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .go-back {
+            .go-back-btn {
+              font-size: 80%;
+              padding: 0.4rem;
+            }
+          }
+        }
+      }
     }
   }
 }

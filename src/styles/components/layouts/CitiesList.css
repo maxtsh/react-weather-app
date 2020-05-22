@@ -16,6 +16,7 @@
 
 .cities-list .city-item {
   text-align: center;
+  width: 100%;
   max-width: 180px;
   height: 90%;
   -webkit-box-flex: 1;
@@ -27,10 +28,13 @@
   border-radius: 1rem;
 }
 
+.cities-list .city-item .city-item-link {
+  text-decoration: none;
+}
+
 .cities-list .city-item .city-img {
   border-radius: 1rem;
   width: 95%;
-  cursor: pointer;
 }
 
 .cities-list .city-item .city-name {
@@ -55,7 +59,7 @@
   height: 100%;
 }
 
-.cities-list .city-add .city-add-text {
+.cities-list .city-add .city-add-btn {
   font-size: 110%;
   font-weight: 400;
   border: none;
@@ -65,12 +69,15 @@
 }
 
 @media all and (max-width: 1024px) {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list {
+    margin-bottom: 2rem;
+  }
   .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item {
-    height: 140px;
+    height: 150px;
     text-align: center;
   }
   .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item .city-img {
-    width: 80%;
+    width: 90%;
   }
   .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item .city-name {
     font-size: 80%;
@@ -88,9 +95,32 @@
     width: 80%;
   }
   .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item .city-name {
-    font-size: 80%;
+    font-weight: 400;
+  }
+}
+
+@media all and (max-width: 560px) {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item {
+    height: 200px;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item .city-img {
+    width: 100%;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-item .city-name {
+    font-size: 100%;
+    font-weight: 400;
   }
   .weather-container .weather-wrapper .weather-left .weather-left-container .cities-list .city-add {
+    width: 180px;
     height: 100%;
   }
 }

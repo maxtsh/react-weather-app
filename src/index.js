@@ -18,6 +18,8 @@ import "./styles/components/layouts/CitiesList.css";
 import "./styles/components/layouts/BackBtn.css";
 // Form styles
 import "./styles/components/forms/SelectSavedCities.css";
+// Modal Styles
+import "./styles/components/modal/Modal.css";
 
 ReactDOM.render(
   <React.StrictMode>

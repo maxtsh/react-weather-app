@@ -1,0 +1,73 @@
+.black-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 600px;
+  height: 120px;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  z-index: 100;
+}
+
+.modal-container .modal-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-container .modal-wrapper .fa-times-circle {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 150%;
+  color: #ff3838;
+  cursor: pointer;
+}
+
+.modal-container .modal-wrapper .modal-title {
+  color: #110e3c;
+  font-size: 200%;
+  font-weight: 900;
+}
+
+.modal-container .modal-wrapper .modal-confirm {
+  font-size: 150%;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #ff3838;
+}
+
+.modal-container .modal-wrapper .modal-error {
+  font-size: 100%;
+  font-weight: 700;
+  color: #ff3838;
+  margin-top: 0.5rem;
+}
+/*# sourceMappingURL=Modal.css.map */

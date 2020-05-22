@@ -5,7 +5,7 @@ $water-color: #4293ec;
 .weather-container {
   width: 100vw;
   height: 100vh;
-  //   overflow: hidden;
+  overflow: hidden;
 
   .weather-wrapper {
     display: flex;
@@ -19,10 +19,6 @@ $water-color: #4293ec;
       flex-basis: 60%;
       background-color: #e3f6fe;
       z-index: 10;
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: center;
-      // align-items: stretch;
 
       .weather-left-container {
         width: 95%;
@@ -383,9 +379,6 @@ $water-color: #4293ec;
     .weather-wrapper {
       .weather-left {
         .weather-left-container {
-          .go-back {
-            padding: 1rem 0rem;
-          }
           .main-title-wrapper {
             .main-title-text {
               font-size: 170%;
@@ -440,14 +433,11 @@ $water-color: #4293ec;
     .weather-wrapper {
       .weather-left {
         .weather-left-container {
-          .go-back {
-            padding: 1rem 0rem;
-          }
           .main-title-wrapper {
             .main-title-text {
-              font-size: 170%;
+              font-size: 130%;
               font-weight: 400;
-              padding: 1rem 0rem;
+              padding: 0.5rem 0rem;
             }
           }
         }

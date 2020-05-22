@@ -1,6 +1,5 @@
 .go-back {
-  margin-top: 1rem;
-  margin-left: 0.5rem;
+  margin: 1rem 0rem 0.8rem 0.5rem;
 }
 
 .go-back .go-back-btn {
@@ -20,5 +19,20 @@
 
 .go-back .go-back-btn:hover {
   background-color: #110e3c;
+}
+
+@media all and (max-width: 768px) {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .go-back .go-back-btn {
+    font-size: 90%;
+    font-weight: 400;
+    padding: 0.6rem;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .go-back .go-back-btn {
+    font-size: 80%;
+    padding: 0.4rem;
+  }
 }
 /*# sourceMappingURL=BackBtn.css.map */
