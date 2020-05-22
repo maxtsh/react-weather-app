@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { languageContext } from "../../context/languageContext";
+
+const langs = {
+  English: "Go home",
+  Persian: "بازگشت",
+};
 
 function BackBtn() {
+  const { language } = useContext(languageContext);
+
   return (
     <div className="go-back">
       <a href="/" className="go-back-btn">
-        Go home
+        {langs[language.current]}
       </a>
     </div>
   );
 }
 
-export default BackBtn;
+export default React.memo(BackBtn);

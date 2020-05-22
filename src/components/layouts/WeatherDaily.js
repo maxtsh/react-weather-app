@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { languageContext } from "../../context/languageContext";
+
 import { HorizontalBar } from "react-chartjs-2";
 
 // Get The Next 7 Days From Today
 import getDaily from "../../utils/getDaily";
 
+const langs = {
+  English: {
+    maxTemp: "Max Temp °C",
+    minTemp: "Min Temp °C",
+  },
+  Persian: {
+    maxTemp: "حداکثر دما °C",
+    minTemp: "حداقل دما °C",
+  },
+};
+
 function WeatherDaily({ data }) {
+  const { language } = useContext(languageContext);
   // Slicing out to remove today data and only have the next 7 days
   const maxTemps = data
     .slice(1, 8)
@@ -12,14 +26,14 @@ function WeatherDaily({ data }) {
   const minTemps = data
     .slice(1, 8)
     .map((eachMin) => Math.round(eachMin.temp.min));
-  const next7Days = getDaily();
+  const next7Days = getDaily(language.current);
   const weekDaysShort = next7Days.map((day) => day.slice(0, 3));
 
   const allData = {
     labels: weekDaysShort,
     datasets: [
       {
-        label: "Max Temp °C",
+        label: langs[language.current].maxTemp,
         data: maxTemps,
         backgroundColor: "#302E63",
         borderColor: "#302E90",
@@ -27,7 +41,7 @@ function WeatherDaily({ data }) {
         barThickness: "flex",
       },
       {
-        label: "Min Temp °C",
+        label: langs[language.current].minTemp,
         data: minTemps,
         backgroundColor: "#f57f17",
         borderColor: "#f57f60",
@@ -54,7 +68,7 @@ function WeatherDaily({ data }) {
                   alt=""
                 />
               </td>
-              <td className="deaths">{`${Math.round(eachDay.temp.day)} °C`}</td>
+              <td>{`${Math.round(eachDay.temp.day)} °C`}</td>
             </tr>
           ))}
         </tbody>

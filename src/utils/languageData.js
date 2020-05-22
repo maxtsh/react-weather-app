@@ -49,3 +49,36 @@ export const homeLanguages = {
     },
   },
 };
+
+export const weatherLangs = {
+  English: {
+    mainTitle: {
+      normal: "Weather",
+      bold: "Forecast",
+    },
+    leading: "Select worlds leading cities:",
+    week: "Week",
+    style: {
+      dir: "ltr",
+    },
+    today: "Today",
+    humidity: "Humidity:",
+    dewPoint: "Dew point:",
+    feelsLike: "Feels like:",
+  },
+  Persian: {
+    mainTitle: {
+      normal: "پیش بینی",
+      bold: "آب و هوا",
+    },
+    leading: "انتخاب شهرهای برتر جهان",
+    week: "هفته",
+    style: {
+      dir: "rtl",
+    },
+    today: "امروز",
+    humidity: "رطوبت:",
+    dewPoint: "نقطه شبنم:",
+    feelsLike: "حس دمایی:",
+  },
+};

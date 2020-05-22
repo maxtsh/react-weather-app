@@ -6,10 +6,10 @@ const initialLanguage = { current: "English" };
 export const languageContext = createContext();
 
 export function LanguageProvider(props) {
-  const [language, dispatch] = useReducer(languageReducer, initialLanguage);
+  const [language, langDispatch] = useReducer(languageReducer, initialLanguage);
 
   // For preventing unneccessary consumer re-renders with wrap this in memo hook
-  const value = useMemo(() => ({ language, dispatch }), [language]);
+  const value = useMemo(() => ({ language, langDispatch }), [language]);
 
   return (
     <languageContext.Provider value={value}>

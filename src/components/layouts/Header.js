@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Language Context
@@ -11,19 +11,16 @@ import Logo from "../../images/logo.png";
 import { headerLanguages } from "../../utils/languageData";
 
 function Header() {
-  const { language, dispatch } = useContext(languageContext);
+  const { language, langDispatch } = useContext(languageContext);
   const [open, setOpen] = useState(false);
 
   // Change Callback Optimization
-  const handleChange = useCallback(
-    (e) => {
-      dispatch({
-        type: "CHANGE_LANGUAGE",
-        payload: e.target.checked ? "Persian" : "English",
-      });
-    },
-    [dispatch]
-  );
+  function handleLangChange(e) {
+    langDispatch({
+      type: "CHANGE_LANGUAGE",
+      payload: e.target.checked ? "Persian" : "English",
+    });
+  }
 
   return (
     <header className="header-container">
@@ -45,7 +42,7 @@ function Header() {
               <input
                 type="checkbox"
                 className="checkbox"
-                onChange={handleChange}
+                onChange={handleLangChange}
               />
               <div className="knobs"></div>
               <div className="layer"></div>
@@ -68,7 +65,7 @@ function Header() {
               <input
                 type="checkbox"
                 className="checkbox"
-                onChange={handleChange}
+                onChange={handleLangChange}
               />
               <div className="knobs"></div>
               <div className="layer"></div>

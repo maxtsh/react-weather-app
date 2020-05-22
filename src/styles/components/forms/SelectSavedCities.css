@@ -46,6 +46,7 @@
 }
 
 .form-wrapper .form .input-group .search-input {
+  font-family: "Roboto", IRANSans;
   -ms-flex-preferred-size: 80%;
       flex-basis: 80%;
   font-size: 100%;
@@ -53,8 +54,6 @@
   border: none;
   outline: none;
   background-color: #fff;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
 }
 
 .form-wrapper .form .input-group .search-submit {
@@ -68,8 +67,6 @@
   color: #fff;
   background-color: #f57f17;
   cursor: pointer;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 
 .form-wrapper .form .input-group .search-submit:disabled {

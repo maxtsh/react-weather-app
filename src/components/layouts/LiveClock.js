@@ -23,4 +23,4 @@ function LiveClock() {
   return <p className="local-time">{clock}</p>;
 }
 
-export default LiveClock;
+export default React.memo(LiveClock);

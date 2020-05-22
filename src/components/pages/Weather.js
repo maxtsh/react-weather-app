@@ -18,6 +18,7 @@ import {
 } from "../../actions/index";
 import { fullWeatherContext } from "../../context/fullWeatherContext";
 import { weatherContext } from "../../context/weatherContext";
+import { languageContext } from "../../context/languageContext";
 
 // Components
 import LiveClock from "../layouts/LiveClock";
@@ -29,11 +30,14 @@ import ErrorBoundary from "../../ErrorBoundry/ErrorBoundary"; // For Thrown Erro
 import ErrorHandler from "../../ErrorBoundry/ErrorHandler"; // For Async Catch
 
 // Utilities
-import { weekDays } from "../../utils/getDaily";
-import { months } from "../../utils/getMonths";
+import { getWeekDays } from "../../utils/getDaily";
+import getMonths from "../../utils/getMonths";
 
 // Images
 import weatherDraw from "../../images/weather-draw.svg";
+
+// Languages Data
+import { weatherLangs } from "../../utils/languageData";
 
 // Components With Lazy-Load
 const WeatherDaily = lazy(() => import("../layouts/WeatherDaily.js"));
@@ -43,6 +47,7 @@ const time = new Date();
 
 function Weather(props) {
   const [popup, setPopup] = useState({ show: false, message: "", type: "" });
+  const { language, langDispatch } = useContext(languageContext);
   const { weather, dispatch } = useContext(weatherContext);
   const { fullWeather, dispatch2 } = useContext(fullWeatherContext);
   const { city, coord } = props.match.params;
@@ -101,6 +106,14 @@ function Weather(props) {
       setPopup({ show: true, message: err.message, type: "error" });
     }
   }, []);
+
+  // Togle Language Change
+  function toggleLanguage(e) {
+    langDispatch({
+      type: "CHANGE_LANGUAGE",
+      payload: e.target.checked ? "Persian" : "English",
+    });
+  }
 
   // If data is not fetched then show the loading screen
   if (
@@ -164,18 +177,35 @@ function Weather(props) {
           type={popup.type}
         />
       ) : null}
-      <div className="weather-container">
+      <div
+        style={{ direction: weatherLangs[language.current].style.dir }}
+        className="weather-container"
+      >
         <div className="weather-wrapper">
           <div className="weather-left">
             <div className="weather-left-container">
+              <div className="buttons-group">
+                <div className="button r" id="button-3">
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    onChange={toggleLanguage}
+                  />
+                  <div className="knobs"></div>
+                  <div className="layer"></div>
+                </div>
+              </div>
               <BackBtn />
               <SelectSavedCities />
               <div className="main-title-wrapper">
                 <h1 className="main-title-text">
-                  Weather <span className="main-title-text-bold">Forecast</span>
+                  {weatherLangs[language.current].mainTitle.normal}{" "}
+                  <span className="main-title-text-bold">
+                    {weatherLangs[language.current].mainTitle.bold}
+                  </span>
                 </h1>
               </div>
-              <p>Select World's leading cities:</p>
+              <p>{weatherLangs[language.current].leading}</p>
               <CitiesList
                 currentCityLon={lon}
                 saveCity={handleCitySubmit}
@@ -184,7 +214,8 @@ function Weather(props) {
               <div className="daily">
                 <div className="daily-title">
                   <h2 className="daily-title-text">
-                    Week<div className="dot"></div>
+                    {weatherLangs[language.current].week}
+                    <div className="dot"></div>
                   </h2>
                   <Suspense fallback={<Loader classes="fall" />}>
                     <WeatherDaily data={fullWeather.all.daily} />
@@ -201,10 +232,14 @@ function Weather(props) {
             <div className="overview">
               <div className="overview-header">
                 <div className="overview-header-today">
-                  <h2 className="overview-header-today-title">Today</h2>
+                  <h2 className="overview-header-today-title">
+                    {weatherLangs[language.current].today}
+                  </h2>
                   <p className="overview-header-today-date">
-                    {`${weekDays[time.getDay()]}, ${time.getDate()} ${
-                      months[time.getMonth()]
+                    {`${
+                      getWeekDays(language.current)[time.getDay()]
+                    }, ${time.getDate()} ${
+                      getMonths(language.current)[time.getMonth()]
                     } ${time.getFullYear()}`}
                   </p>
                 </div>
@@ -229,16 +264,22 @@ function Weather(props) {
               </div>
               <div className="overview-humiditydew">
                 <div className="overview-humidity">
-                  <p>{`Humidity ${fullWeather.all.current.humidity}%`}</p>
+                  <p>{`${weatherLangs[language.current].humidity} ${
+                    fullWeather.all.current.humidity
+                  }%`}</p>
                   <i className="fas fa-tint"></i>
                 </div>
                 <div className="overview-dewpoint">
-                  <p>{`Dew Point ${fullWeather.all.current.dew_point}°C`}</p>
+                  <p>{`${weatherLangs[language.current].dewPoint} ${
+                    fullWeather.all.current.dew_point
+                  }°C`}</p>
                   <i className="fas fa-hand-holding-water"></i>
                 </div>
               </div>
               <div className="overview-more-info">
-                <p className="overview-more-info-feels-like">{`Feels Like ${feelsLike}°C
+                <p className="overview-more-info-feels-like">{`${
+                  weatherLangs[language.current].feelsLike
+                } ${feelsLike}°C
                             `}</p>
                 {/* <p className="overview-more-info-sunset">Sunset {sunset}</p>
                 <p className="overview-more-info-sunrise">Sunrise {sunrise}</p> */}

@@ -29,14 +29,13 @@ $violet-darker: #110e3c;
       }
 
       .search-input {
+        font-family: "Roboto", IRANSans;
         flex-basis: 80%;
         font-size: 100%;
         padding: 1rem 1rem 1rem 3rem;
         border: none;
         outline: none;
         background-color: #fff;
-        border-top-left-radius: 0.5rem;
-        border-bottom-left-radius: 0.5rem;
       }
 
       .search-submit {
@@ -49,8 +48,6 @@ $violet-darker: #110e3c;
         color: #fff;
         background-color: $submit-background;
         cursor: pointer;
-        border-top-right-radius: 0.5rem;
-        border-bottom-right-radius: 0.5rem;
 
         &:disabled {
           cursor: not-allowed;
