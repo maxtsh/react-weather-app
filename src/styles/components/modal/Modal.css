@@ -1,7 +1,9 @@
 .black-layer {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
@@ -69,5 +71,31 @@
   font-weight: 700;
   color: #ff3838;
   margin-top: 0.5rem;
+}
+
+@media all and (max-width: 1024px) {
+  .modal-container {
+    width: 350px;
+    height: 100px;
+  }
+  .modal-container .modal-wrapper .modal-title {
+    font-size: 150%;
+  }
+  .modal-container .modal-wrapper .modal-confirm {
+    font-size: 120%;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .modal-container {
+    width: 200px;
+    height: 100px;
+  }
+  .modal-container .modal-wrapper .modal-title {
+    font-size: 130%;
+  }
+  .modal-container .modal-wrapper .modal-confirm {
+    font-size: 100%;
+  }
 }
 /*# sourceMappingURL=Modal.css.map */

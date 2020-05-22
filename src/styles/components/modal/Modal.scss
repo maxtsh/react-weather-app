@@ -3,8 +3,9 @@ $red-background: #ff3838;
 
 .black-layer {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
@@ -61,6 +62,39 @@ $red-background: #ff3838;
       font-weight: 700;
       color: $red-background;
       margin-top: 0.5rem;
+    }
+  }
+}
+// Media Queries
+@media all and (max-width: "1024px") {
+  .modal-container {
+    width: 350px;
+    height: 100px;
+
+    .modal-wrapper {
+      .modal-title {
+        font-size: 150%;
+      }
+
+      .modal-confirm {
+        font-size: 120%;
+      }
+    }
+  }
+}
+@media all and (max-width: "480px") {
+  .modal-container {
+    width: 200px;
+    height: 100px;
+
+    .modal-wrapper {
+      .modal-title {
+        font-size: 130%;
+      }
+
+      .modal-confirm {
+        font-size: 100%;
+      }
     }
   }
 }
