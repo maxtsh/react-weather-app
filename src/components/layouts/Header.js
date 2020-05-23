@@ -47,6 +47,7 @@ function Header() {
                 type="checkbox"
                 className="checkbox"
                 onChange={handleLangChange}
+                checked={language.current === "English" ? false : true}
               />
               <div className="knobs"></div>
               <div className="layer"></div>
@@ -70,6 +71,7 @@ function Header() {
                 type="checkbox"
                 className="checkbox"
                 onChange={handleLangChange}
+                checked={language.current === "English" ? false : true}
               />
               <div className="knobs"></div>
               <div className="layer"></div>

@@ -203,6 +203,7 @@ function Weather(props) {
                     type="checkbox"
                     className="checkbox"
                     onChange={toggleLanguage}
+                    checked={language.current === "English" ? false : true}
                   />
                   <div className="knobs"></div>
                   <div className="layer"></div>
