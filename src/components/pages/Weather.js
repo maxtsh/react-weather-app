@@ -53,12 +53,16 @@ const time = new Date();
 
 function Weather(props) {
   const [popup, setPopup] = useState({ show: false, message: "", type: "" });
+  // Language Context & Dispatch
   const language = useContext(languageContext);
   const langDispatch = useContext(dispatchContext);
+  // Weather Context & Dispatch
   const weather = useContext(weatherContext);
   const dispatch = useContext(WDispatchContext);
+  // Full Weather Context & Dispatch
   const fullWeather = useContext(fullWeatherContext);
   const dispatch2 = useContext(FWDispatchContext);
+
   const { city, coord } = props.match.params;
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];
@@ -178,7 +182,7 @@ function Weather(props) {
   // const sunrise = fullWeather.all.current.sunrise;
 
   return (
-    <ErrorBoundary currentLang="English">
+    <ErrorBoundary currentLang={language.current}>
       {popup.show ? (
         <ErrorHandler
           currentLang="English"
