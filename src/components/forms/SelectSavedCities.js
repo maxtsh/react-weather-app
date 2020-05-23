@@ -43,7 +43,7 @@ const langs = {
 
 function SelectSavedCities() {
   const [selectedCity, setSelectedCity] = useState({});
-  const { language } = useContext(languageContext);
+  const language = useContext(languageContext);
 
   // Handling changes of Select element
   const handleSelectChange = useCallback((e) => {

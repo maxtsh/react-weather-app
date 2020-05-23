@@ -16,9 +16,15 @@ import {
   saveCityToLs,
   deleteCityFromLs,
 } from "../../actions/index";
-import { fullWeatherContext } from "../../context/fullWeatherContext";
-import { weatherContext } from "../../context/weatherContext";
-import { languageContext } from "../../context/languageContext";
+import {
+  fullWeatherContext,
+  FWDispatchContext,
+} from "../../context/fullWeatherContext";
+import { weatherContext, WDispatchContext } from "../../context/weatherContext";
+import {
+  languageContext,
+  dispatchContext,
+} from "../../context/languageContext";
 
 // Components
 import LiveClock from "../layouts/LiveClock";
@@ -47,9 +53,12 @@ const time = new Date();
 
 function Weather(props) {
   const [popup, setPopup] = useState({ show: false, message: "", type: "" });
-  const { language, langDispatch } = useContext(languageContext);
-  const { weather, dispatch } = useContext(weatherContext);
-  const { fullWeather, dispatch2 } = useContext(fullWeatherContext);
+  const language = useContext(languageContext);
+  const langDispatch = useContext(dispatchContext);
+  const weather = useContext(weatherContext);
+  const dispatch = useContext(WDispatchContext);
+  const fullWeather = useContext(fullWeatherContext);
+  const dispatch2 = useContext(FWDispatchContext);
   const { city, coord } = props.match.params;
   const lon = coord.split("&")[0];
   const lat = coord.split("&")[1];

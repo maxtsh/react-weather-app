@@ -8,15 +8,19 @@ const initialWeather = {
 };
 
 export const weatherContext = createContext();
+export const WDispatchContext = createContext();
 
 export function WeatherProvider(props) {
   const [weather, dispatch] = useReducer(weatherReducer, initialWeather);
 
-  const value = useMemo(() => ({ weather, dispatch }), [weather]);
+  const weatherValue = useMemo(() => weather, [weather]);
+  const dispValue = useMemo(() => dispatch, []);
 
   return (
-    <weatherContext.Provider value={value}>
-      {props.children}
+    <weatherContext.Provider value={weatherValue}>
+      <WDispatchContext.Provider value={dispValue}>
+        {props.children}
+      </WDispatchContext.Provider>
     </weatherContext.Provider>
   );
 }

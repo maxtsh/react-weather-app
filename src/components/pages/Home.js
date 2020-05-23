@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 
 // Context API
 import { getWeather, clearWeather } from "../../actions/index";
-import { weatherContext } from "../../context/weatherContext";
+import { weatherContext, WDispatchContext } from "../../context/weatherContext";
 import { languageContext } from "../../context/languageContext";
 
 // Components
@@ -16,8 +16,9 @@ import ErrorHandler from "../../ErrorBoundry/ErrorHandler";
 import { homeLanguages } from "../../utils/languageData";
 
 function Home() {
-  const { weather, dispatch } = useContext(weatherContext);
-  const { language } = useContext(languageContext);
+  const weather = useContext(weatherContext);
+  const dispatch = useContext(WDispatchContext);
+  const language = useContext(languageContext);
   const [userForm, change] = useForm({ city: "" });
   const [errUI, setErrUI] = useState(false);
 

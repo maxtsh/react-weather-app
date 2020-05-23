@@ -7,7 +7,7 @@ const langs = {
 };
 
 function BackBtn() {
-  const { language } = useContext(languageContext);
+  const language = useContext(languageContext);
 
   return (
     <div className="go-back">

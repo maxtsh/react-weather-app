@@ -18,7 +18,7 @@ const langs = {
 };
 
 function WeatherDaily({ data }) {
-  const { language } = useContext(languageContext);
+  const language = useContext(languageContext);
   // Slicing out to remove today data and only have the next 7 days
   const maxTemps = data
     .slice(1, 8)

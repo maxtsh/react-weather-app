@@ -41,7 +41,7 @@ const langs = {
 };
 
 function CitiesList({ currentCityLon, saveCity, deleteCity }) {
-  const { language } = useContext(languageContext);
+  const language = useContext(languageContext);
 
   const [toggleModal, setToggleModal] = useState(false);
   const cities = loadCitiesFromLs();

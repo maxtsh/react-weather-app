@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { languageContext } from "../../context/languageContext";
 import { clearAllCities } from "../../actions/index";
 
+const langs = {
+  English: {
+    rusure: "Are you sure ?",
+    clear: "Clear",
+  },
+  Persian: {
+    rusure: "آیا مطمئن هستید ؟",
+    clear: "پاک سازی",
+  },
+};
+
 function Modal({ toggleModal }) {
-  console.log("MODAL RENDER");
+  const { language } = useContext(languageContext);
   const [err, setErr] = useState({ hasErr: false, message: "" });
 
   function handleClear() {
@@ -24,9 +36,9 @@ function Modal({ toggleModal }) {
             className="fas fa-times-circle"
             onClick={() => toggleModal(false)}
           ></i>
-          <h1 className="modal-title">Are you sure ?</h1>
+          <h1 className="modal-title">{langs[language.current].rusure}</h1>
           <button className="modal-confirm" onClick={handleClear}>
-            Clear
+            {langs[language.current].clear}
           </button>
           {err.hasErr ? <h4 className="modal-error">{err.message}</h4> : null}
         </div>

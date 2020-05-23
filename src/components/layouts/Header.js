@@ -2,7 +2,10 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Language Context
-import { languageContext } from "../../context/languageContext";
+import {
+  languageContext,
+  dispatchContext,
+} from "../../context/languageContext";
 
 // Logo
 import Logo from "../../images/logo.png";
@@ -11,7 +14,8 @@ import Logo from "../../images/logo.png";
 import { headerLanguages } from "../../utils/languageData";
 
 function Header() {
-  const { language, langDispatch } = useContext(languageContext);
+  const language = useContext(languageContext);
+  const langDispatch = useContext(dispatchContext);
   const [open, setOpen] = useState(false);
 
   // Change Callback Optimization
