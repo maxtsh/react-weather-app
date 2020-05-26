@@ -197,19 +197,21 @@ function Weather(props) {
         <div className="weather-wrapper">
           <div className="weather-left">
             <div className="weather-left-container">
-              <div className="buttons-group">
-                <div className="button r" id="button-3">
-                  <input
-                    type="checkbox"
-                    className="checkbox"
-                    onChange={toggleLanguage}
-                    checked={language.current === "English" ? false : true}
-                  />
-                  <div className="knobs"></div>
-                  <div className="layer"></div>
+              <div className="buttons">
+                <BackBtn />
+                <div className="buttons-group">
+                  <div className="button r" id="button-3">
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      onChange={toggleLanguage}
+                      checked={language.current === "English" ? false : true}
+                    />
+                    <div className="knobs"></div>
+                    <div className="layer"></div>
+                  </div>
                 </div>
               </div>
-              <BackBtn />
               <SelectSavedCities />
               <div className="main-title-wrapper">
                 <h1 className="main-title-text">

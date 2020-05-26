@@ -1,5 +1,13 @@
 .go-back {
-  margin: 1rem 0rem 0.8rem 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .go-back .go-back-btn {
@@ -8,10 +16,10 @@
   font-weight: 300;
   border: none;
   outline: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.6rem;
   color: #fff;
   background-color: #1d1d46;
-  border-radius: 0.5rem;
+  border-radius: 3rem;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -23,16 +31,8 @@
 
 @media all and (max-width: 768px) {
   .weather-container .weather-wrapper .weather-left .weather-left-container .go-back .go-back-btn {
-    font-size: 90%;
     font-weight: 400;
-    padding: 0.6rem;
-  }
-}
-
-@media all and (max-width: 480px) {
-  .weather-container .weather-wrapper .weather-left .weather-left-container .go-back .go-back-btn {
-    font-size: 80%;
-    padding: 0.4rem;
+    padding: 0.5rem;
   }
 }
 /*# sourceMappingURL=BackBtn.css.map */

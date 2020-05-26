@@ -27,8 +27,16 @@ $water-color: #4293ec;
 }
 
 //**** MEDIA QUERIES
-@media all and (max-width: "768px") {
+@media all and (max-width: "1024px") {
   .weather-daily {
     flex-direction: column;
+
+    .table {
+      flex-basis: 100%;
+    }
+
+    .chart-wrapper {
+      flex-basis: 100%;
+    }
   }
 }

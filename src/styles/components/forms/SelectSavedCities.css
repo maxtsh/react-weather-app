@@ -1,8 +1,3 @@
-.form-wrapper {
-  width: 100%;
-  border-radius: 0.5rem;
-}
-
 .form-wrapper .form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,7 +36,7 @@
   position: absolute;
   top: 25%;
   left: 10px;
-  font-size: 180%;
+  font-size: 150%;
   color: #110e3c;
 }
 
@@ -50,7 +45,7 @@
   -ms-flex-preferred-size: 80%;
       flex-basis: 80%;
   font-size: 100%;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 0.5rem 0.5rem 0.5rem 3rem;
   border: none;
   outline: none;
   background-color: #fff;
@@ -61,7 +56,7 @@
       flex-basis: 20%;
   font-size: 100%;
   font-weight: 700;
-  padding: 1rem;
+  padding: 0.5rem;
   border: none;
   outline: none;
   color: #fff;
@@ -79,16 +74,31 @@
     position: absolute;
     top: 25%;
     left: 10px;
-    font-size: 180%;
+    font-size: 150%;
   }
   .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .search-input {
     font-size: 100%;
-    padding: 0.5rem 0.5rem 0.5rem 3rem;
   }
   .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .search-submit {
     font-size: 100%;
     font-weight: 400;
-    padding: 0.7rem;
+    padding: 0.3rem;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .fa-search-location {
+    position: absolute;
+    top: 25%;
+    left: 10px;
+    font-size: 130%;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .search-input {
+    font-size: 90%;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .form-wrapper .form .input-group .search-submit {
+    font-size: 90%;
+    font-weight: 400;
   }
 }
 /*# sourceMappingURL=SelectSavedCities.css.map */

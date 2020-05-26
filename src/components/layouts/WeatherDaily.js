@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { languageContext } from "../../context/languageContext";
 
 import { HorizontalBar } from "react-chartjs-2";
@@ -18,8 +18,16 @@ const langs = {
 };
 
 function WeatherDaily({ data }) {
+  const [width, setWidth] = useState();
   const language = useContext(languageContext);
   // Slicing out to remove today data and only have the next 7 days
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+
+    return () => setWidth();
+  }, []);
+
   const maxTemps = data
     .slice(1, 8)
     .map((eachMax) => Math.round(eachMax.temp.max));
@@ -76,7 +84,7 @@ function WeatherDaily({ data }) {
       <div className="chart-wrapper">
         <HorizontalBar
           data={allData}
-          options={{ maintainAspectRatio: false }}
+          options={{ maintainAspectRatio: width > 1024 ? false : true }}
         />
       </div>
     </div>

@@ -3,9 +3,6 @@ $disabled-background: #f9ac68;
 $violet-darker: #110e3c;
 
 .form-wrapper {
-  width: 100%;
-  border-radius: 0.5rem;
-
   .form {
     display: flex;
     flex-direction: row;
@@ -24,7 +21,7 @@ $violet-darker: #110e3c;
         position: absolute;
         top: 25%;
         left: 10px;
-        font-size: 180%;
+        font-size: 150%;
         color: $violet-darker;
       }
 
@@ -32,7 +29,7 @@ $violet-darker: #110e3c;
         font-family: "Roboto", IRANSans;
         flex-basis: 80%;
         font-size: 100%;
-        padding: 1rem 1rem 1rem 3rem;
+        padding: 0.5rem 0.5rem 0.5rem 3rem;
         border: none;
         outline: none;
         background-color: #fff;
@@ -42,7 +39,7 @@ $violet-darker: #110e3c;
         flex-basis: 20%;
         font-size: 100%;
         font-weight: 700;
-        padding: 1rem;
+        padding: 0.5rem;
         border: none;
         outline: none;
         color: #fff;
@@ -70,18 +67,49 @@ $violet-darker: #110e3c;
                   position: absolute;
                   top: 25%;
                   left: 10px;
-                  font-size: 180%;
+                  font-size: 150%;
                 }
 
                 .search-input {
                   font-size: 100%;
-                  padding: 0.5rem 0.5rem 0.5rem 3rem;
                 }
 
                 .search-submit {
                   font-size: 100%;
                   font-weight: 400;
-                  padding: 0.7rem;
+                  padding: 0.3rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// MEDIA QUERIS
+@media all and (max-width: "768px") {
+  .weather-container {
+    .weather-wrapper {
+      .weather-left {
+        .weather-left-container {
+          .form-wrapper {
+            .form {
+              .input-group {
+                .fa-search-location {
+                  position: absolute;
+                  top: 25%;
+                  left: 10px;
+                  font-size: 130%;
+                }
+
+                .search-input {
+                  font-size: 90%;
+                }
+
+                .search-submit {
+                  font-size: 90%;
+                  font-weight: 400;
                 }
               }
             }
