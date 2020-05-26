@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { languageContext } from "../../context/languageContext";
 
-import { HorizontalBar } from "react-chartjs-2";
+import { HorizontalBar, Bar } from "react-chartjs-2";
 
 // Get The Next 7 Days From Today
 import getDaily from "../../utils/getDaily";
@@ -82,10 +82,14 @@ function WeatherDaily({ data }) {
         </tbody>
       </table>
       <div className="chart-wrapper">
-        <HorizontalBar
-          data={allData}
-          options={{ maintainAspectRatio: width > 1024 ? false : true }}
-        />
+        {width > 1024 ? (
+          <HorizontalBar
+            data={allData}
+            options={{ maintainAspectRatio: false }}
+          />
+        ) : (
+          <Bar data={allData} options={{ maintainAspectRatio: true }} />
+        )}
       </div>
     </div>
   );
