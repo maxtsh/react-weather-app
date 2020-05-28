@@ -104,6 +104,73 @@ body {
   margin: 0rem 2rem;
 }
 
+.error-boundary-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #1d1d46;
+}
+
+.error-boundary-container .error-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 120%;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 70%;
+}
+
+.error-boundary-container .error-wrapper .error-message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  background-color: #ff3838;
+}
+
+.error-boundary-container .error-wrapper .error-message .fa-exclamation-circle {
+  font-size: 150%;
+  color: #fff;
+  margin: 0rem 2rem;
+}
+
+.error-boundary-container .error-reload {
+  text-decoration: none;
+  font-size: 100%;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  margin-top: 1rem;
+  padding: 0.4rem 0.6rem;
+  color: #fff;
+  background-color: #20bf6b;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
 .main-loader {
   position: absolute;
   top: 50%;
@@ -155,6 +222,22 @@ body {
     font-size: 130%;
     margin: 0rem 1rem;
   }
+  .error-boundary-container .error-wrapper {
+    font-size: 90%;
+    font-weight: 300;
+    padding: 0.3rem 0.2rem;
+    border-radius: 0.5rem;
+    width: 80%;
+  }
+  .error-boundary-container .error-wrapper .error-message {
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+  .error-boundary-container .error-wrapper .error-message .fa-exclamation-circle {
+    font-size: 130%;
+    margin: 0rem 2rem;
+  }
 }
 
 @media all and (max-width: 480px) {
@@ -175,6 +258,22 @@ body {
   .popup-wrapper .success-message .fa-check-circle {
     font-size: 100%;
     margin: 0rem 0.5rem;
+  }
+  .error-boundary-container .error-wrapper {
+    font-size: 80%;
+    font-weight: 300;
+    padding: 0.3rem 0.2rem;
+    border-radius: 0.5rem;
+    width: 95%;
+  }
+  .error-boundary-container .error-wrapper .error-message {
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+  .error-boundary-container .error-wrapper .error-message .fa-exclamation-circle {
+    font-size: 100%;
+    margin: 0rem 0.2rem;
   }
 }
 /*# sourceMappingURL=global.css.map */

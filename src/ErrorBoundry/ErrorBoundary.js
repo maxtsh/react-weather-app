@@ -16,27 +16,46 @@ class ErrorBoundary extends Component {
     this.state = {
       hasError: false,
       caughtMessage: null,
+      reload: false,
     };
+    this.handleReload = this.handleReload.bind(this);
   }
 
   static getDerivedStateFromError(error) {
-    return { hasError: true, caughtMessage: error.message };
+    return { hasError: true, caughtMessage: error };
   }
 
   componentDidCatch(error, errorInfo) {
     console.log(error, errorInfo);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.hasError && prevState.hasError === this.state.hasError) {
+      this.setState({ hasError: false, caughtMessage: null });
+    }
+  }
+
+  handleReload() {
+    window.location.assign("/");
+  }
+
   render() {
     const { currentLang } = this.props;
     if (this.state.hasError) {
       return (
-        <div className="error-wrapper">
-          <i className="fas fa-exclamation-circle"></i>
-          <h3 className="error-message">
-            {languages[currentLang].errMessage + " " + this.state.caughtMessage}
-            !
-          </h3>
+        <div className="error-boundary-container">
+          <div className="error-wrapper">
+            <h3 className="error-message">
+              <i className="fas fa-exclamation-circle"></i>
+              {languages[currentLang].errMessage +
+                " " +
+                this.state.caughtMessage}
+              !
+            </h3>
+            <button className="error-reload" onClick={this.handleReload}>
+              Reload
+            </button>
+          </div>
         </div>
       );
     }
