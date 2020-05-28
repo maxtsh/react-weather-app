@@ -172,6 +172,12 @@
   color: #110e3c;
 }
 
+.weather-container .weather-wrapper .weather-left .top-cities-title {
+  font-size: 100%;
+  font-weight: 400;
+  margin: 0.5rem 0rem;
+}
+
 .weather-container .weather-wrapper .weather-left .daily .daily-title .daily-title-text {
   font-size: 130%;
   font-weight: 400;
@@ -225,6 +231,7 @@
 .weather-container .weather-wrapper .weather-right .cloud-2 {
   position: absolute;
   color: #1d1d46;
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -541,6 +548,10 @@
     font-size: 170%;
     font-weight: 400;
     padding: 1rem 0rem;
+  }
+  .weather-container .weather-wrapper .weather-left .weather-left-container .top-cities-title {
+    font-size: 90%;
+    font-weight: 300;
   }
   .weather-container .weather-wrapper .weather-right .cloud-1 {
     top: 40%;

@@ -20,7 +20,6 @@ $violet-darker: #110e3c;
       .fa-search-location {
         position: absolute;
         top: 25%;
-        left: 10px;
         font-size: 150%;
         color: $violet-darker;
       }
@@ -29,7 +28,6 @@ $violet-darker: #110e3c;
         font-family: "Roboto", IRANSans;
         flex-basis: 80%;
         font-size: 100%;
-        padding: 0.5rem 0.5rem 0.5rem 3rem;
         border: none;
         outline: none;
         background-color: #fff;
@@ -64,10 +62,7 @@ $violet-darker: #110e3c;
             .form {
               .input-group {
                 .fa-search-location {
-                  position: absolute;
-                  top: 25%;
-                  left: 10px;
-                  font-size: 150%;
+                  font-size: 120%;
                 }
 
                 .search-input {
@@ -96,13 +91,6 @@ $violet-darker: #110e3c;
           .form-wrapper {
             .form {
               .input-group {
-                .fa-search-location {
-                  position: absolute;
-                  top: 25%;
-                  left: 10px;
-                  font-size: 130%;
-                }
-
                 .search-input {
                   font-size: 90%;
                 }

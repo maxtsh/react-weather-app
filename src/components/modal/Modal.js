@@ -6,15 +6,17 @@ const langs = {
   English: {
     rusure: "Are you sure ?",
     clear: "Clear",
+    nothing: "There is nothing to delete!",
   },
   Persian: {
     rusure: "آیا مطمئن هستید ؟",
     clear: "پاک سازی",
+    nothing: "چیزی برای پاک کردن وجود ندارد!",
   },
 };
 
 function Modal({ toggleModal }) {
-  const { language } = useContext(languageContext);
+  const language = useContext(languageContext);
   const [err, setErr] = useState({ hasErr: false, message: "" });
 
   function handleClear() {
@@ -23,7 +25,7 @@ function Modal({ toggleModal }) {
       toggleModal(false);
       window.location.reload();
     } catch (err) {
-      setErr({ hasErr: true, message: err.message });
+      setErr({ hasErr: true, message: langs[language.current].nothing });
     }
   }
 

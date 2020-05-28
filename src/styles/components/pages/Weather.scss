@@ -145,6 +145,12 @@ $blue: #03a9f4;
         }
       }
 
+      .top-cities-title {
+        font-size: 100%;
+        font-weight: 400;
+        margin: 0.5rem 0rem;
+      }
+
       .daily {
         .daily-title {
           .daily-title-text {
@@ -193,6 +199,7 @@ $blue: #03a9f4;
       .cloud-2 {
         position: absolute;
         color: $violet-lighter;
+        overflow: hidden;
         z-index: 1;
       }
 
@@ -491,6 +498,10 @@ $blue: #03a9f4;
               font-weight: 400;
               padding: 1rem 0rem;
             }
+          }
+          .top-cities-title {
+            font-size: 90%;
+            font-weight: 300;
           }
         }
       }

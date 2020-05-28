@@ -1,19 +1,24 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { languageContext } from "../context/languageContext";
 const languages = {
   English: {
-    errMessage: "We are sorry about this but",
+    errMessage: "We are sorry but",
   },
   Persian: {
-    errMessage: "متاسفانه خطایی رخ داده است که",
+    errMessage: "خطا،",
   },
 };
 
-// **** This Component handles the errors happening withing Async Calls
-export default function ErrorHandler({ currentLang, message, type }) {
+// **** This Component handles the errors happening withing Async Calls or Event Handlers
+function ErrorHandler({ message, type }) {
+  const language = useContext(languageContext);
+
   if (type === "success") {
     return (
-      <div className="popup-wrapper">
+      <div
+        style={{ direction: language.current === "English" ? "ltr" : "rtl" }}
+        className="popup-wrapper"
+      >
         <h3 className="success-message">
           <i className="fas fa-check-circle"></i>
           {message}
@@ -22,10 +27,13 @@ export default function ErrorHandler({ currentLang, message, type }) {
     );
   } else if (type === "error") {
     return (
-      <div className="popup-wrapper">
+      <div
+        style={{ direction: language.current === "English" ? "ltr" : "rtl" }}
+        className="popup-wrapper"
+      >
         <h3 className="error-message">
           <i className="fas fa-exclamation-circle"></i>
-          {languages[currentLang].errMessage + " " + message}
+          {languages[language.current].errMessage + " " + message}
         </h3>
       </div>
     );
@@ -33,3 +41,5 @@ export default function ErrorHandler({ currentLang, message, type }) {
     return null;
   }
 }
+
+export default React.memo(ErrorHandler);

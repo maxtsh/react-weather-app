@@ -59,7 +59,7 @@ export function saveCityToLs(cityData) {
       (item) => item.lon === cityData.lon
     )
   ) {
-    const error = new Error("current city is already saved!");
+    const error = new Error();
     throw error;
   } else {
     cities = JSON.parse(localStorage.getItem("cities"));
@@ -67,9 +67,8 @@ export function saveCityToLs(cityData) {
   const cityName = cityData.city.split("");
   cityName.splice(0, 1, cityData.city.split("")[0].toUpperCase());
   cities.push({ ...cityData, city: cityName.join(""), id: uuidv4() });
-  localStorage.setItem("cities", JSON.stringify(cities));
 
-  return "Successfully saved";
+  localStorage.setItem("cities", JSON.stringify(cities));
 }
 
 // Deleting current city from localStorage
@@ -84,11 +83,10 @@ export function deleteCityFromLs(cityId) {
       (item) => item.id === cityId
     );
     const filtered = allCities.filter((city) => city.id !== savedCity.id);
-    localStorage.setItem("cities", JSON.stringify(filtered));
 
-    return "Successfully deleted";
+    localStorage.setItem("cities", JSON.stringify(filtered));
   } else {
-    const error = new Error("current city is already deleted!");
+    const error = new Error();
     throw error;
   }
 }
@@ -98,7 +96,7 @@ export function clearAllCities() {
   if (localStorage.getItem("cities")) {
     localStorage.removeItem("cities");
   } else {
-    const err = new Error("There is nothing to delete!");
+    const err = new Error();
     throw err;
   }
 }

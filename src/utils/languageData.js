@@ -65,6 +65,12 @@ export const weatherLangs = {
     humidity: "Humidity:",
     dewPoint: "Dew point:",
     feelsLike: "Feels like:",
+    popup: {
+      saved: "Successfully saved",
+      notSaved: "current city is already saved!",
+      delete: "Successfully  deleted",
+      notDeleted: "Current city is already deleted!",
+    },
   },
   Persian: {
     mainTitle: {
@@ -80,5 +86,11 @@ export const weatherLangs = {
     humidity: "رطوبت:",
     dewPoint: "نقطه شبنم:",
     feelsLike: "حس دمایی:",
+    popup: {
+      saved: "با موفقیت ذخیره شد",
+      notSaved: "شهر فعلی قبلا ذخیره شده است!",
+      delete: "با موفقیت پاک شد",
+      notDeleted: "شهر فعلی قبلا پاک شده است",
+    },
   },
 };

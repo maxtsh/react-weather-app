@@ -90,7 +90,7 @@ body {
 .popup-wrapper .error-message .fa-exclamation-circle {
   font-size: 150%;
   color: #fff;
-  margin-right: 3rem;
+  margin: 0rem 2rem;
 }
 
 .popup-wrapper .success-message {
@@ -101,7 +101,7 @@ body {
 .popup-wrapper .success-message .fa-check-circle {
   font-size: 150%;
   color: #fff;
-  margin-right: 3rem;
+  margin: 0rem 2rem;
 }
 
 .main-loader {
@@ -137,27 +137,44 @@ body {
 }
 
 @media all and (max-width: 768px) {
-  .error-wrapper {
-    padding: 0.2rem 0.8rem;
-    margin-top: 0.5rem;
+  .popup-wrapper {
+    width: 400px;
   }
-  .error-wrapper .error-message {
+  .popup-wrapper .error-message,
+  .popup-wrapper .success-message {
     font-size: 100%;
     font-weight: 400;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+  }
+  .popup-wrapper .error-message .fa-exclamation-circle {
+    font-size: 130%;
+    margin: 0rem 1rem;
+  }
+  .popup-wrapper .success-message .fa-check-circle {
+    font-size: 130%;
+    margin: 0rem 1rem;
   }
 }
 
 @media all and (max-width: 480px) {
-  .error-wrapper {
-    padding: 0.1rem 0.5rem;
+  .popup-wrapper {
+    width: 90%;
   }
-  .error-wrapper .error-message {
+  .popup-wrapper .error-message,
+  .popup-wrapper .success-message {
     font-size: 90%;
+    font-weight: 300;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
   }
-  .error-wrapper .fa-exclamation-circle {
+  .popup-wrapper .error-message .fa-exclamation-circle {
     font-size: 100%;
-    color: #fff;
-    margin-right: 1rem;
+    margin: 0rem 0.5rem;
+  }
+  .popup-wrapper .success-message .fa-check-circle {
+    font-size: 100%;
+    margin: 0rem 0.5rem;
   }
 }
 /*# sourceMappingURL=global.css.map */

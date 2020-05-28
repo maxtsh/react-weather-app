@@ -100,25 +100,44 @@ function Weather(props) {
     (e) => {
       e.preventDefault();
       try {
-        const result = saveCityToLs({ city, lon, lat });
-        setPopup({ show: true, message: result, type: "success" });
+        saveCityToLs({ city, lon, lat });
+        setPopup({
+          show: true,
+          message: weatherLangs[language.current].popup.saved,
+          type: "success",
+        });
       } catch (err) {
-        setPopup({ show: true, message: err.message, type: "error" });
+        setPopup({
+          show: true,
+          message: weatherLangs[language.current].popup.notSaved,
+          type: "error",
+        });
       }
     },
-    [city, lon, lat]
+    [city, lon, lat, language]
   );
 
   // Deleting current city from the localstorage event handler
-  const handleCityDelete = useCallback((e, id) => {
-    e.preventDefault();
-    try {
-      const result = deleteCityFromLs(id);
-      setPopup({ show: true, message: result, type: "success" });
-    } catch (err) {
-      setPopup({ show: true, message: err.message, type: "error" });
-    }
-  }, []);
+  const handleCityDelete = useCallback(
+    (e, id) => {
+      e.preventDefault();
+      try {
+        deleteCityFromLs(id);
+        setPopup({
+          show: true,
+          message: weatherLangs[language.current].popup.delete,
+          type: "success",
+        });
+      } catch (err) {
+        setPopup({
+          show: true,
+          message: weatherLangs[language.current].popup.notDeleted,
+          type: "error",
+        });
+      }
+    },
+    [language]
+  );
 
   // Togle Language Change
   function toggleLanguage(e) {
@@ -139,22 +158,14 @@ function Weather(props) {
   } else if (fullWeather.error) {
     // if any error happens from fullWeather-fetch then show it on popup
     return (
-      <ErrorHandler
-        message={fullWeather.error.data.message}
-        currentLang="English"
-        type="error"
-      />
+      <ErrorHandler message={fullWeather.error.data.message} type="error" />
     );
   } else if (weather.error) {
     // if any error happens from weather-fetch then show it on popup
     return (
       <>
         <BackBtn />
-        <ErrorHandler
-          message={weather.error.data.message}
-          currentLang="English"
-          type="error"
-        />
+        <ErrorHandler message={weather.error.data.message} type="error" />
       </>
     );
   } else if (
@@ -168,7 +179,6 @@ function Weather(props) {
         <BackBtn />
         <ErrorHandler
           message="Coordinations doesn't match the city name!"
-          currentLang="English"
           type="error"
         />
       </>
@@ -184,11 +194,7 @@ function Weather(props) {
   return (
     <ErrorBoundary currentLang={language.current}>
       {popup.show ? (
-        <ErrorHandler
-          currentLang="English"
-          message={popup.message}
-          type={popup.type}
-        />
+        <ErrorHandler message={popup.message} type={popup.type} />
       ) : null}
       <div
         style={{ direction: weatherLangs[language.current].style.dir }}
@@ -221,7 +227,9 @@ function Weather(props) {
                   </span>
                 </h1>
               </div>
-              <p>{weatherLangs[language.current].leading}</p>
+              <p className="top-cities-title">
+                {weatherLangs[language.current].leading}
+              </p>
               <CitiesList
                 currentCityLon={lon}
                 saveCity={handleCitySubmit}

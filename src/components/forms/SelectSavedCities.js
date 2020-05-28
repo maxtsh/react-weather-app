@@ -12,13 +12,17 @@ const langs = {
     },
     submit: "Get weather",
     style: {
+      field: {
+        borderTopLeftRadius: "0.5rem",
+        borderBottomLeftRadius: "0.5rem",
+        padding: "0.5rem 0.5rem 0.5rem 3rem",
+      },
       borderRadiusSubmit: {
         borderTopRightRadius: "0.5rem",
         borderBottomRightRadius: "0.5rem",
       },
-      borderRadiusField: {
-        borderTopLeftRadius: "0.5rem",
-        borderBottomLeftRadius: "0.5rem",
+      iconPosition: {
+        left: "10px",
       },
     },
   },
@@ -29,13 +33,17 @@ const langs = {
     },
     submit: "دریافت آب و هوا",
     style: {
+      field: {
+        borderTopRightRadius: "0.5rem",
+        borderBottomRightRadius: "0.5rem",
+        padding: "0.5rem 3rem 0.5rem 0.5rem",
+      },
       borderRadiusSubmit: {
         borderTopLeftRadius: "0.5rem",
         borderBottomLeftRadius: "0.5rem",
       },
-      borderRadiusField: {
-        borderTopRightRadius: "0.5rem",
-        borderBottomRightRadius: "0.5rem",
+      iconPosition: {
+        right: "10px",
       },
     },
   },
@@ -74,11 +82,14 @@ function SelectSavedCities() {
     <div className="form-wrapper">
       <form className="form" onSubmit={handleFindSubmit}>
         <div className="input-group">
-          <i className="fas fa-search-location"></i>
+          <i
+            style={langs[language.current].style.iconPosition}
+            className="fas fa-search-location"
+          ></i>
           <select
             className="search-input"
             name="cities"
-            style={langs[language.current].style.borderRadiusField}
+            style={langs[language.current].style.field}
             onChange={handleSelectChange}
             defaultValue="DEFAULT"
             disabled={savedCities ? false : true}
